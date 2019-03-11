@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /posts
@@ -47,7 +48,6 @@ class PostsController < ApplicationController
         format.html { render :edit }
       end
     end
-    redirect_to 'home/index'
   end
 
   # DELETE /posts/1
@@ -58,7 +58,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
     end
-    redirect_to 'home/index'
   end
 
   private
@@ -69,6 +68,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:index, :edit, :show, :new)
+      params.require(:post).permit(:title, :content, :category)
     end
 end

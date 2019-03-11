@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Index</th>
-      <th>Edit</th>
-      <th>Show</th>
-      <th>New</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Witter</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.index %></td>
-        <td><%= post.edit %></td>
-        <td><%= post.show %></td>
-        <td><%= post.new %></td>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= post.writter.user_name %></td>
+
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

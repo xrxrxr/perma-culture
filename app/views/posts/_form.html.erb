@@ -12,24 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :index %>
-    <%= form.text_field :index %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :edit %>
-    <%= form.text_field :edit %>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
   </div>
 
   <div class="field">
-    <%= form.label :show %>
-    <%= form.text_field :show %>
+    <%= form.label :category %>
+    <%= select_tag(:category, options_for_select(@categories.collect{ |c| [c.name, c.id] })) %>
   </div>
 
-  <div class="field">
-    <%= form.label :new %>
-    <%= form.text_field :new %>
-  </div>
+
 
   <div class="actions">
     <%= form.submit %>

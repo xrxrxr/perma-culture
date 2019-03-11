@@ -1,24 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Index:</strong>
-  <%= @post.index %>
+  <strong>Title:</strong>
+  <%= @post.title %>
 </p>
 
 <p>
-  <strong>Edit:</strong>
-  <%= @post.edit %>
+  <strong>Content:</strong>
+  <%= @post.content %>
 </p>
 
 <p>
-  <strong>Show:</strong>
-  <%= @post.show %>
+  <strong>Writter:</strong>
+  <%= @post.writter.user_name %>
 </p>
 
 <p>
-  <strong>New:</strong>
-  <%= @post.new %>
+  <strong>Category:</strong>
+  <%= @post.category.name %>
 </p>
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
