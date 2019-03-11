@@ -1,8 +1,16 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
-	belongs_to :writter, class_name: 'User'
-	belongs_to :category
-	has_many :comments, as: :commenteable
-	has_many :likes, as: :likeable
+  belongs_to :writter, class_name: 'User'
+  belongs_to :category
+  has_many :comments, as: :commenteable
+  has_many :likes, as: :likeable
+
+  validates :content,
+            presence: true,
+            length: { minimum: 25, maximum: 1000 }
+
+  	has_many_attached :post_pictures
 
 	validates :content, 
 	presence: true,	
