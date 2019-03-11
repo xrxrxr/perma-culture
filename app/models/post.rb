@@ -5,9 +5,10 @@ class Post < ApplicationRecord
 	#has_many :likes
 
 	validates :content, 
-						presence: true,	
-						length:{minimum: 25, maximum: 1000}
-						:title,
-						presence: true,
-						length:{minimum: 10, maximum: 30}
+	presence: true,	
+	length:{minimum: 25, maximum: 1000}
+	
+	validates :title,
+	presence: true,
+	length:{minimum: 5, maximum: 30}
 end
