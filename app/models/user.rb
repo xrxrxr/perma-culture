@@ -1,10 +1,12 @@
+# frozen_string_literal: true
 require 'open-uri'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
-  
+         :recoverable, :rememberable, :validatable
+
   before_create :grab_image
   after_create :welcome_send
 
@@ -14,7 +16,6 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: 'writter_id'
   has_many :comments
   has_many :likes
-
 
   validates :email, 
   presence: true, 

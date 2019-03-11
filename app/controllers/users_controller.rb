@@ -8,8 +8,7 @@ class UsersController < ApplicationController
 		@user = set_user
 	end
 
-	def destroy
-	end
+  def destroy; end
 
 	def edit
 		@user = set_user
@@ -18,15 +17,15 @@ class UsersController < ApplicationController
 	def update
 		@user = set_user
 
-		if @user.update(post_params)
-			flash[:success] = 'Profile updated'
-			redirect_to @user
-		else
-			render :edit
-		end
-	end
+    if @user.update(post_params)
+      flash[:success] = 'Profile updated'
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
 
-	private 
+  private
 
 	def set_user
 		User.find(params[:id])
