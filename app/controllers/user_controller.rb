@@ -3,19 +3,19 @@ class UserController < ApplicationController
 	end
 
 	def show
-		@profile = User.find(params[:id])
+		@profile = set_user
 	end
 
 	def destroy
 	end
 
 	def edit
-		@profile = current_user
+		@profile = set_user
 	end
 
 	def update
-		@user = current_user
-		post_params = params.require(:user).permit(:username, :first_name, :last_name)
+		@user = set_user
+		post_params = params.require(:user).permit(:username)
 
 		if @user.update(post_params)
 			flash[:success] = 'Profile updated'
@@ -23,5 +23,11 @@ class UserController < ApplicationController
 		else
 			render :edit
 		end
+	end
+
+	private 
+
+	def set_user
+		User.find(params[:id])
 	end
 end
