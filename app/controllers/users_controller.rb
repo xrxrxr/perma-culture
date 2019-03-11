@@ -1,21 +1,22 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
+
 	def index
+		@users = User.all
 	end
 
 	def show
-		@profile = set_user
+		@user = set_user
 	end
 
 	def destroy
 	end
 
 	def edit
-		@profile = set_user
+		@user = set_user
 	end
 
 	def update
 		@user = set_user
-		post_params = params.require(:user).permit(:username)
 
 		if @user.update(post_params)
 			flash[:success] = 'Profile updated'
@@ -30,4 +31,8 @@ class UserController < ApplicationController
 	def set_user
 		User.find(params[:id])
 	end
+
+	def post_params
+      params.require(:user).permit(:user_name)
+    end
 end
