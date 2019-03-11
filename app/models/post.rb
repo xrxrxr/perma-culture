@@ -4,6 +4,8 @@ class Post < ApplicationRecord
 	has_many :comments, as: :commenteable
 	has_many :likes, as: :likeable
 
+  	has_many_attached :post_pictures
+
 	validates :content, 
 	presence: true,	
 	length:{minimum: 25, maximum: 1000}
