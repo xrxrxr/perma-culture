@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :user_categories
   has_many :categories, through: :user_categories
   has_many :posts, foreign_key: 'writter_id'
-  #has_many :comments
-  #has_many :likes
+  has_many :comments
+  has_many :likes
 
 
   validates :email, 
