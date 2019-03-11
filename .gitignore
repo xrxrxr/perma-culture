@@ -26,3 +26,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 Now-ui-kit-pro-html-v1.2.0
+.env
