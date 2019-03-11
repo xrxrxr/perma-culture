@@ -129,3 +129,38 @@ p, .price, .category, .form-group {
   background-image: linear-gradient(#074a5d, #63dbb0)
 }
 
+/*------------------------------LANDING PAGE---------------------------------*/
+
+.container {
+  background-size: 100%;
+  max-width: 100%;
+  height: 850px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+hr{ 
+color: #EEEEEE;
+  border:         none;
+  border-left:    1px solid;
+  height:         500px;
+  width:          1px;       
+}
+
+.text {
+  color: #EEEEEE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pad1 {
+  margin-right: 400px;
+}
+
+.pad2 {
+  margin-left: 400px;
+}
