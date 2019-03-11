@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
 	belongs_to :writter, class_name: 'User'
 	belongs_to :category
-	#has_many :comments
-	#has_many :likes
+	has_many :comments, as: :commenteable
+	has_many :likes, as: :likeable
 
 	validates :content, 
 	presence: true,	
@@ -10,5 +10,5 @@ class Post < ApplicationRecord
 	
 	validates :title,
 	presence: true,
-	length:{minimum: 5, maximum: 30}
+	length:{minimum: 5, maximum: 60}
 end
