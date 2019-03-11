@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Index:</strong>
+  <%= @post.index %>
+</p>
+
+<p>
+  <strong>Edit:</strong>
+  <%= @post.edit %>
+</p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @post.show %>
+</p>
+
+<p>
+  <strong>New:</strong>
+  <%= @post.new %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
