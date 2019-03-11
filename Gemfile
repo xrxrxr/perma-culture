@@ -77,4 +77,3 @@ gem 'dotenv'
 gem 'letter_opener'
 gem 'faker'
 gem "aws-sdk-s3", require: false
-gem 'trix'
