@@ -10,7 +10,13 @@ class Post < ApplicationRecord
             presence: true,
             length: { minimum: 25, maximum: 1000 }
 
-  validates :title,
-            presence: true,
-            length: { minimum: 5, maximum: 60 }
+  	has_many_attached :post_pictures
+
+	validates :content, 
+	presence: true,	
+	length:{minimum: 25, maximum: 1000}
+	
+	validates :title,
+	presence: true,
+	length:{minimum: 5, maximum: 60}
 end

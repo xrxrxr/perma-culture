@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>
+<%= image_tag(@user.avatar) %> <br>
+  <strong>Username:</strong>
+  <%= @user.user_name %>
+</p>
+
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to "Editer infos de connexion", edit_user_registration_path, class:"btn btn-primary btn-md bouton" %>
+<%= link_to 'Back', users_path %>
+

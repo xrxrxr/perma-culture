@@ -32,3 +32,16 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+
+      <h2 class="h3 mb-3 font-weight-normal text-center">Photo</h2>
+      <% if post.post_pictures.attached? %>
+        <% post.post_pictures.each do |picture| %>
+          <%= image_tag(picture, class:'img-raised', width:'400px')%>
+        <% end %>
+      <% end %>
+       <br>
+      <%= form_tag post_post_pictures_path(post.id), multipart: true do %>
+        <%= file_field_tag :post_pictures %>
+        <%= submit_tag "Ajouter photo", class: "btn btn-lg btn-primary btn-block bouton" %>
+      <% end %>
