@@ -6,7 +6,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all#.where(category: current_user.categories)
+    #@posts = Post.all.where(Post.comments.by_recent_comments)
+
   end
 
   # GET /posts/1
