@@ -7,4 +7,6 @@ class Comment < ApplicationRecord
   has_many :comments, as: :commenteable
 
   validates :content, presence: true
+
+  scope :by_recent_comment, -> { order(created_at: :asc)}
 end
