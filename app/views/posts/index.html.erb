@@ -64,9 +64,9 @@
                     <h5 class="card-description">
                         <%=post.content%>
                         ------
-                        <strong><%=post.category.name%></strong> ---
+                        <strong><%=post.category.name%></strong> (<%=post.id%>)---
                         <%= pluralize(post.likes.size, "like") %> ---
-                        <%= pluralize(post.comments.size, "comment") %> ------
+                        <%= pluralize(post.comments.size, "comment") %> --- <%=post.comments.last.created_at%> ------
                     </h5>
 
                     <a href="#pablo" class="btn btn-primary btn-round"> Read More</a>
