@@ -27,12 +27,11 @@ class User < ApplicationRecord
   uniqueness: true,
   format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Veuillez entrer un email valide"}
 
-
   def grab_image
     downloaded_image = (open('https://loremflickr.com/g/400/400/face/'))
     self.avatar.attach(io: downloaded_image, filename: 'image.png')
   end
-
+  
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
