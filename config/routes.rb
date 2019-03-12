@@ -2,10 +2,12 @@
 
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { registrations: "registrations"}
+  devise_for :users, controllers: { registrations: "registrations" }
+
   resources :posts do
     resources :post_pictures, only: [:create]
   end
+  get '/welcome' => "posts#index", as: :user_root
 
   resources :users, only: [:show, :update, :edit, :destroy, :index] do
     resources :avatars, only: [:create]
