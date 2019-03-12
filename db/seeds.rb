@@ -19,7 +19,7 @@ puts 'Category created'
 end
 puts '10 users created'
 
-5.times do
+25.times do
   post = Post.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.sentences(25), writter: User.all.sample, category: Category.all.sample)
 end
 puts '5 posts created'

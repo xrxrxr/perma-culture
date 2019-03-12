@@ -22,7 +22,7 @@
 
   <div class="wrapper">
     <div class="page-header page-header-small" filter-color="green">
-      <div class="page-header-image" data-parallax="true" style="background-image: url('../assets/img/pe.jpg') ;">
+      <div class="page-header-image" data-parallax="true" style="background-image: url(<%= image_path 'pe.jpg' %>) ;">
       </div>
       <p id="notice">
         <%= notice %>
@@ -36,7 +36,7 @@
       <p>
         <div class="content-center">
           <div class="photo-container">
-            <img src="<%= image_tag(@user.avatar) %>" alt="">
+            <%= image_tag(@user.avatar) %>
           </div>
           <h3 class="name">
             <%= @user.user_name %>
@@ -92,8 +92,9 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <span class="badge badge-primary">bio</span>
-                <span class="badge badge-primary">bio</span>
+                <% @user.categories.each do |category| %>
+                  <span class="badge badge-primary"><%= category.name %></span>
+                <% end %>
               </li>
             </ul>
           </div>

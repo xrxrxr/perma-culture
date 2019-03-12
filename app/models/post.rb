@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
+  has_many_attached :post_pictures
+
   belongs_to :writter, class_name: 'User'
   belongs_to :category
   has_many :comments, as: :commenteable
@@ -10,8 +12,6 @@ class Post < ApplicationRecord
             presence: true,
             length: { minimum: 25, maximum: 1000 }
 
-  	has_many_attached :post_pictures
-
 	validates :content, 
 	presence: true,	
 	length:{minimum: 25, maximum: 1000}
@@ -19,4 +19,8 @@ class Post < ApplicationRecord
 	validates :title,
 	presence: true,
 	length:{minimum: 5, maximum: 60}
+
+  # scope :user_categories, -> { Post.all.where(category: current_user.categories)}
+  # scope :by_recent_comment, -> {  }
+  # scope :by_soon_date, -> { order(start_date: :asc)}
 end

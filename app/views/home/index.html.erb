@@ -1,17 +1,132 @@
-<div class="container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(<%= image_path('agriculture.jpg')%>)">
+	<div class="container containerland2 parallax" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(<%= image_path('agriculture.jpg')%>)">
 
-    <div class="row">
+		<div class="row">
+			<div class="col-6 left text-white d-flex justify-content-center align-items-center" id='left'>
+				<h2 id='text-left'>Log In</h2>    
+			</div>
 
-        <div class="text pad1">
-            <h2>Log In</h2>    
-        </div>
 
-        <hr>
-            
-        <div class="text pad2">  
-            <h2>Sign Up</h2>          
-        </div>
-
-    </div>
-
+			<div class="col-6 right text-white d-flex justify-content-center align-items-center" id='right'>  
+				<h2 id='text-right'>Sign Up</h2>          
+			</div>
+		</div>
+	</div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<script>
+function landingPageSign () {
+	let left = $('.left');
+	let right = $('.right');
+	let textLeft = $('#text-left');
+	let textRight = $('#text-right');
+
+	function resetClassList() {
+		left.removeClass('col-8 col-6 col-4');
+		right.removeClass('col-8 col-6 col-4');
+		left.addClass('col-6');
+		right.addClass('col-6');
+		$('.sign_in').hide(500);
+		$('.sign_up').hide(500);
+	};
+
+	textLeft.click( function() {
+		resetClassList();
+		left.toggleClass('col-6 col-8');
+		right.toggleClass('col-6 col-4');
+		textLeft.hide();
+		textRight.slideDown(1200);
+		$("<%= j render 'sign_in' %>").appendTo($(left)).hide().fadeIn(500);
+	})
+
+	textRight.click( function() {
+		resetClassList();
+		right.toggleClass('col-6 col-8');
+		left.toggleClass('col-6 col-4');
+		textRight.hide();
+		textLeft.fadeIn(1200);
+		$("<%= j render 'sign_up' %>").appendTo($(right)).hide().fadeIn(500);
+	})
+
+	textLeft.mouseover(function() {
+		textLeft.animate({
+		    opacity: '0.5',
+		    left: '100px',
+		    height: '100px',
+		});
+	});
+
+	textLeft.mouseleave(function() {
+		textLeft.animate({
+		    opacity: '1',
+		    left: '0px',
+		    height: '0px'
+		});
+	});
+
+	textRight.mouseover(function() {
+		textRight.show( "scale", {percent: 120} );
+	});
+};
+landingPageSign ()
+</script>

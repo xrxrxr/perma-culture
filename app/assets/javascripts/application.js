@@ -24,3 +24,13 @@
 //= require assets/js/now-ui-kit
 //= require activestorage
 //= require_tree .
+
+
+
+// ------------------------ REPARATION NAVBAR RESPONSIVE ---------------------
+$(document).ready(function() {
+    $('#navbar-btn').click(function () {
+        $('.collapse').show(500);
+    });
+});
+
