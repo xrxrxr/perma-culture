@@ -129,3 +129,94 @@ p, .price, .category, .form-group {
   background-image: linear-gradient(#074a5d, #63dbb0)
 }
 
+/*------------------------------LANDING PAGE---------------------------------*/
+
+/*.containerland {
+  background-size: 100%;
+  max-width: 100%;
+  height: 850px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical { 
+color: #EEEEEE;
+  border:         none;
+  border-left:    1px solid;
+  height:         500px;
+  width:          1px;       
+}
+
+.text {
+  color: #EEEEEE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pad1 {
+  margin-right: 400px;
+}
+
+.pad2 {
+  margin-left: 400px;
+}
+*/
+
+.containerland2 {
+  background-size: 100%;
+  max-width: 100%;
+  height: 50%;
+  color: black;
+
+}
+
+.left {
+  border-right-height: 200px;
+  height: 850px;
+}
+
+.left::before {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        height: 500px;
+        border-right: 1px solid white;
+    }
+
+.right {
+  height: 850px;
+}
+
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#text-left:hover {
+  cursor: pointer;
+}
+#text-right:hover {
+  cursor: pointer;
+}
+
+.right:hover #text-right{
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5); 
+    -moz-transform: scale(1.5);
+}
+
+#text-right {
+    position: absolute;
+    transition: all 2s ease-in-out;
+    -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all 2s ease-in-out; /** Firefox **/
+    -o-transition: all 2s ease-in-out; /** Opera **/
+}

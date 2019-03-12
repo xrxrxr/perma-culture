@@ -1,0 +1,47 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= select_tag(:category, options_for_select(@categories.collect{ |c| [c.name, c.id] })) %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+      <h2 class="h3 mb-3 font-weight-normal text-center">Photo</h2>
+      <% if post.post_pictures.attached? %>
+        <% post.post_pictures.each do |picture| %>
+          <%= image_tag(picture, class:'img-raised', width:'400px')%>
+        <% end %>
+      <% end %>
+       <br>
+      <%= form_tag post_post_pictures_path(post.id), multipart: true do %>
+        <%= file_field_tag :post_pictures %>
+        <%= submit_tag "Ajouter photo", class: "btn btn-lg btn-primary btn-block bouton" %>
+      <% end %>

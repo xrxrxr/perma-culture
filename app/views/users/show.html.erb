@@ -1,0 +1,88 @@
+       <p id="notice">
+        <%= notice %>
+      </p>
+<div class="wrapper">
+    <div class="page-header page-header-small" filter-color="green">
+      <div class="page-header-image" data-parallax="true" style="background-image: url(<%= image_path 'pe.jpg' %>) ;">
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <p>
+        <div class="content-center">
+          <div class="photo-container">
+            <%= image_tag(@user.avatar) %>
+          </div>
+          <h3 class="name">
+            <%= @user.user_name %>
+          </h3>
+          <%= @user.email %>
+          <div class="content">
+            <div class="social-description">
+              <h2>26</h2>
+              <p>Articles
+              </p>
+            </div>
+            <div class="social-description">
+              <h2>26</h2>
+              <p>Commentaires</p>
+            </div>
+            <div class="social-description">
+              <h2>26</h2>
+              <p>likes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="container">
+          <div class="button-container">
+            <a <%= link_to "Editer infos de connexion", edit_user_registration_path, class:"btn btn-primary btn-md bouton" %> class="btn btn-primary btn-round btn-lg">Modifier les paramètres du compte</a>
+            <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="messages">
+              <i class="fa fa-envelope"></i>
+            </a>
+          </div>
+          <div>
+            <h3 class="title">À propos de moi
+              <i <%= link_to 'Edit', edit_user_path(@user) %> class=" btn btn-primary btn-round btn-lg btn-icon " aria-hidden="true" title="modifier bio">
+                <i class="fa fa-pencil"></i>
+              </i>
+            </h3>
+          </div>
+          <h5 class="description text-center">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove
+            structure. An artist of considerable range.</h5>
+          <div class="row"></div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="card">
+              <div class="card-header-center">
+                <center>
+                  <h4 class="card-title-center">catégories</h4>
+                </center>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <% @user.categories.each do |category| %>
+                    <span class="badge badge-primary"><%= category.name %></span>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <% @user.categories.each do |category| %>
+                  <span class="badge badge-primary"><%= category.name %></span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
