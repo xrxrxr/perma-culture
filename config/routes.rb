@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { registrations: "registrations", sessions: "sessions" }
+  devise_for :users, controllers: { registrations: "registrations"}
   resources :posts do
     resources :post_pictures, only: [:create]
   end
