@@ -22,7 +22,13 @@ $none:                       0   !default;
 $border-thin:                1px !default;
 $border-thick:               2px !default;
 
+$primary-color:              #074a5d !default;
+$secondary-color:            #63dbb0;
+
+$black-color:                #192320 !default;
+$black-hr:                 #3d443f !default;
 $white-color:                #EEEEEE !default;
+
 $white-colour:               #FFFFFF;
 $white-bg:                   #FFFFFF !default;
 $orange-bg:                  #e95e38 !default;
@@ -31,9 +37,6 @@ $smoke-bg:                   #F5F5F5 !default;
 $light-black:                #444    !default;
 
 $black-bg:                   rgba(30,30,30,.97) !default;
-
-$black-color:                #192320 !default;
-$black-hr:                   #3d443f !default;
 
 $light-gray:                 #E3E3E3 !default;
 $medium-gray:                #DDDDDD !default;
