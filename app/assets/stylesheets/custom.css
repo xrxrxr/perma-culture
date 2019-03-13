@@ -87,7 +87,7 @@
   border-radius: 50px;
 }
 
-h2, h4, h3, h5, h6 {
+h1, h2, h4, h3, h5, h6 {
   font-family: 'Ostrich';
 }
 
@@ -158,7 +158,11 @@ color: #EEEEEE;
 }
 
 .pad1 {
-  margin-right: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 350px;
 }
 
 .pad2 {
@@ -176,7 +180,12 @@ color: #EEEEEE;
 
 .left {
   border-right-height: 200px;
-  height: 850px;
+  height: 765px;
+}
+
+.left2 {
+  border-right-height: 200px;
+  height: 160px;
 }
 
 .left::before {
@@ -189,7 +198,7 @@ color: #EEEEEE;
     }
 
 .right {
-  height: 850px;
+  height: 765px;
 }
 
 .parallax {
@@ -219,4 +228,18 @@ color: #EEEEEE;
     -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
     -moz-transition: all 2s ease-in-out; /** Firefox **/
     -o-transition: all 2s ease-in-out; /** Opera **/
+}
+
+.scroll {
+  background-image: url(image_path("arrow-down.png"));
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100px;
+}
+
+.paragraph {
+  text-align: center;
+  border-right-height: 100px;
+  height: 250px;
+
 }
