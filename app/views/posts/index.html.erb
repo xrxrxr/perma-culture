@@ -63,9 +63,9 @@
           </h3>
           <h5 class="card-description">
             <%=post.content[1..-3]%>
-            <strong><%=post.category.name%></strong> <br>
-            <%= pluralize(post.likes.size, "like") %>
-            <%= pluralize(post.comments.size, "comment") %> <br>
+            <strong><%=post.category.name%></strong><br>
+            <%= pluralize(post.likes.size, "like")%> 
+            <%= pluralize(post.comments.size, "commentaire")%><br>
           </h5>
 
         </div>
