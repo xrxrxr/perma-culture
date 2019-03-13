@@ -11,24 +11,37 @@
         <%= image_tag(current_user.avatar)%>
         <h3 class="text-center mt-5"><%=link_to "#{current_user.user_name}", user_path(current_user)%></h3>
         
-        
-        <h3 class="mt-5 text-center">Liste de mes articles</h3>
-        <% current_user.posts.each do |post| %>
 
-        <p class="text-center"><%= post.title %></p>
-        <%end%>
+        <div class="card mt-5 text-center justify-content-center">
+          <ul class="justify-content-center text-center" role="tablist">
+            <h4 class="mt-5 text-center">Liste de mes articles</h4>
+            <% current_user.posts.each do |post| %>
+            <li class="text-center"><%= post.title %></li>
+            <%end%>
+          </ul>
+      
+        
+          
+          <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist">
+            <h4 class="mt-5 text-center">Catégories</h4>
+            <% current_user.categories.each do |category| %>
+            <li class="text-center"><%=category.name%></li>
+            <%end%>
+          </ul>
+        </div>
+
 
         <h3 class="mt-5 text-center">Catégories</h3>
         <% current_user.categories.each do |category| %>
         <p class="text-center"><%=category.name%></p>
         <%end%>
-        
+
         <h5 class="text-center"><%=link_to 'Partager vos connaissances !', new_post_path %></h5> 
       </div>
       <div class="container col-md-6">
         <% @posts.each do |post| %>        
         <div class="card card-plain card-blog">
-          <% if post.post_pictures.length < 1 %>
+          <% if post.post_pictures.length > 1 %>
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -64,7 +77,7 @@
             <%= pluralize(post.likes.size, "like") %>
             <%= pluralize(post.comments.size, "comment") %> <br>
           </h5>
-          <a href="#pablo" class="d-flex justify-content-center btn btn-primary btn-round "> Read More</a>
+
         </div>
         <% end %>
       </div>
