@@ -6,9 +6,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all#.where(category: current_user.categories)
-    #@posts = Post.all.where(Post.comments.by_recent_comments)
-
+    if current_user.categories.empty?
+      @posts = Post.all.by_latest_comment
+    else
+      @posts = Post.all.by_latest_comment.where(category: current_user.categories)
+    end
   end
 
   # GET /posts/1
