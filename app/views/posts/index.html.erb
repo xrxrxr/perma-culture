@@ -7,9 +7,9 @@
   <tbody>
     <div class="row">
       <div class="col-md-1"></div>
-      <div class="col-md-2 ">
-        <div class="card text-center justify-content-center" id="User_card">
-          <div class="card-header">  
+      <div class="col-md-2">
+        <div class="card mt-3 text-center justify-content-center" id="User_card">
+          <div>  
             <%= image_tag(current_user.avatar, class:'card-rounded-circle circle img-raised')%>
           </div>
           <h3 class="text-center card-header" id="User_Name"><%= link_to "#{current_user.user_name}", user_path(current_user)%></h3>
@@ -34,7 +34,7 @@
 
       <div class="container col-md-6 justify-content-center">
         <% @posts.each do |post| %>        
-        <div class="card pl-3 pr-3">
+        <div class="card">
           <% if post.post_pictures.length > 1 %>
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -66,45 +66,45 @@
           <h3 class="card-title text-center" id="Card_Post">
             <a href="#pablo"><%= post.title%></a>
           </h3>
-          <h5 class="card-body">
+          <p class="justify-content-center pl-3 pr-3">
             <%=post.content[1..-3]%>
-            <strong class="card text-center w-25" ><%=post.category.name%></strong><br>
-            <div><%= pluralize(post.likes.size, "like")%></div> 
-            <div><%= pluralize(post.comments.size, "commentaire")%></div><br>
+          </p>
+          <strong class="card text-center w-25 " ><%=post.category.name%></strong><br>
+          <div><%= pluralize(post.likes.size, "like")%>
+            <%= pluralize(post.comments.size, "commentaire")%></div>
             <% post.comments.each do |comments|%>
-            <%= comments.content%> <br>
-            <% end -%>
+            <div class="card pl-3 justify-content-center">
+              <div class="card-title justify-content-center"><%= comments.user.user_name%></div>
+
+              <p class="description"><%= comments.content%></p>
+            </div>
+            <% end -%>  
             <div>
-              <div class="text-center" >
+
+
+              <p class="text-center" >
                 Ecrivez votre commentaire : 
-              </div>
+              </p>
+            </div>
 
-              <div class='justify-content-center text-center'>
-                <%= form_tag(post_comments_path(post.id)) do -%>
-                <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-                <%= text_area_tag 'Comment_text', nil, size: "25x4" %>
-                <%= submit_tag 'Commenter', class:'btn btn-primary btn-round btn-block justify-content-center ' %>
-                <% end -%>
-              </div>
-            </div>     
-          </h5>
-
+            <div class='justify-content-center text-center'>
+              <%= form_tag(post_comments_path(post.id)) do -%>
+              <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+              <%= text_area_tag 'Comment_text', nil, size: "25x4" %>
+              <%= submit_tag 'Commenter', class:'btn btn-primary btn-round btn-block' %>
+              <% end -%>
+            </div>
+          </div>     
+          <% end %>
         </div>
-        <% end %>
+        <div class="card-header col-md-2 text-center">
+          <h5>Envie d'échanger?</h5>
+          <% @users.each do |u| %>
+          <p class="card btn-primary"><%= u.user_name %></p>
+          <% end -%>
+        </div>
+        <div class="col-md-1"></div>
       </div>
-      <div class="col-md-3">
-        <h5>Envie d'échanger?</h5>
-        <h3 class="card-title">
-          Ajouter liste des users pour messagerie
-        </h3>
-      </div>
-      <div class="col-md-1"></div>
     </div>
   </tbody>
 </table>    
-
-
-
-
-
-
