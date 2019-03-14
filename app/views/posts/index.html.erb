@@ -33,9 +33,9 @@
       
 
 
-      <div class="container col-md-6 justify-content-center">
+      <div class="container col-md-5 justify-content-center">
         <% @posts.each do |post| %>        
-        <div class="card pl-3 pr-3">
+        <div class="card">
           <% if post.post_pictures.length > 1 %>
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -58,7 +58,7 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-          <% elsif post.post_pictures.length == 1 %>
+          <% elsif post.post_pictures.length >= 1 %>
           <div class="card-image">
             <img class="img img-raised rounded" src="<%post.picture%>">
           </div>
@@ -67,31 +67,37 @@
           <h3 class="card-title text-center" id="Card_Post">
             <a href="#pablo"><%= post.title%></a>
           </h3>
-          <h5 class="card-body">
+          <p class="description justify-content-center">
             <%=post.content[1..-3]%>
-            <strong class="card text-center w-25" ><%=post.category.name%></strong><br>
-            <div><%= pluralize(post.likes.size, "like")%></div> 
-            <div><%= pluralize(post.comments.size, "commentaire")%></div><br>
+          </p>
+          <strong class="card text-center w-25 " ><%=post.category.name%></strong><br>
+          <div><%= pluralize(post.likes.size, "like")%>
+            <%= pluralize(post.comments.size, "commentaire")%></div>
             <% post.comments.each do |comments|%>
-            <%= comments.content%> <br>
-            <% end -%>
+            <div class="card pl-3 justify-content-center">
+              <div class="card-title justify-content-center"><%= comments.user.user_name%></div>
+
+              <p class="description"><%= comments.content%></p>
+            </div>
+            <% end -%>  
             <div>
+
+
               <div class="text-center" >
                 Ecrivez votre commentaire : 
               </div>
+            </div>
 
-              <div class='justify-content-center text-center'>
-                <%= form_tag(post_comments_path(post.id)) do -%>
-                <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-                <%= text_area_tag 'Comment_text', nil, size: "25x4" %>
-                <%= submit_tag 'Commenter', class:'btn btn-primary btn-round btn-block justify-content-center ' %>
-                <% end -%>
-              </div>
-            </div>     
-          </h5>
-
+            <div class='justify-content-center text-center'>
+              <%= form_tag(post_comments_path(post.id)) do -%>
+              <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+              <%= text_area_tag 'Comment_text', nil, size: "25x4" %>
+              <%= submit_tag 'Commenter', class:'btn btn-primary btn-round btn-block justify-content-center ' %>
+              <% end -%>
+            </div>
+          </div>     
+          <% end %>
         </div>
-        <% end %>
       </div>
       <div class="col-md-3">
         <h5>Envie d'échanger?</h5>
