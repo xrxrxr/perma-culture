@@ -281,6 +281,9 @@ margin-bottom: 202px;
 }
 
 /*----------------------------------- CHAT -----------------------------*/
+ul {
+   list-style: none;
+}
 
 .conversations-ul {
   padding-left: 0px;
@@ -325,3 +328,8 @@ margin-bottom: 202px;
   margin: 10px 1px;
 }
 
+/*------------------------------------ PoSTS ---------------------------*/
+.user-pres {
+  border-top: 0.5px solid $secondary-julien;
+  border-bottom: 0.5px solid $secondary-julien;
+}

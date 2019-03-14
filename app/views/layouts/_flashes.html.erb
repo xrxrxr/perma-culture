@@ -1,0 +1,64 @@
+<% flash.each do |name, msg| %>
+    <% if name == 'success' || name == 'notice' %>
+      <div class="alert alert-success alert-container alert-floating" role="alert" style='z-index: 1'>
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons ui-2_like"></i>
+          </div>
+          <strong>Well done !</strong> <%= msg %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    <% else %>
+      <div class="alert alert-<%= name %> alert-container alert-floating" role="alert" style='z-index: 1'>
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons ui-1_settings-gear-63"></i>
+          </div>
+          <strong>Oops!</strong> <%= msg %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+
+      <div class="alert alert-success alert-container alert-floating" id="flashpostcreated" role="alert" style='display:none; z-index: 1'>
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons ui-2_like"></i>
+          </div>
+          <strong>Super !</strong> Vous avez publie!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+
+  
+
+
+
+      <div class="alert alert-danger alert-container alert-floating" id="flashpostdestroy" role="alert" style='display:none; z-index: 1'>
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons ui-1_settings-gear-63"></i>
+          </div>
+          <strong>Oups!</strong> Publication supprimee !
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+      </div>

@@ -14,9 +14,9 @@ class PostsController < ApplicationController
     @categories = Category.all
                                  
     if current_user.categories.empty?
-      @posts = Post.all.by_latest_comment
+      @posts = Post.all
     else
-      @posts = Post.all.by_latest_comment.where(category: current_user.categories)
+      @posts = Post.all
     end
   end
 
@@ -40,15 +40,19 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.category = Category.find(params[:post][:category])
+    @post.writter = current_user
 
-    respond_to do |format|
-      if @post.save
+    if @post.save
+      respond_to do |format|
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
-      else
-        format.html { render :new }
+        format.js
       end
+    else
+      format.html { render :new }
     end
   end
+  
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
@@ -82,6 +86,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :content, :category)
+    params.require(:post).permit(:title, :content)
   end
 end
