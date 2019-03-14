@@ -2,12 +2,70 @@
 
     <div class="row">
 
-        <div class="col-6 left text-white d-flex justify-content-center align-items-center" id='left'>
-            <h2 id='text-left'>Connexion</h2>    
+        <div class="col-6 left3 text-white d-flex flex-column justify-content-center align-items-center" id='left'>
+
+            <h4 class="d-flex align-items-start flex-column">Perma-Quoi ?</h4>
+
+            <p class="col-6 d-flex align-items-start flex-column bd-highlight">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum
+            saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius
+            audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer,
+            ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
+        
         </div>
 
-        <div class="col-6 right text-white d-flex justify-content-center align-items-center" id='right'>  
-            <h2 id='text-right'>Inscription</h2>            
+        <div class="col-6 right left-3 text-white d-flex justify-content-center align-items-center" id='right'> 
+            
+        <%= form_for(:user, url: registration_path(:user)) do |f| %>
+            <div class='content sign_up left3'>
+                        <div class="container">
+                            <div class="col-12 ml-auto mr-auto">
+                                <div class="card card-login card-plain">
+                                    <form class="form" method="" action="">
+                                        <div class="card-header text-center">
+                                            <div class="logo-container">
+                                                <img src=<%= image_path 'icone-logo.png' %> alt="">
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+            
+                                            <div class="input-group form-group-no-border input-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text text-white"><i class="now-ui-icons users_circle-08"></i></span>
+                                                </div>
+                                                <%= f.text_field :user_name, autofocus: true, autocomplete: "Votre nom", placeholder:"Pseudo", class:'form-control', style:'height: 46px;' %>
+                                            </div>
+            
+                                            <div class="input-group form-group-no-border input-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text text-white"><i class="now-ui-icons ui-1_email-85"></i></span>
+                                                </div>
+                                                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
+            
+                                            </div>
+                                            <div class="input-group form-group-no-border input-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text text-white"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                                                </div>
+                                                <%= f.password_field :password, autocomplete: "current-password", placeholder:"Mot de passe", class:'form-control', style:'height: 46px;' %>
+                                            </div>
+            
+                                            <div class="input-group form-group-no-border input-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text text-white"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                                                </div>
+                                                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmation", class:'form-control', style:'height: 46px;' %>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-block" %>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <% end %>             
+
         </div>
 
         <div class="col-12 scroll">
@@ -17,7 +75,7 @@
 
 </div>
 
-<div class="container2 gradient">
+<div class="containerland2 gradient">
 
     <div class="column">
 
@@ -56,53 +114,6 @@
 
 <div>
 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 <script>
 function landingPageSign () {
 let left = $('.left');
@@ -133,20 +144,7 @@ textRight.hide();
 textLeft.fadeIn(1200);
 $("<%= j render 'sign_up' %>").appendTo($(right)).hide().fadeIn(500);
 })
-textLeft.mouseover(function() {
-textLeft.animate({
-    opacity: '0.5',
-    left: '100px',
-    height: '100px',
-});
-});
-textLeft.mouseleave(function() {
-textLeft.animate({
-    opacity: '1',
-    left: '0px',
-    height: '0px'
-});
-});
+
 textRight.mouseover(function() {
 textRight.show( "scale", {percent: 120} );
 });
