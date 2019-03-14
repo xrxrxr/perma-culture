@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :post_pictures, only: [:create]
+    resources :comments, only: [:create]
   end
   get '/welcome' => "posts#index", as: :user_root
 
