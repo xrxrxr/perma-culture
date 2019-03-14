@@ -93,12 +93,19 @@
         <% end %>
       </div>
       <div class="col-md-3">
-        <h5>Envie d'échanger?</h5>
-        <h3 class="card-title">
-          Ajouter liste des users pour messagerie
-        </h3>
+        <div class="card" id='user-list'>
+          <div class="card-header">
+            Envie d'echanger ?
+          </div>
+          <div class="card-body">
+            <ul class='conversations-ul'>
+              <% @users.each do |user| %>
+              <li><%= link_to user.user_name.capitalize, conversations_path(user_id: user), remote: true, method: :post %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col-md-1"></div>
     </div>
   </tbody>
 </table>    
@@ -108,3 +115,23 @@
 
 
 
+    <div id="conversations-list" class="fixed-bottom d-flex justify-content-end align-items-end">
+      <div class="row">
+        <% @conversations.each do |conversation| %>
+          <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+        <% end %>
+      </div>
+    </div>
+
+
+<script>
+$(document).ready(function() {
+  <% @conversations.each do |conversation| %>
+    // $.post(`/conversations/<%= conversation.id %>/close`, { id: `<%= conversation.id %>`}, 
+    //     function(returnedData){
+    //          console.log(returnedData);
+    // });
+    $('#conversations-list').find("[data-conversation-id='" + "<%= conversation.id %>" + "']").parent().remove();
+  <% end %>
+});
+</script>

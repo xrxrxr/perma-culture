@@ -34,6 +34,7 @@ $(document).ready(function() {
     });
 });
 
+// --------------------------- ENCYLO --------------------------------
 function cleanEncyclo() {
 	$(document).ready(function() {   
 		$('.mw-editsection').hide()
@@ -66,7 +67,26 @@ function cleanEncyclo() {
 
 		let image = $('a[class="image"] > img')
 		image.each(function() {
-			$(this).attr('src', ('https://www.ekopedia.fr' + $(this).attr('src')));
+			$(this).attr('src', ('https://www.ekopedia.fr' + $(this).attr('src')));_nav
 		});
 	});
 };
+
+// ---------------------------------- CHAT -------------------------------------
+// 
+// 
+(function() {
+  $(document).on('click', '.toggle-window', function(e) {
+    e.preventDefault();
+    var card = $(this).parent().parent();
+    var messages_list = card.find('.messages-list');
+
+    card.find('.card-body').toggle();
+    card.attr('class', 'card bg-light');
+
+    if (card.find('.card-body').is(':visible')) {
+      var height = messages_list[0].scrollHeight;
+      messages_list.scrollTop(height);
+    }
+  });
+})();

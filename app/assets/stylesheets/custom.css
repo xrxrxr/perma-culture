@@ -262,4 +262,50 @@ color: #EEEEEE;
   padding:30px; 
   border-radius: 5px; 
   box-shadow: 0 0 10px grey;
+}
 
+
+/*----------------------------------- CHAT -----------------------------*/
+
+.conversations-ul {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.messages-list ul {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.messages-list {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.message-sent {
+  position: relative;
+  float: right;
+  background-color: #D9EDF7;
+  border-color: #BCE8F1;
+  margin: 5px 20px;
+  padding: 10px;
+}
+
+
+.message-received {
+  background-color: #F1F0F0;
+  border-color: #EEEEEE;
+  margin: 5px 20px;
+  padding: 10px;
+  float: left;
+}
+
+.btn-message {
+  font-family: Montserrat,Helvetica Neue,Arial,sans-serif;
+  font-weight: 400;
+  font-size: .8571em;
+  line-height: 1.35em;
+  margin: 10px 1px;
+}
