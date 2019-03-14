@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
 	def create
-		@comment = Comment.create(user: current_user, content:params[:Comment_text], commenteable: Post.find(params[:post_id]))
+		@comment = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Post.find(params[:post_id]))
 
 		if @comment.save
-			flash[:notice] = "Votre commentaire a bien été créé"
-			redirect_to posts_path(params[:post_id])
+			respond_to do |format|
+				format.html { redirect_to posts_path(params[:post_id]), notice: "Votre commentaire a bien été créé" }
+				format.js
+			end
 		else
 			redirect_to posts_path(params[:post_id])
 		end

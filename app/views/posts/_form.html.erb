@@ -26,13 +26,10 @@
     <%= select_tag(:category, options_for_select(@categories.collect{ |c| [c.name, c.id] })) %>
   </div>
 
-
-
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
-
 
       <h2 class="h3 mb-3 font-weight-normal text-center">Photo</h2>
       <% if post.post_pictures.attached? %>

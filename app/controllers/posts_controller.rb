@@ -11,12 +11,13 @@ class PostsController < ApplicationController
     @conversations = Conversation.includes(:recipient, :messages)
                                  .find(session[:conversations])
     @post = Post.new
+    @comment = Comment.new
     @categories = Category.all
                                  
     if current_user.categories.empty?
-      @posts = Post.all
+      @posts = Post.all.reverse
     else
-      @posts = Post.all
+      @posts = Post.all.reverse
     end
   end
 
@@ -39,9 +40,10 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
-    @post.category = Category.find(params[:post][:category])
-    @post.writter = current_user
+    @post = Post.new(title: params[:post][:title],
+                    content: params[:post][:content],
+                    category: Category.find(params[:post][:category]),
+                    writter: current_user)
 
     if @post.save
       respond_to do |format|
@@ -52,7 +54,7 @@ class PostsController < ApplicationController
       format.html { render :new }
     end
   end
-  
+
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
@@ -74,6 +76,7 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.js
     end
   end
 
@@ -86,6 +89,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :category)
   end
 end
