@@ -11,6 +11,8 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.by_latest_comment.where(category: current_user.categories)
     end
+    @post = Post.new
+    @categories = Category.all
   end
 
   # GET /posts/1
