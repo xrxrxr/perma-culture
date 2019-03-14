@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @users = User.all.where.not(id: current_user)
     if current_user.categories.empty?
       @posts = Post.all.by_latest_comment
     else
