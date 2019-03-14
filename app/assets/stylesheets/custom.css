@@ -187,7 +187,7 @@ color: #EEEEEE;
 
 .left3 {
   border-right-height: 200px;
-margin-top: 100px;
+margin-top: 90px;
 }
 
 .left2 {
@@ -250,6 +250,9 @@ margin-top: 100px;
   height: 250px;
 }
 
+.fontwhite {
+  color: #EEEEEE;
+}
 
 /*---------------------------- ARTICLES ENCYCLO ---------------------*/
 
@@ -269,4 +272,4 @@ margin-top: 100px;
   padding:30px; 
   border-radius: 5px; 
   box-shadow: 0 0 10px grey;
-
+}

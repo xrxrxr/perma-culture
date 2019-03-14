@@ -2,18 +2,18 @@
 
     <div class="row">
 
-        <div class="col-6 left3 text-white d-flex flex-column justify-content-center align-items-center" id='left'>
+        <div class="col-6 left3 flex-column text-white d-flex justify-content-center align-items-center">
 
-            <h4 class="d-flex align-items-start flex-column">Perma-Quoi ?</h4>
+            <h4 class="left3 justify-content-left align-items-left">Le réseau social de l''agriculture écologique</h4>
 
-            <p class="col-6 d-flex align-items-start flex-column bd-highlight">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum
+            <p class="col-6 justify-content-left align-items-left">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum
             saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius
             audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer,
             ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
-        
+
         </div>
 
-        <div class="col-6 right left-3 text-white d-flex justify-content-center align-items-center" id='right'> 
+        <div class="col-6 right left3 text-white d-flex justify-content-center align-items-center" id='right'> 
             
         <%= form_for(:user, url: registration_path(:user)) do |f| %>
             <div class='content sign_up left3'>
@@ -56,9 +56,14 @@
                                                 <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmation", class:'form-control', style:'height: 46px;' %>
                                             </div>
                                         </div>
-                                        <div class="card-footer text-center">
+
+                                        <div class="col-8 card-footer text-center">
                                             <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-block" %>
                                         </div>
+
+                                        <p>
+                                            <%= link_to 'Déjà inscrit ?', class:"link footer-link"  %>
+                                        </p>
                                     </form>
                                 </div>
                             </div>
