@@ -25,7 +25,7 @@
                   <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
                 </div>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
-  
+
               </div>
 
               <div class="input-group form-group-no-border input-lg">
@@ -39,23 +39,23 @@
                 <%= f.label :remember_me %>
 
               </div>
+              <center>
 
               <div class="card-footer text-center col-6 d-flex align-items-center">
                 <%= f.submit "Se connecter", class:"btn btn-primary btn-round btn-block" %>
               </div>
 
-              <div class="pull-left">
+              <div class="center">
                 <p>
-                  <%= link_to 'Forgot your password ?', new_user_password_path, class:"link footer-link"  %>
+                  <%= link_to 'mot de passe oublié ?', new_user_password_path, class:"link footer-link"  %>
                 </p>
               </div>
+            </center>
 
           </form>
-
         </div>
       </div>
     </div>
   </div>
 
 <% end %>
-  
