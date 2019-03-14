@@ -14,6 +14,10 @@
         }
     }
 
+    .logo {
+        font-size: 16px;
+    }
+
     p{
         display: inline-block;
         margin: 0;
@@ -197,6 +201,10 @@
     background-color: $primary-color !important;
 }
 
+.bg-secondary{
+    background-color: $secondary-color;
+}
+
 .bg-info{
     background-color: $info-color !important;
 }
@@ -234,4 +242,8 @@
 
 .bg-light-gray {
     background-color: #F5F5F5 !important;  
+}
+
+.bg-black{
+    background-color: $black-color;
 }
