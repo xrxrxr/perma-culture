@@ -1,3 +1,28 @@
+#User_card{
+
+        .card-header{
+            background: #006266;
+        }
+
+        a{
+            color: white;
+        }
+
+        ul{
+            color: #006266;
+        }
+    }
+
+#Card_Post{
+    background: #006266;
+
+    a{
+      color:white;
+      text-decoration : none;
+    }
+}
+
+
 .card{
     border: 0;
     border-radius: $border-radius-large;
