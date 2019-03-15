@@ -74,7 +74,7 @@
     top: 10px;
 }
 
-
+/*----------------------------- PIMP ------------------------*/
 
 .latypo {
   font-family: 'Ostrich';
@@ -107,21 +107,19 @@ p, .price, .category, .form-group {
   /* Positioning and sizing */
   display: block;
   width: 200px;
-  
+
   /* Padding and margins */
   padding: 1em;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  
+
   /* Text styles */
-  
+
   color: #EEEEEE; /* CHANGE THIS LINE */
   text-decoration: none;
   font-size: 1.5em;
-  
   border-radius: 50px;
-
   font-family: 'Phenomena';
 }
 
@@ -132,45 +130,6 @@ p, .price, .category, .form-group {
 }
 
 /*------------------------------LANDING PAGE---------------------------------*/
-
-/*.containerland {
-  background-size: 100%;
-  max-width: 100%;
-  height: 850px;
-  color: black;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.vertical { 
-color: #EEEEEE;
-  border:         none;
-  border-left:    1px solid;
-  height:         500px;
-  width:          1px;       
-}
-
-.text {
-  color: #EEEEEE;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.pad1 {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 350px;
-}
-
-.pad2 {
-  margin-left: 400px;
-}
-*/
 
 .containerland2 {
   background-size: 100%;
@@ -235,7 +194,7 @@ margin-left: 240px;
 .right:hover #text-rightv{
     transform: scale(1.5);
     -webkit-transform: scale(1.5);
-    -o-transform: scale(1.5); 
+    -o-transform: scale(1.5);
     -moz-transform: scale(1.5);
 }
 
@@ -264,20 +223,20 @@ margin-left: 240px;
 /*---------------------------- ARTICLES ENCYCLO ---------------------*/
 
 #article-show {
-  margin:auto; 
-  margin-right: 10px; 
-  margin-top:30px; 
-  padding:45px; 
-  border-radius: 5px; 
+  margin:auto;
+  margin-right: 10px;
+  margin-top:30px;
+  padding:45px;
+  border-radius: 5px;
   box-shadow: 0 0 10px grey;
 }
 
 #articles-nav {
-  margin:auto; 
-  margin-left:10px; 
-  margin-top:30px; 
-  padding:30px; 
-  border-radius: 5px; 
+  margin:auto;
+  margin-left:10px;
+  margin-top:30px;
+  padding:30px;
+  border-radius: 5px;
   box-shadow: 0 0 10px grey;
 }
 
