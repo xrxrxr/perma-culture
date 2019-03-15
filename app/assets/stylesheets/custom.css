@@ -185,6 +185,11 @@ color: #EEEEEE;
   height: 765px;
 }
 
+.left2 {
+  border-right-height: 200px;
+  height: 160px;
+}
+
 .left3 {
   border-right-height: 200px;
 margin-top: 90px;
@@ -195,9 +200,8 @@ margin-top: 90px;
 margin-top: 200px;
 margin-bottom: 125px;
 
-.left2 {
-  border-right-height: 200px;
-  height: 160px;
+.left5 {
+margin-left: 240px;
 }
 
 .left::before {
@@ -255,9 +259,6 @@ margin-bottom: 125px;
   height: 250px;
 }
 
-.fontwhite {
-  color: #EEEEEE;
-}
 
 /*---------------------------- ARTICLES ENCYCLO ---------------------*/
 

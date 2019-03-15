@@ -2,15 +2,20 @@
 
   <div class="row">
 
-    <div class="col-6 left3 flex-column text-white d-flex justify-content-center align-items-center">
+    <div class="col-6 left3 flex-column text-white d-flex justify-content-center align-items-left">
 
-      <h4 class="left3 justify-content-left align-items-left">Le réseau social de l''agriculture écologique</h4>
+      <div class=" left5 flex-column text-white">
 
-      <p class="col-6 justify-content-left align-items-left">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et
-        raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud
-        Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
+          <h4 class="ml-3">Le réseau social de l'agriculture écologique</h4>
+
+          <p class="col-8">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et
+            raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud
+            Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
+
+          </div>
 
       </div>
+
 
       <div class="col-6 right left3 text-white d-flex justify-content-center align-items-center" id='right'>
 
@@ -116,41 +121,3 @@
       </div>
 
       <div>
-
-        <script>
-          function landingPageSign() {
-            let left = $('.left');
-            let right = $('.right');
-            let textLeft = $('#text-left');
-            let textRight = $('#text-right');
-            function resetClassList() {
-              left.removeClass('col-8 col-6 col-4');
-              right.removeClass('col-8 col-6 col-4');
-              left.addClass('col-6');
-              right.addClass('col-6');
-              $('.sign_in').hide(500);
-              $('.sign_up').hide(500);
-            };
-            textLeft.click(function () {
-              resetClassList();
-              left.toggleClass('col-6 col-8');
-              right.toggleClass('col-6 col-4');
-              textLeft.hide();
-              textRight.slideDown(1200);
-              $("<%= j render 'sign_in' %>").appendTo($(left)).hide().fadeIn(500);
-            })
-            textRight.click(function () {
-              resetClassList();
-              right.toggleClass('col-6 col-8');
-              left.toggleClass('col-6 col-4');
-              textRight.hide();
-              textLeft.fadeIn(1200);
-              $("<%= j render 'sign_up' %>").appendTo($(right)).hide().fadeIn(500);
-            })
-
-            textRight.mouseover(function () {
-              textRight.show("scale", {percent: 120});
-            });
-          };
-          landingPageSign()
-        </script>
