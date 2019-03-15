@@ -1,158 +1,156 @@
 <div class="container containerland2 parallax" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(<%= image_path('agriculture.jpg')%>)">
 
-    <div class="row">
+  <div class="row">
 
-        <div class="col-6 left3 flex-column text-white d-flex justify-content-center align-items-center">
+    <div class="col-6 left3 flex-column text-white d-flex justify-content-center align-items-center">
 
-            <h4 class="left3 justify-content-left align-items-left">Le réseau social de l''agriculture écologique</h4>
+      <h4 class="left3 justify-content-left align-items-left">Le réseau social de l''agriculture écologique</h4>
 
-            <p class="col-6 justify-content-left align-items-left">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum
-            saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius
-            audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer,
-            ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
+      <p class="col-6 justify-content-left align-items-left">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et
+        raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud
+        Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
 
-        </div>
+      </div>
 
-        <div class="col-6 right left3 text-white d-flex justify-content-center align-items-center" id='right'> 
-            
+      <div class="col-6 right left3 text-white d-flex justify-content-center align-items-center" id='right'>
+
         <%= form_for(:user, url: registration_path(:user)) do |f| %>
-            <div class='content sign_up left3'>
-                        <div class="container">
-                            <div class="col-12 ml-auto mr-auto">
-                                <div class="card card-login card-plain">
-                                    <form class="form" method="" action="">
-                                        <div class="card-header text-center">
-                                            <div class="logo-container">
-                                                <img src=<%= image_path 'icone-logo.png' %> alt="">
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-            
-                                            <div class="input-group form-group-no-border input-lg">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text text-white"><i class="now-ui-icons users_circle-08"></i></span>
-                                                </div>
-                                                <%= f.text_field :user_name, autofocus: true, autocomplete: "Votre nom", placeholder:"Pseudo", class:'form-control', style:'height: 46px;' %>
-                                            </div>
-            
-                                            <div class="input-group form-group-no-border input-lg">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text text-white"><i class="now-ui-icons ui-1_email-85"></i></span>
-                                                </div>
-                                                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
-            
-                                            </div>
-                                            <div class="input-group form-group-no-border input-lg">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text text-white"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
-                                                </div>
-                                                <%= f.password_field :password, autocomplete: "current-password", placeholder:"Mot de passe", class:'form-control', style:'height: 46px;' %>
-                                            </div>
-            
-                                            <div class="input-group form-group-no-border input-lg">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text text-white"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
-                                                </div>
-                                                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmation", class:'form-control', style:'height: 46px;' %>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-8 card-footer text-center">
-                                            <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-block" %>
-                                        </div>
-                                
-                                        <p>
-                                            <%= link_to 'Déjà inscrit ?', class:"link footer-link"  %>
-                                        </p>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+        <div class='content sign_up left3'>
+          <div class="container">
+            <div class="col-12 ml-auto mr-auto">
+              <div class="card card-login card-plain">
+                <form class="form" method="" action="">
+                  <div class="card-header text-center">
+                    <div class="logo-container">
+                      <img src=<%= image_path 'icone-logo.png' %> alt="">
                     </div>
-            <% end %>             
+                  </div>
+                  <div class="card-body">
 
+                    <div class="input-group form-group-no-border input-lg">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text text-white">
+                          <i class="now-ui-icons users_circle-08"></i>
+                        </span>
+                      </div>
+                      <%= f.text_field :user_name, autofocus: true, autocomplete: "Votre nom", placeholder:"Pseudo", class:'form-control', style:'height: 46px;' %>
+
+                    </div>
+
+                    <div class="input-group form-group-no-border input-lg">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text text-white">
+                          <i class="now-ui-icons ui-1_email-85"></i>
+                        </span>
+                      </div>
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
+
+                    </div>
+                    <div class="input-group form-group-no-border input-lg">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text text-white">
+                          <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                        </span>
+                      </div>
+                      <%= f.password_field :password, autocomplete: "current-password", placeholder:"Mot de passe", class:'form-control', style:'height: 46px;' %>
+                    </div>
+
+                    <div class="input-group form-group-no-border input-lg">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text text-white">
+                          <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                        </span>
+                      </div>
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmation", class:'form-control', style:'height: 46px;' %>
+                    </div>
+                  </div>
+                  <center>
+
+                    <div class="col-8 card-footer text-center">
+                      <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-block" %>
+                    </div>
+                    <p>
+                      <%= link_to 'Déjà inscrit ?', '/users/sign_in' , class:"link footer-link" %>
+                    </p>
+                  </center>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="col-12 scroll">
+      <% end %>
 
     </div>
 
+    <div class="col-12 scroll"></div>
 
-</div>
+  </div>
 
-<div class="containerland2 gradient">
+  <div class="containerland2 gradient">
 
     <div class="column">
 
-        <div>
+      <div>
 
-            <h1 class="col-12 left2 text-white d-flex justify-content-center align-items-center">Qui sommes nous ?</h1>
+        <h1 class="col-12 left2 text-white d-flex justify-content-center align-items-center">Qui sommes nous ?</h1>
 
+      </div>
+
+      <div class="col-12 text-white text-white d-flex justify-content-center align-items-center paragraph">
+
+        <p class="col-8">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in
+          peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiaeoppidum in amphitheatrali
+          spectaculo feris praedatricibus obiecti sunt praeter morem. Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens, nunc globis confertos,
+          aliquotiens et dispersos multitudine superabatur ingenti, quae nata et educata inter editos recurvosque ambitus montium eos ut loca plana persultat et mollia, missilibus obvios eminus lacessens et ululatu truci perterrens. Horum adventum praedocti
+          speculationibus fidis rectores militum tessera data sollemni armatos omnes celeri eduxere procursu et agiliter praeterito Calycadni fluminis ponte, cuius undarum magnitudo murorum adluit turres, in speciem locavere pugnandi. neque tamen exiluit
+          quisquam nec permissus est congredi. formidabatur enim flagrans vesania manus et superior numero et ruitura sine respectu salutis in ferrum.</p>
+
+      </div>
+
+      <div class="col-12 text-white text-white d-flex justify-content-center align-items-center paragraph">
+
+        <p class="col-8">Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes,varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea
+          specie ut pro rerum tunc urgentium captu disponeretur concordi consilio, quibus virium incrementis Parthicarum gentium a arma minantium impetus frangerentur.
         </div>
 
-        <div class="col-12 text-white text-white d-flex justify-content-center align-items-center paragraph">
+      </div>
 
-            <p class="col-8">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum
-            saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius
-            audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer,
-            ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
-            Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens,
-            nunc globis confertos, aliquotiens et dispersos multitudine superabatur ingenti, quae nata et educata inter editos recurvosque ambitus montium eos ut loca plana
-            persultat et mollia, missilibus obvios eminus lacessens et ululatu truci perterrens.
-            Horum adventum praedocti speculationibus fidis rectores militum tessera data sollemni armatos omnes celeri eduxere procursu et agiliter praeterito
-            Calycadni fluminis ponte, cuius undarum magnitudo murorum adluit turres, in speciem locavere pugnandi. neque tamen exiluit quisquam nec permissus est congredi.
-            formidabatur enim flagrans vesania manus et superior numero et ruitura sine respectu salutis in ferrum.</p>
+      <div>
 
-        </div>
+        <script>
+          function landingPageSign() {
+            let left = $('.left');
+            let right = $('.right');
+            let textLeft = $('#text-left');
+            let textRight = $('#text-right');
+            function resetClassList() {
+              left.removeClass('col-8 col-6 col-4');
+              right.removeClass('col-8 col-6 col-4');
+              left.addClass('col-6');
+              right.addClass('col-6');
+              $('.sign_in').hide(500);
+              $('.sign_up').hide(500);
+            };
+            textLeft.click(function () {
+              resetClassList();
+              left.toggleClass('col-6 col-8');
+              right.toggleClass('col-6 col-4');
+              textLeft.hide();
+              textRight.slideDown(1200);
+              $("<%= j render 'sign_in' %>").appendTo($(left)).hide().fadeIn(500);
+            })
+            textRight.click(function () {
+              resetClassList();
+              right.toggleClass('col-6 col-8');
+              left.toggleClass('col-6 col-4');
+              textRight.hide();
+              textLeft.fadeIn(1200);
+              $("<%= j render 'sign_up' %>").appendTo($(right)).hide().fadeIn(500);
+            })
 
-
-        <div class="col-12 text-white text-white d-flex justify-content-center align-items-center paragraph">
-
-            <p class="col-8">Cum haec taliaque sollicitas eius aures everberarent
-            expositas semper eius modi rumoribus et patentes,varia animo tum miscente consilia, tandem id ut
-            optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit
-            ea specie ut pro rerum tunc urgentium captu disponeretur concordi consilio,
-            quibus virium incrementis Parthicarum gentium a arma minantium impetus frangerentur.
-        </div>
-
-    </div>
-
-<div>
-
-<script>
-function landingPageSign () {
-let left = $('.left');
-let right = $('.right');
-let textLeft = $('#text-left');
-let textRight = $('#text-right');
-function resetClassList() {
-left.removeClass('col-8 col-6 col-4');
-right.removeClass('col-8 col-6 col-4');
-left.addClass('col-6');
-right.addClass('col-6');
-$('.sign_in').hide(500);
-$('.sign_up').hide(500);
-};
-textLeft.click( function() {
-resetClassList();
-left.toggleClass('col-6 col-8');
-right.toggleClass('col-6 col-4');
-textLeft.hide();
-textRight.slideDown(1200);
-$("<%= j render 'sign_in' %>").appendTo($(left)).hide().fadeIn(500);
-})
-textRight.click( function() {
-resetClassList();
-right.toggleClass('col-6 col-8');
-left.toggleClass('col-6 col-4');
-textRight.hide();
-textLeft.fadeIn(1200);
-$("<%= j render 'sign_up' %>").appendTo($(right)).hide().fadeIn(500);
-})
-
-textRight.mouseover(function() {
-textRight.show( "scale", {percent: 120} );
-});
-};
-landingPageSign ()
-</script>
+            textRight.mouseover(function () {
+              textRight.show("scale", {percent: 120});
+            });
+          };
+          landingPageSign()
+        </script>
