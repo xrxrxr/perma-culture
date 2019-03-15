@@ -3,7 +3,7 @@
   <div class="container">
     <div class="navbar-translate">
       <%= image_tag "icone-logo.png", height: "40" %> 
-      <%= link_to root_path, class:"navbar-brand" do%>
+        <%= link_to root_path, class:"navbar-brand" do%>
         <p class="logo">Perma-Culture</p>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" id='navbar-btn'>
@@ -16,6 +16,9 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <%= link_to posts_path, class:"nav-link" do %><i class="now-ui-icons ui-2_favourite-28"></i><p>PUBLICATIONS</p><% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to article_path(1), class:"nav-link" do %><i class="now-ui-icons education_paper"></i><p>ARTICLES</p><% end %>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">

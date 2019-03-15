@@ -90,3 +90,11 @@ function cleanEncyclo() {
     }
   });
 })();
+
+// ------------------------------- POSTS -------------------------------
+
+    // function showComments (postid) {
+    //   $(`#comments-toggle-${post.id}`).click(function(e) {
+    //     $(`#comments-area-${post.id}`).toggle();  
+    //   })
+    // }

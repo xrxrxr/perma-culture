@@ -64,7 +64,7 @@
     width:100%;
 }
 .alert-floating {
-    position: absolute;
+    position: fixed;
     top: 75px;
 }
 

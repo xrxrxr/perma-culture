@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    @comment = Comment.new
     @post = Post.new(title: params[:post][:title],
                     content: params[:post][:content],
                     category: Category.find(params[:post][:category]),
@@ -47,8 +48,8 @@ class PostsController < ApplicationController
 
     if @post.save
       respond_to do |format|
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.js
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
       end
     else
       format.html { render :new }
