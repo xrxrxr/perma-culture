@@ -107,19 +107,19 @@ p, .price, .category, .form-group {
   /* Positioning and sizing */
   display: block;
   width: 200px;
-  
+
   /* Padding and margins */
   padding: 1em;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  
+
   /* Text styles */
-  
+
   color: #EEEEEE; /* CHANGE THIS LINE */
   text-decoration: none;
   font-size: 1.5em;
-  
+
   border-radius: 50px;
 
   font-family: 'Phenomena';
@@ -144,12 +144,12 @@ p, .price, .category, .form-group {
   align-items: center;
 }
 
-.vertical { 
+.vertical {
 color: #EEEEEE;
   border:         none;
   border-left:    1px solid;
   height:         500px;
-  width:          1px;       
+  width:          1px;
 }
 
 .text {
@@ -199,7 +199,7 @@ margin-top: 90px;
   border-right-height: 200px;
 margin-top: 200px;
 margin-bottom: 125px;
-
+}
 .left5 {
 margin-left: 240px;
 }
@@ -234,7 +234,7 @@ margin-left: 240px;
 .right:hover #text-right{
     transform: scale(1.5);
     -webkit-transform: scale(1.5);
-    -o-transform: scale(1.5); 
+    -o-transform: scale(1.5);
     -moz-transform: scale(1.5);
 }
 
@@ -263,20 +263,20 @@ margin-left: 240px;
 /*---------------------------- ARTICLES ENCYCLO ---------------------*/
 
 #article-show {
-  margin:auto; 
-  margin-right: 10px; 
-  margin-top:30px; 
-  padding:45px; 
-  border-radius: 5px; 
+  margin:auto;
+  margin-right: 10px;
+  margin-top:30px;
+  padding:45px;
+  border-radius: 5px;
   box-shadow: 0 0 10px grey;
 }
 
 #articles-nav {
-  margin:auto; 
-  margin-left:10px; 
-  margin-top:30px; 
-  padding:30px; 
-  border-radius: 5px; 
+  margin:auto;
+  margin-left:10px;
+  margin-top:30px;
+  padding:30px;
+  border-radius: 5px;
   box-shadow: 0 0 10px grey;
 }
 
