@@ -1,0 +1,16 @@
+<div class="card-body text-center">
+	<h5><i class="now-ui-icons ui-1_email-85"></i>  Envie d'échanger?</h5>
+	<% @users.each do |user| %>
+	<p class="card bg-julien"><%= link_to user.user_name.capitalize, conversations_path(user_id: user), remote: true, method: :post, class:'text-white' %></p>
+	<% end %>
+</div>
+
+
+
+<div id="conversations-list" class="fixed-bottom d-flex justify-content-end align-items-end">
+	<div class="row">
+		<% @conversations.each do |conversation| %>
+		<%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+		<% end %>
+	</div>
+</div>

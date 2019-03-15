@@ -98,3 +98,7 @@ function cleanEncyclo() {
     //     $(`#comments-area-${post.id}`).toggle();  
     //   })
     // }
+
+// function showPostsbyCategory() {
+
+// };

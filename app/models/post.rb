@@ -27,6 +27,7 @@ scope :by_latest_comment, -> {Post.joins(:comments).merge(Comment.order(created_
      .order(Comment.arel_table['created_at'].asc)
      .first
   end
+  
   # scope :user_categories, -> { Post.all.where(category: current_user.categories)}
   # scope :by_recent_comment, -> {  }
   # scope :by_soon_date, -> { order(start_date: :asc)}

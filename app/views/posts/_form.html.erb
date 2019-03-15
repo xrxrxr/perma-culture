@@ -21,11 +21,6 @@
     <%= form.text_area :content %>
   </div>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= select_tag(:category, options_for_select(@categories.collect{ |c| [c.name, c.id] })) %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
