@@ -1,0 +1,11 @@
+$("<%= j render 'comment', comment: @comment %>").prependTo($('#comments-receiver-<%= params[:post_id] %>')).hide().fadeIn(500);
+$('.number-comments-<%= params[:post_id] %>').text(<%= @comment.commenteable.comments.size %>);
+
+
+
+
+$('#flashpostcreated').slideDown(function() {
+    setTimeout(function() {
+        $('#flashpostcreated').slideUp();
+    }, 800);
+});

@@ -4,7 +4,6 @@
     min-height: 53px;
     margin-bottom: 20px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
-    background: #006266;
     color: $white-color;
 
 
@@ -224,6 +223,25 @@
 
 .bg-white{
     background-color: $white-color !important;
+}
+
+.bg-julien {
+    background-color: $secondary-julien !important;  
+}
+
+.bg-secondary {
+    background-color: $secondary-color !important;  
+}
+
+.bg-dark-gray {
+    background-color: $dark-gray !important;  
+}
+.bg-medium-gray {
+    background-color: $medium-gray !important;  
+}
+
+.bg-light-gray {
+    background-color: #F5F5F5 !important;  
 }
 
 .bg-black{
