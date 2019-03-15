@@ -1,24 +1,58 @@
 
 
 
-                                <div class="media">
-                                    <a class="pull-left" href="#pablo">
-                                        <div class="avatar">
-                                        	<%= image_tag comment.user.avatar, class:"media-object img-raised", alt:'Photo commenteur' %>
-                                        </div>
-                                    </a>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><%= comment.user.user_name%>
-                                            <small class="text-muted">&middot; Il y a <%= comment.created_at %></small> <!-- TO CHANGE (AGO) -->
-                                        </h5>
-                                        <p><%= comment.content%></p>
-                                        <div class="media-footer">
-                                            <a href="#pablo" class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="Repondre au commentaire">
-                                                <i class="now-ui-icons ui-1_send"></i> Repondre  <!-- OUVRE LE FORM COMMENT EN DESSOUS et AJOUTE LE COMMENT -->
-                                            </a>
-                                            <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
-                                                <i class="now-ui-icons ui-2_favourite-28"></i> <%= comment.likes.size %> <!-- TO DO -->
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+<div class="media">
+    <a class="pull-left" href="#pablo">
+        <div class="avatar">
+            <%= image_tag comment.user.avatar, class:"media-object img-raised", alt:'Photo commenteur' %>
+        </div>
+    </a>
+    <div class="media-body">
+        <h5 class="media-heading"><%= comment.user.user_name%>
+            <small class="text-muted">&middot; Il y a <%= comment.created_at %></small> <!-- TO CHANGE (AGO) -->
+        </h5>
+        <p><%= comment.content%></p>
+        <div class="media-footer">
+            <a href="#pablo" class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="Repondre au commentaire" id='trigger-form-<%= comment.id %>'>
+                <i class="now-ui-icons ui-1_send"></i> Repondre  <!-- OUVRE LE FORM COMMENT EN DESSOUS et AJOUTE LE COMMENT -->
+            </a>
+            <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
+                <i class="now-ui-icons ui-2_favourite-28"></i> <%= comment.likes.size %> <!-- TO DO -->
+            </a>
+        </div>
+    </div>
+
+        
+           <div id='comments_thread-receiver-<%= comment.id %>'>
+                <% comment.comments.each do  |comment_thread| %>
+                <%= render 'comments/comment_thread', comment_thread: comment_thread %>
+                <% end %>
+            </div>
+            
+
+
+
+</div>
+
+<!-- --------------------------------- FORM ------------------ -->
+<div class="media-body" id='comment-form-<%= comment.id %>' style='display:none'>
+    <%= form_for @comment_thread, url: post_comments_path(post_id: comment.commenteable.id, comment_id: comment.id), remote: true do |f| %>
+    <%= f.text_area :content, autofocus: true, placeholder:'Commentez', rows:'4', class:'form-control' %>
+    <div class="media-footer">
+        <%= f.submit :submit, class:"btn btn-primary pull-right" do %>
+        <i class="now-ui-icons ui-1_send" id="answer"></i> Repondre
+        <% end %>
+    </div>
+    <% end %>
+</div><br><br>
+<!-- ---------------------------- SOUS COMMENTAIRE------------------------------------------------------------------>
+
+
+
+<div style='display: none'>
+    <script>
+        $('#trigger-form-<%= comment.id %>').click(function(event) { 
+            $('#comment-form-<%= comment.id %>').toggle();
+        });
+    </script>
+</div>

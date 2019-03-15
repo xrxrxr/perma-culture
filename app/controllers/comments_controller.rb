@@ -1,15 +1,31 @@
 class CommentsController < ApplicationController
 	def create
-		@comment = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Post.find(params[:post_id]))
+			@comment_thread = Comment.new
+		if params[:comment_id]
+			@comment_thread = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Comment.find(params[:comment_id]))
 
-		if @comment.save
-			respond_to do |format|
-				format.html { redirect_to posts_path(params[:post_id]), notice: "Votre commentaire a bien été créé" }
-				format.js
+			if @comment_thread.save
+				puts 'COMMENT TREAD'
+				respond_to do |format|
+					format.html { redirect_to posts_path(params[:post_id]), notice: "Votre commentaire a bien été créé" }
+					format.js
+				end
+			else
+				redirect_to posts_path(params[:post_id])
 			end
+
 		else
-			redirect_to posts_path(params[:post_id])
-		end
+			@comment = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Post.find(params[:post_id]))
+			if @comment.save
+				puts 'COMMENT POST'
+				respond_to do |format|
+					format.html { redirect_to posts_path(params[:post_id]), notice: "Votre commentaire a bien été créé" }
+					format.js
+				end
+			else
+				redirect_to posts_path(params[:post_id])
+			end
+		end		
 	end
 
 	def edit
