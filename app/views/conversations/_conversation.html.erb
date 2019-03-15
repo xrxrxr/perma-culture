@@ -1,0 +1,23 @@
+<div class="col-md-3" style="padding: 0;">
+  <div class="card bg-light" data-conversation-id="<%= conversation.id %>">
+    <div class="card-header d-flex justify-content-between" >
+      <%= link_to conversation.opposed_user(user).user_name.capitalize, '', class: 'toggle-window card-title ml-3' %>
+      <%= link_to close_conversation_path(conversation), class: "btn btn-primary btn-icon btn-sm mr-3", remote: true, method: :post do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
+    </div>
+
+    <div class="card-body" style="display: none;">
+      <div class="messages-list">
+        <ul>
+          <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
+        </ul>
+      </div>
+      <form class="new_message">
+        <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
+        <input name="user_id" type="hidden" value="<%= user.id %>">
+        <textarea name="body" class="form-control" id='message'></textarea>
+        <input type="submit" id='submitmessage' class="btn btn-small btn-primary pull-right btn-message" value="Envoyer">
+      </form>
+    </div>
+  </div>
+</div>
+

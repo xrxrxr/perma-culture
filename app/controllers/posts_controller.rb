@@ -6,14 +6,19 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    session[:conversations] ||= []
     @users = User.all.where.not(id: current_user)
-    if current_user.categories.empty?
-      @posts = Post.all.by_latest_comment
-    else
-      @posts = Post.all.by_latest_comment.where(category: current_user.categories)
-    end
+    @conversations = Conversation.includes(:recipient, :messages)
+                                 .find(session[:conversations])
     @post = Post.new
+    @comment = Comment.new
     @categories = Category.all
+                                 
+    if current_user.categories.empty?
+      @posts = Post.all.reverse
+    else
+      @posts = Post.all.reverse
+    end
   end
 
   # GET /posts/1
@@ -35,16 +40,22 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @comment = Comment.new
+    @post = Post.new(title: params[:post][:title],
+                    content: params[:post][:content],
+                    category: Category.find(params[:post][:category]),
+                    writter: current_user)
 
-    respond_to do |format|
-      if @post.save
+    if @post.save
+      respond_to do |format|
+        format.js
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
-      else
-        format.html { render :new }
       end
+    else
+      format.html { render :new }
     end
   end
+
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
@@ -66,6 +77,7 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.js
     end
   end
 

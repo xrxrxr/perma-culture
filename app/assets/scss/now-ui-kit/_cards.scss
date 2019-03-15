@@ -1,7 +1,7 @@
 #User_card{
 
         .card-header{
-            background: #006266;
+            background: $secondary-julien;
         }
 
         a{
@@ -9,12 +9,12 @@
         }
 
         ul{
-            color: #006266;
+            color: $secondary-julien;
         }
     }
 
 #Card_Post{
-    background: #006266;
+    background: $secondary-julien;
 
     a{
       color:white;
