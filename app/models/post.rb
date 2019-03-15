@@ -20,15 +20,12 @@ class Post < ApplicationRecord
 	presence: true,
 	length:{minimum: 5, maximum: 60}
 
-scope :by_latest_comment, -> {Post.joins(:comments).merge(Comment.order(created_at: :desc))}
+  scope :by_latest_comment, -> {Post.joins(:comments).merge(Comment.order(created_at: :desc))}
+  scope :by_date, -> { order(created_at: :asc)}
 
   def latest_comment
     comments
      .order(Comment.arel_table['created_at'].asc)
      .first
   end
-  
-  # scope :user_categories, -> { Post.all.where(category: current_user.categories)}
-  # scope :by_recent_comment, -> {  }
-  # scope :by_soon_date, -> { order(start_date: :asc)}
 end

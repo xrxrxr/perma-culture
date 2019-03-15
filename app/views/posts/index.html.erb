@@ -2,7 +2,6 @@
 <% content_for :background_banner, "bg-#{rand(1..6)}.jpg" %>
 <%= render 'shared/banner_sm' %>
 
-
 <table>
   <tbody>
     <div class="row">
@@ -17,6 +16,9 @@
         <span id="sectionposts">
           <%= render @posts %>
         </span>
+        <div class="col-md-3 ml-auto mr-auto">
+          <button rel="tooltip" class="btn btn-primary btn-round" id='load-more'>Voir plus...</button>
+        </div>
       </div>
       <!-- -------------------- NAV RIGHT ------------------ -->
       <div class="card col-md-2 ml-auto mt-3">
@@ -32,8 +34,6 @@
 
 
 
-
-
 <script>
 $(document).ready(function() {
   <% @conversations.each do |conversation| %>
@@ -44,26 +44,8 @@ $(document).ready(function() {
     $('#conversations-list').find("[data-conversation-id='" + "<%= conversation.id %>" + "']").parent().remove();
   <% end %>
 
-
-  function showAll() {
-    $('div').find('[data-type="post"]').show();
-  };
-  
-  function hideAll() {
-    $('div').find('[data-type="post"]').hide();
-  };
-
-  $('#cat-all').click(function() {
-    showAll();
-  });
-
-  for(let i = 1; i <= <%= @categories.size %>; i++) {
-    $(`#cat-${i}`).click(function() {
-      hideAll();
-      $(`.category-${i}`).show();
-    });
-  };
-});
+  indexPosts(<%= @categories.size %>)
+})
 </script>
 
 

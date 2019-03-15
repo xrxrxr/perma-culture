@@ -13,12 +13,8 @@ class PostsController < ApplicationController
     @post = Post.new
     @comment = Comment.new
     @categories = Category.all
-                                 
-    if current_user.categories.empty?
-      @posts = Post.all.reverse
-    else
-      @posts = Post.all.reverse
-    end
+
+    @posts = Post.all.reverse
   end
 
   # GET /posts/1

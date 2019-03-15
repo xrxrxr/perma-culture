@@ -27,7 +27,7 @@
 
 
 
-// ------------------------ REPARATION NAVBAR RESPONSIVE ---------------------
+// ------------------------ REPARATION RESPONSIVE  NAVBAR ---------------------
 $(document).ready(function() {
     $('#navbar-btn').click(function () {
         $('.collapse').show(500);
@@ -98,7 +98,40 @@ function cleanEncyclo() {
     //     $(`#comments-area-${post.id}`).toggle();  
     //   })
     // }
+    
+function indexPosts (catsize){
+  let posts = $('div').find('[data-type="post"]');
+  let x = 15
 
-// function showPostsbyCategory() {
+  showXFirsts(x)
 
-// };
+  function showXFirsts(x) {
+    hideAll()
+    $('#load-more').show()
+    for(let i = 0; i < x; i++) {
+      $(posts[i]).show();
+    };
+  };
+
+  $('#load-more').click(function(){
+    x += 5;
+    showXFirsts(x)
+  });
+  
+  function hideAll() {
+    posts.hide();
+  };
+
+  $('#cat-all').click(function() {
+    x = 15
+    showXFirsts(x)
+  });
+
+  for(let i = 1; i <= catsize; i++) {
+    $(`#cat-${i}`).click(function() {
+      hideAll();
+      $(`.category-${i}`).show();
+      $('#load-more').hide()
+    });
+  };
+}
