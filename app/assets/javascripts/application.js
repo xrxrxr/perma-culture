@@ -44,7 +44,6 @@ function cleanEncyclo() {
 		$('td[width="100%"]').hide()
 		$('#Liens_internes').text('Liens internes a Ekopedia')
 
-
 		let links = $('#article-show a')
 		links.each(function() {
 			$(this).attr('href', ('https://www.ekopedia.fr' + $(this).attr('href')));
@@ -60,14 +59,14 @@ function cleanEncyclo() {
 			$(this).attr('href', $(this).attr('href').substring(23));
 		});
 
-		let extLinks = $('a[class*="external"]')
-		extLinks.each(function() {
+		let ref2Links = $('sup[class="reference"] a')
+		ref2Links.each(function() {
 			$(this).attr('href', $(this).attr('href').substring(23));
 		});
 
 		let image = $('a[class="image"] > img')
 		image.each(function() {
-			$(this).attr('src', ('https://www.ekopedia.fr' + $(this).attr('src')));_nav
+			$(this).attr('src', ('https://www.ekopedia.fr' + $(this).attr('src')));
 		});
 	});
 };
