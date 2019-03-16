@@ -7,7 +7,7 @@
 <%= form_for(:user, url: registration_path(:user)) do |f| %>
 <div class='content sign_up'>
             <div class="container">
-                <div class="col-12 ml-auto mr-auto">
+                <div class="col-4 ml-auto mr-auto">
                     <div class="card card-login card-plain">
                         <form class="form" method="" action="">
                             <div class="card-header text-center">
@@ -49,13 +49,13 @@
                                 </div>
                             </div>
                             <div class="card-footer text-center">
-                                <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-lg" %>
+                                <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-block align-middle" %>
                             </div>
                             <center>
-<div class="link footer-link">
-  <h6><%= render "devise/shared/links" %></h6>
-</div>
-</center>
+                            <div class="link footer-link">
+                              <h6><%= render "devise/shared/links" %></h6>
+                            </div>
+                            </center>
                         </form>
                     </div>
                 </div>

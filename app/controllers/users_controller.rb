@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :is_not_your_profile, only: [:show, :edit]
 
 	def index
 		@users = User.all
@@ -26,6 +27,12 @@ class UsersController < ApplicationController
   	end
 
   private
+	  def is_not_your_profile
+	    unless params[:id].to_i == current_user.id
+	    	flash[:danger] = "Desole, ce n'est pas votre profil !"
+	        redirect_to posts_path
+	    end
+	  end
 
 	def set_user
 		User.find(params[:id])

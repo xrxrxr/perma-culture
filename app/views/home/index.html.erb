@@ -74,9 +74,11 @@
                     <div class="col-8 card-footer text-center">
                       <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-block" %>
                     </div>
-                    <p>
-                      <%= link_to 'Déjà inscrit ?', '/users/sign_in' , class:"link footer-link" %>
-                    </p>
+                    <div class="pull-left">
+                      <h6>
+                        <%= link_to 'Déjà inscrit ?', '/users/sign_in' , class:"link footer-link" %>
+                      </h6>
+                    </div>
                   </center>
                 </form>
               </div>

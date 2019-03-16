@@ -3,10 +3,10 @@
   <h3 class="card-title text-center" id="Card_Post">
     <%= post.title %>
     <% if post.writter == current_user %>      
-    <span class='pull-right mr-1 mt-1'> 
-      <%= link_to '#', data: { toggle:"modal", target:"#editModal-#{post.id}" } do %><i class="now-ui-icons ui-2_settings-90"></i> Editer<% end %> 
+    <span class='pull-right mr-1 mt-1'> <small>
+      <%= link_to '#', data: { toggle:"modal", target:"#editModal-#{post.id}" } do %><i class="now-ui-icons ui-2_settings-90"></i><% end %> 
       <%= link_to post_path(post.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'} do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
-    </span>
+    </span></small>
     <% end %>
   </h3>
   <!-- ---------- CONTENT ------------------- -->
@@ -49,10 +49,10 @@
 
 <div style='display:none'>
   <script>
-    $(document).ready( function() {
-      $('#comments-toggle-<%= post.id %>').click(function(e) {
+    $(document).ready(function() {
+      $('#comments-toggle-<%= post.id %>').click(function() {
         $('#comments-area-<%= post.id %>').toggle();  
       })
-    })
+    });
   </script>
 </div>

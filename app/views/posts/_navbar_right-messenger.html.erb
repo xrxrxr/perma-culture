@@ -1,8 +1,12 @@
-<div class="card-body text-center">
-	<h5><i class="now-ui-icons ui-1_email-85"></i>  Envie d'échanger?</h5>
-	<% @users.each do |user| %>
-	<p class="card bg-julien"><%= link_to user.user_name.capitalize, conversations_path(user_id: user), remote: true, method: :post, class:'text-white' %></p>
-	<% end %>
+<div class="card p-3">
+	<div class="card-header text-center">
+		<h5>Envie d'échanger?</h5>
+	</div>
+	<div class="card-body ml-3">
+		<% @users.each do |user| %>
+			<p><%= image_tag user.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'32x32' %> <%= link_to user.user_name.capitalize, conversations_path(user_id: user), remote: true, method: :post  %></p>		
+		<% end %>
+	</div>
 </div>
 
 

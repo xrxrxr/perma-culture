@@ -1,5 +1,4 @@
 <% if post.post_pictures.length > 1 %>
-
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <%if post.post_pictures.attached?%>
@@ -11,11 +10,11 @@
         <div class="carousel-inner" role="listbox">
           <%if post.post_pictures.attached?%>
             <div class="carousel-item active">
-              <%= image_tag post.post_pictures[0], class:'d-block', alt:'Product Pict 0' %>
+              <%= image_tag post.post_pictures[0], class:'d-block', alt:'Product Pict 0', id:"carrousel_post_picture-#{post.post_pictures[0].id}" %>
             </div>
             <% (post.post_pictures.size - 1).times do |i| %>
             <div class="carousel-item">
-              <%= image_tag post.post_pictures[i + 1], class:'d-block', alt:"Product Pict #{i + 1}" %>
+              <%= image_tag post.post_pictures[i + 1], class:'d-block', alt:"Product Pict #{i + 1}", id:"carrousel_post_picture-#{post.post_pictures[i + 1].id}"%>
             </div>
             <% end %>
           <% end %>
@@ -30,6 +29,6 @@
   <!-- --------------------------- CARROUSEL END / ONE_PICTURE --------------------- -->
   <% elsif post.post_pictures.length == 1 %>
     <div class="card-image">
-      <%= image_tag post.post_pictures[0], class:"img img-raised rounded" %>
+      <%= image_tag post.post_pictures[0], class:"img img-raised rounded", id:"carrousel_post_picture-#{post.post_pictures[0].id}" %>
     </div>
   <%end%>

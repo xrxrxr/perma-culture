@@ -1,51 +1,58 @@
 <p id="notice"><%= notice %></p>
-<% content_for :background_banner, "bg-#{rand(1..6)}.jpg" %>
+<% content_for :background_banner, "bg-#{rand(1..12)}.jpg" %>
 <%= render 'shared/banner_sm' %>
 
-<table>
-  <tbody>
-    <div class="row">
-      <div class="col-md-1"></div>
-      <!-- ----------------- NAV LEFT (PARTIAL ?) ---------------- -->
-      <div class="col-md-2">
-        <%= render 'navbar_left-user' %>        
-      </div>
-      <!-- ------------------- MAIN SECTION ------------ -->
-      <div class="container col-md-6 justify-content-center md-auto mt-3">
-        <%= render 'index_form' %>
-        <span id="sectionposts">
-          <%= render @posts %>
-        </span>
-        <div class="col-md-3 ml-auto mr-auto">
-          <button rel="tooltip" class="btn btn-primary btn-round" id='load-more'>Voir plus...</button>
-        </div>
-      </div>
-      <!-- -------------------- NAV RIGHT ------------------ -->
-      <div class="card col-md-2 ml-auto mt-3">
-        <%= render 'navbar_right-messenger' %>        
-      </div>
-      <!-- ---------------------------------------------------------->
-      <div class="col-md-1"></div>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <!-- ----------------- NAV LEFT  ---------------- -->
+  <div class="col-md-2">
+    <%= render 'navbar_left-user' %>        
+  </div>
+  <!-- ------------------- MAIN SECTION ------------ -->
+  <div class="container col-md-4 justify-content-center mt-3" id='main-section'>
+    <%= render 'index_post-form' %>
+    <span id="sectionposts">
+    <%= render @posts %>
+    </span>
+    <div class="col-md-3 ml-auto mr-auto">
+      <button rel="tooltip" class="btn btn-primary btn-round" id='load-more'>Voir plus...</button>
     </div>
-  </tbody>
-</table>
+  </div>
+  <!-- -------------------- NAV RIGHT ------------------ -->
+  <div class="col-md-2 mt-3">
+    <%= render 'navbar_right-messenger' %>        
+  </div>
+  <!-- ---------------------------------------------------------->
+  <div class="col-md-2"></div>
+</div>
 
 
 
 
 
 <script>
-$(document).ready(function() {
-  <% @conversations.each do |conversation| %>
+  $(document).ready(function() {
+    <% @conversations.each do |conversation| %>
     // $.post(`/conversations/<%= conversation.id %>/close`, { id: `<%= conversation.id %>`}, 
     //     function(returnedData){
     //          console.log(returnedData);
     // });
     $('#conversations-list').find("[data-conversation-id='" + "<%= conversation.id %>" + "']").parent().remove();
-  <% end %>
+    <% end %>
 
-  indexPosts(<%= @categories.size %>)
-})
+    indexPosts(<%= @categories.size %>)
+  })
+
+  $(document).ready(function ()
+{  
+    $('#toggle-post-form').click( function() {
+      $('#target-post-form').show()
+    });
+
+});
+
+
 </script>
 
 
