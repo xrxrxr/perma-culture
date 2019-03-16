@@ -19,8 +19,10 @@ class UsersController < ApplicationController
 		@user = set_user
 
 	    if @user.update(post_params)
-	      flash[:success] = 'Profile updated'
-	      redirect_to @user
+	    	respond_to do |format|
+	    		format.js
+	    		format.html { redirect_to @user, notice: 'Description mise a jour.' }
+	    	end
 	    else
 	      render :edit
 	    end
@@ -39,6 +41,6 @@ class UsersController < ApplicationController
 	end
 
 	def post_params
-      params.require(:user).permit(:user_name)
+      params.require(:user).permit(:user_name, :description)
     end
 end
