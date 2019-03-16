@@ -1,44 +1,100 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="d-flex justify-content-center">
+                <%= button_tag class:'btn btn-round btn-primary mr-3', id:"post_toggle-#{post.id}" do %>Texte<% end %>
+                <%= button_tag class:'btn btn-round btn-primary ml-3', id:"pictures_toggle-#{post.id}" do %>Photos<% end %>
+          </div>
+          <div class="modal-body">
+            <!-- --------- CARD ------- -->
+            <div class="card text-center">
+            <!-- ---------- CONTENT --------- -->
+              <div class="card-body" id='post_toggle_target-<%= post.id %>'>
+                <h4 class="card-title">Editer votre publication</h4>
+                  <%= form_with(model: post, local: true) do |f| %>
+                    <% if post.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(post.errors.count, "erreur") %> ont empeche de creer cette publication:</h2>
+                        <ul>
+                          <% post.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    <div class="form-group">
+                      <%= f.label :title, 'Titre' %><br>
+                      <%= f.text_field :title, autofocus:true, class:"form-control" %>
+                    </div>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+                    <div class="form-group"> 
+                      <%= f.label :content, 'Contenu' %><br>
+                      <%= f.text_area :content, autofocus:true, class:"form-control" %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                      <%= f.submit 'Enregistrer', class:"btn btn-primary" %>
+                    </div>
+                <% end %>
+              </div>
+            <!-- ---------- PHOTO --------- -->
+              <div class="card-body" id='pictures_toggle_target-<%= post.id %>' style='display: none'>
+                <h4 class="card-title">Ajouter photo</h4>
+                <% if post.post_pictures.attached? %>
+                  <div class="d-flex flex-wrap">
+                    <% post.post_pictures.each.with_index do |picture, i| %>
+                    <div>
+                      <%= link_to post_post_picture_path(post.id, picture.id), remote: true, method: :delete, data: { confirm: 'Supprimer la photo?'}, id:"post_picture-#{picture.id}" do %>
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                        <%= image_tag(picture, class:'img-raised', width:'120px')%>
+                      <% end %>
+                    </div>
+                    <% end %>
+                  </div>
+                <% end %>
+                <br><br>
+                <!-- ----- FORM ------ -->
+                <%= form_tag post_post_pictures_path(post.id), multipart: true do %>
+                  <% if post.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(post.errors.count, "erreur") %> ont empeche de creer cette publication:</h2>
+                      <ul>
+                        <% post.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                  <!-- ------- JASNY FILEUPLOAD ----- -->
+                  <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                    <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                    <div>
+                      <span class="btn btn-raised btn-round btn-default btn-file">
+                        <span class="fileinput-new">Add Photo</span>
+                        <span class="fileinput-exists">Change</span>
+                        <input type="file" name="post_pictures" /></span>
+                        <br />
+                        <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                    </div>
+                  </div>
+                   <!-- ------- END JASNY ------ -->
+                  <hr class='mb-2'>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <%= submit_tag 'Ajouter une photo', class:"btn btn-primary" %>
+                  </div>
+                <% end %>
+                <!-- ----- END FORM ----- -->
+              </div>
+            </div>
+            <!-- --------- CARD END ------- -->
+          </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <script>
+      $('#post_toggle-<%= post.id %>').click( function() {
+        $('#post_toggle_target-<%= post.id %>').fadeIn(500);
+        $('#pictures_toggle_target-<%= post.id %>').hide();
+      });
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= select_tag(:category, options_for_select(@categories.collect{ |c| [c.name, c.id] })) %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-      <h2 class="h3 mb-3 font-weight-normal text-center">Photo</h2>
-      <% if post.post_pictures.attached? %>
-        <% post.post_pictures.each do |picture| %>
-          <%= image_tag(picture, class:'img-raised', width:'400px')%>
-        <% end %>
-      <% end %>
-       <br>
-      <%= form_tag post_post_pictures_path(post.id), multipart: true do %>
-        <%= file_field_tag :post_pictures %>
-        <%= submit_tag "Ajouter photo", class: "btn btn-lg btn-primary btn-block bouton" %>
-      <% end %>
+      $('#pictures_toggle-<%= post.id %>').click( function() {
+        $('#pictures_toggle_target-<%= post.id %>').fadeIn(500)
+        $('#post_toggle_target-<%= post.id %>').hide();
+      });
+    </script>
