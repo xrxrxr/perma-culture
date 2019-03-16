@@ -8,8 +8,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options =  {:host => 'perma-culture.herokuapp.com'}
 
+<<<<<<< HEAD
   config.web_socket_server_url = "wss://permatest.herokuapp.com/cable" 
 config.action_cable.allowed_request_origins = ['https://permatest.herokuapp.com', 'http://permatest.herokuapp.com']
+=======
+  config.web_socket_server_url = "wss://perma-culture.herokuapp.com/cable" 
+  config.action_cable.allowed_request_origins = ['https://perma-culture.herokuapp.com', 'http://perma-culture.herokuapp.com']
+>>>>>>> af8558c3a551cc5d8746afeee6f6bb230412b34a
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.

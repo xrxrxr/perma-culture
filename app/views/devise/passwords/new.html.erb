@@ -1,71 +1,64 @@
-<center>
-  <br>
-  <br>
-  <br>
-
-
-  <div class="card-header text-center">
-
-    <div class="logo-container">
-      <img src=<%= image_path 'icone-logo.png' %> alt="">
-    </div>
-
-    <div class="col text-dark " id='Forgot your password?'>
-      <h2>mot de passe oublié ?</h2>
-    </div>
-
-    <div class='content  justify-content-center align-items-center'>
-      <div class="container">
-        <div class="col-12 ml-auto mr-auto">
-          <div class="card card-login card-plain">
-            <form class="form" method="" action="">
-              <div class="card-header text-center">
-
-                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-                <%= render "devise/shared/error_messages", resource: resource %>
-
-                <div class="input-group no-border input-lg">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text text-dark">
-                      <i class="now-ui-icons ui-1_email-85"></i>
-                    </span>
-                  </div>
-<input autofocus="autofocus" autocomplete="email" placeholder="Email" class="form-control" style="height: 46px;" type="email" value="" name="user[email]" id="user_email">
-    </div>
-              </div>
+<br>
+<br>
+<br> 
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="content">
+            <div class="container">
+                <div class="col-md-5 ml-auto mr-auto">
+                    <div class="card card-login card-plain">
+                        <form class="form" method="" action="">
+                            <div class="card-header text-center">
+                                <div class="logo-container">
+                                    <%= image_tag('icone-logo.png', alt:"Logo perma-culture") %>
+                                </div><br>
+                            <h5>Mot de passe oublié ?</h5>
+                            </div> <br>
+                            <div class="card-body">
+                              <div class="input-group form-group-no-border input-lg">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+                                </div>
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Votre email', class:"form-control", style:'height:46px' %>
+                              </div>
+                            <center> 
+                            <div class="card-footer col-6 text-center">
+                                <%= f.submit "Envoyer instructions", class:"btn btn-primary btn-round btn-block align-middle" %>
+                            </div><br>
+                          </center>
+                            <div class="pull-left">
+                              <h6>
+                                <%= link_to 'Creer un compte', new_user_registration_path, class:"link footer-link"  %>
+                              </h6>
+                            </div>
+                            <div class="pull-right">
+                              <h6>
+                                <%= link_to 'Déjà inscrit ?', '/users/sign_in' , class:"link footer-link" %>
+                              </h6>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+        </div>
+ <% end %>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
 
-            <div class="btn-btn-primary">
-              <%= f.submit "envoyer les instructions pour changer de mot de passe", class: 'btn btn-primary btn-round btn-lg' %>
-            </div>
-            <div class="text-dark">
-              <%= render "devise/shared/links" %>
-
-  <% end %>
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-</center>

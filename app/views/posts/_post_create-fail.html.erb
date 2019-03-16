@@ -1,0 +1,20 @@
+
+      <div class="alert alert-danger alert-container alert-floating" id="post-create-fail" role="alert" style='display:none; z-index: 1'>
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons ui-1_settings-gear-63"></i>
+          </div>
+            <strong><%= pluralize(@post.errors.count, "erreur") %> a empeche de creer cette publication:</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+            <ul>
+              <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+
