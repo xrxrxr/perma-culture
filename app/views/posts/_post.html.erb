@@ -51,7 +51,7 @@
   <div class="d-flex justify-content-between mb-0">
     <strong class="card text-center w-25 ml-3 mb-3 mt-3" ><%=post.category.name%></strong>
     <div>
-      <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <%= post.likes.size %><% end %> <!-- TO DO  controller + create puis if already_liked destroy else create puis remote:true + javascript qui incremente?decremente le compteur-->
+      <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <%= post.likes.size %><% end %>
       <%= button_tag class:"btn btn-danger btn-neutral pull-right", id:"comments-toggle-#{post.id}" do %><span class='number-comments-<%= post.id %>'><%= post.comments.size %></span> <%= 'commentaire'.pluralize(post.comments.size) %><% end %> <!-- TRIGGER COMMENTS -->
     </div>
   </div>
