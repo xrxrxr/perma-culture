@@ -1,3 +1,6 @@
+
+<br>
+
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -10,9 +13,10 @@
       </ul>
     </div>
   <% end %>
-
+<div class="container">
+<center>
    <div class="form-group">
-    <%= form.label :user_name %>
+    <%= form.label :pseudo %>
     <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
   </div>
 
@@ -24,14 +28,17 @@
   <div class="actions">
     <%= form.submit class:"btn btn-round btn-primary" %>
   </div>
+</div>
+</center>
 <% end %>
 
+<br>
 
-
-
+<center>
       <h2 class="h3 mb-3 font-weight-normal text-center">Avatar</h2>
        <center><%= image_tag(@user.avatar, class:'img-raised', width:'400px')%></center><br>
       <%= form_tag user_avatars_path(current_user), multipart: true do %>
         <%= file_field_tag :avatar %>
-        <%= submit_tag "Mettre à jour", class: "btn btn-lg btn-primary btn-block bouton" %>
+        <%= submit_tag "Mettre à jour", class: "btn btn-lg btn-primary btn-round" %>
       <% end %>
+</center>
