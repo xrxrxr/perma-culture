@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	#before_action :is_not_your_profile, only: [:show, :edit]
+	before_action only: [:show, :edit]
 
 
 	def index
@@ -31,12 +31,9 @@ class UsersController < ApplicationController
 	end
 
 	private
-	# def is_not_your_profile	 	
-	# 	unless params[:id].to_i == current_user.id
-	# 		permit update
-	# 		redirect_to posts_path
-	# 	end
-	# end
+	def is_not_your_profile
+		params[:id].to_i != current_user.id
+	end
 
 	def set_user
 		User.find(params[:id])
