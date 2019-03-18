@@ -1,0 +1,18 @@
+            <h3 class="title text-center">Commenter</h3>
+            <div class="media media-post">
+              <%= link_to user_path(current_user.id), class:'pull-left author' do %>
+                <div class="avatar">
+                  <%= image_tag current_user.avatar, class:'media-object img-raised', alt:"Votre photo de profil" %>
+                </div>
+              <% end %>
+              <div class="media-body">
+                <%= form_for @comment, url: post_comments_path(post.id), remote: true do |f| %>
+                  <%= f.text_area :content, autofocus: true, placeholder:'Commentez', rows:'4', class:'form-control' %>
+                  <div class="media-footer">
+                  <%= f.submit :submit, class:"btn btn-primary pull-right" do %>
+                    <i class="now-ui-icons ui-1_send"></i> Repondre
+                  <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>

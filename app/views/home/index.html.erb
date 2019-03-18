@@ -2,15 +2,20 @@
 
   <div class="row">
 
-    <div class="col-6 left3 flex-column text-white d-flex justify-content-center align-items-center">
+    <div class="col-6 left3 flex-column text-white d-flex justify-content-center align-items-left">
 
-      <h4 class="left3 justify-content-left align-items-left">Le réseau social de l''agriculture écologique</h4>
+      <div class=" left5 flex-column text-white">
 
-      <p class="col-6 justify-content-left align-items-left">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et
-        raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud
-        Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
+          <h4 class="ml-3">Le réseau social de l'agriculture écologique</h4>
+
+          <p class="col-8">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et
+            raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud
+            Iconium Pisidiaeoppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.
+
+          </div>
 
       </div>
+
 
       <div class="col-6 right left3 text-white d-flex justify-content-center align-items-center" id='right'>
 
@@ -69,9 +74,11 @@
                     <div class="col-8 card-footer text-center">
                       <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-block" %>
                     </div>
-                    <p>
-                      <%= link_to 'Déjà inscrit ?', '/users/sign_in' , class:"link footer-link" %>
-                    </p>
+                    <div class="pull-left">
+                      <h6>
+                        <%= link_to 'Déjà inscrit ?', '', class:"link footer-link", data: {toggle:"modal", target:"#loginModal"} %>
+                      </h6>
+                    </div>
                   </center>
                 </form>
               </div>
@@ -82,11 +89,11 @@
 
     </div>
 
-    <div class="col-12 scroll"></div>
+    <div class="col-12 scroll" id="scroll-click"></div>
 
   </div>
 
-  <div class="containerland2 gradient">
+  <div class="containerland2 gradient" name='scroll-target'>
 
     <div class="column">
 
@@ -116,41 +123,88 @@
       </div>
 
       <div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-        <script>
-          function landingPageSign() {
-            let left = $('.left');
-            let right = $('.right');
-            let textLeft = $('#text-left');
-            let textRight = $('#text-right');
-            function resetClassList() {
-              left.removeClass('col-8 col-6 col-4');
-              right.removeClass('col-8 col-6 col-4');
-              left.addClass('col-6');
-              right.addClass('col-6');
-              $('.sign_in').hide(500);
-              $('.sign_up').hide(500);
-            };
-            textLeft.click(function () {
-              resetClassList();
-              left.toggleClass('col-6 col-8');
-              right.toggleClass('col-6 col-4');
-              textLeft.hide();
-              textRight.slideDown(1200);
-              $("<%= j render 'sign_in' %>").appendTo($(left)).hide().fadeIn(500);
-            })
-            textRight.click(function () {
-              resetClassList();
-              right.toggleClass('col-6 col-8');
-              left.toggleClass('col-6 col-4');
-              textRight.hide();
-              textLeft.fadeIn(1200);
-              $("<%= j render 'sign_up' %>").appendTo($(right)).hide().fadeIn(500);
-            })
 
-            textRight.mouseover(function () {
-              textRight.show("scale", {percent: 120});
-            });
-          };
-          landingPageSign()
-        </script>
+<div class="modal fade modal-primary mt-5" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="card card-login card-plain">
+        <div class="modal-header justify-content-center">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="now-ui-icons ui-1_simple-remove"></i>
+          </button>
+          <div class="header header-primary text-center">
+            <div class="logo-container mb-2" style='width:100px'>
+              <%= image_tag('logo2_all-white.png', alt:"Logo perma-culture") %>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body" data-background-color>
+          <%= form_for(:user, url: session_path(:user)) do |f| %>
+            <div class="card-body">
+              <div class="input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white"><i class="now-ui-icons ui-1_email-85"></i></span>
+                </div>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
+              </div>
+              <div class="input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                </div>
+                <%= f.password_field :password, autocomplete: "current-password", placeholder:"Mot de passe", class:'form-control', style:'height: 46px;' %>
+              </div>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+            <div class="card-footer text-center">
+              <%= f.submit "Se connecter", class:"btn btn-neutral btn-round btn-block" %>
+            </div>
+            <div class="pull-left">
+              <h6>
+                <%= link_to 'Mot de passe oublie?', new_user_password_path, class:"link footer-link"  %>
+              </h6>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script> 
+  $("#scroll-click").click(function() {
+    let divTag = $("div[name='scroll-target']");
+
+    $('html,body').animate({scrollTop: (divTag.offset().top - 76)},'slow');
+  });
+</script>
