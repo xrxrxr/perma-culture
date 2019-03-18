@@ -39,15 +39,17 @@
             <div class="container">
               
               <div class="button-container">
-                <% if current_user.id = params[:id] %>
+                <% if current_user.id == @user.id %>
                 <%= link_to edit_user_path(current_user.id), class:"btn btn-primary btn-round btn-lg" do %>Editer mon profile<% end %>
                 <%= link_to edit_user_registration_path, class:"btn btn-default btn-round btn-lg btn-icon", name:'Editer mes informations de connexion' do %>
                 <i class="now-ui-icons ui-1_settings-gear-63" title="Editer infos de connexion"></i><% end %>
+                <% elsif current_user.id != params[:id] %>
+              
                 <% end -%>
               </div>
               
               <div>
-                <% if current_user.id = params[:id] %> 
+                <% if current_user.id == @user.id %> 
                 <h3 class="title">À propos de moi
                   <%= button_tag class:"btn btn-primary btn-round btn-lg btn-icon", id:'toggle-user_description' do %><i class="fa fa-pencil"></i>
                   <% end %>
