@@ -1,0 +1,20 @@
+            <div class="media ">
+                <div class="media pull-right">
+                    <a class="" href="#pablo">
+                        <div class="avatar">
+                            <%= image_tag comment_thread.user.avatar, class:"media-object img-raised", alt:'Photo comment_re' %>
+                        </div>
+                    </a>
+                </div>
+                <div class="media-body d-block">
+                    <h5 class="media-heading "><%= comment_thread.user.user_name%>
+                        <small class="text-muted"> Il y a <%= comment_thread.created_at %></small>
+                    </h5>
+                    <p><%= comment_thread.content%></p>
+                    <div class="media-footer">
+                        <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
+                            <i class="now-ui-icons ui-2_favourite-28"></i> <%= comment_thread.likes.size %>
+                        </a>
+                    </div>                                   
+                </div>
+            </div>
