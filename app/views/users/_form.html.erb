@@ -13,12 +13,12 @@
   <% end %>
 
    <div class="col-6 form-group">
-    <%= form.label :user_name %>
+    <h5><%= form.label :user_name %></h5>
     <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
   </div>
 
    <div class="col-6 form-group">
-      <%= form.label :description %>
+      <h5><%= form.label :description %></h5>
       <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
     </div>
 
@@ -32,13 +32,13 @@
 </br>
 </br>
 
-      <h2 class="h3 mb-3 font-weight-normal text-center">Avatar</h2>
+      <h3 class="mb-3 font-weight-normal text-center">Avatar</h3>
        <center><%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'400px')%></center><br>
       <%= form_tag user_avatars_path(current_user), multipart: true do %>
         <%= file_field_tag :avatar %>
         </br>
         </br>
-        <%= submit_tag "Mettre à jour", class: " col-2 btn btn-lg btn-primary btn-block bouton" %>
+        <%= submit_tag "Mettre à jour", class: "col-2 btn btn-lg btn-primary btn-block bouton" %>
       <% end %>
 
 </center>
