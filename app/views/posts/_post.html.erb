@@ -23,7 +23,13 @@
   <div class="d-flex justify-content-between mb-0">
     <strong class="card text-center w-25 ml-3 mb-3 mt-3" ><%=post.category.name%></strong>
     <div>
-      <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <%= post.likes.size %><% end %>
+      <%= link_to post_likes_path(post.id), class: 'vote', method: :post, remote: true do %>
+      <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_like_<%=post.id%>'><%= post.likes.size %></span><% end %>
+      <%end%>
+
+      
+
+      
       <%= button_tag class:"btn btn-danger btn-neutral pull-right", id:"comments-toggle-#{post.id}" do %><span class='number-comments-<%= post.id %>'><%= post.comments.size %></span> <%= 'commentaire'.pluralize(post.comments.size) %><% end %> <!-- TRIGGER COMMENTS -->
     </div>
   </div>
@@ -37,7 +43,7 @@
         <%= render 'comments_form', post: post %> 
         <h3 class="title text-center"><span class='number-comments-<%= post.id %>'><%= post.comments.size %></span> <%= 'commentaire'.pluralize(post.comments.size) %></h3>
         <div class="media-area" id='comments-receiver-<%= post.id %>'>
-          <%= render post.comments.reverse  %>
+          <%= render post.comments.reverse, post: post  %>
         </div>
       </div>
     </div>
