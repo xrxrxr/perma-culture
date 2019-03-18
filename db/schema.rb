@@ -130,7 +130,6 @@ ActiveRecord::Schema.define(version: 2019_03_16_164304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_name"
-    t.boolean "is_online"
     t.text "description"
     t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
