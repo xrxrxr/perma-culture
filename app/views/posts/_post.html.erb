@@ -12,7 +12,10 @@
   <!-- ---------- CONTENT ------------------- -->
   <p class="justify-content-center pl-3 pr-3">
     <%= post.content %>
-    <footer class="blockquote-footer"><%= image_tag post.writter.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'22x22' %> <%= post.writter.user_name.capitalize %></footer>
+    <footer class="blockquote-footer">
+      <% if post.writter && post.writter.avatar.attached? %>
+        <%= image_tag post.writter.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'22x22' %> <%= post.writter.user_name.capitalize %></footer>
+      <% end %>
   </p>
   <!-- --------------------- POST_PICTURES /CARROUSEL -------------------------- -->
   <%= render 'post_pictures', post: post  %>  

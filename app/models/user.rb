@@ -14,12 +14,12 @@ class User < ApplicationRecord
   after_create :welcome_send
 
   has_one_attached :avatar
-  has_many :user_categories
+  has_many :user_categories, dependent: :destroy
   has_many :categories, through: :user_categories
   has_many :posts, foreign_key: 'writter_id'
-  has_many :comments
-  has_many :likes
-  has_many :messages
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :conversations, foreign_key: :sender_id
   
   validates :user_name, 

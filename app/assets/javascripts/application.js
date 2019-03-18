@@ -27,12 +27,12 @@
 //= require_tree .
 
 
-
-// ------------------------ REPARATION RESPONSIVE  NAVBAR ---------------------
+// ------------------------ REPARATION RESPONSIVE  NAVBAR & SELECTPICKER ---------------------
 $(document).ready(function() {
     $('#navbar-btn').click(function () {
         $('.collapse').show(500);
     });
+    $('select').selectpicker();
 });
 
 // ---------------------------------- CHAT -------------------------------------
@@ -52,6 +52,13 @@ $(document).ready(function() {
   });
 })();
 
+      $(document).ready(function() { 
+        $('#toggle-user-list').click(function (e) {
+          e.preventDefault()
+            console.log('ouaiiiis')
+          $('#the-user-list').toggle()
+        });
+      });
 // ------------------------------- POSTS -------------------------------
 
     // function showComments (postid) {

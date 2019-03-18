@@ -8,13 +8,9 @@ class Post < ApplicationRecord
   has_many :comments, as: :commenteable
   has_many :likes, as: :likeable
 
-  validates :content,
-            presence: true,
-            length: { minimum: 25, maximum: 1000 }
-
 	validates :content, 
 	presence: true,	
-	length:{minimum: 25, maximum: 1000}
+	length:{minimum: 5, maximum: 3000}
 	
 	validates :title,
 	presence: true,
