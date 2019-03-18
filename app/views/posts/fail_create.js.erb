@@ -1,0 +1,9 @@
+	$("<%= j render 'post_create-fail', post: @post %>").prependTo($('body'))
+
+
+	$('#post-create-fail').slideDown(function() {
+		setTimeout(function() {
+			$('#post-create-fail').slideUp();
+		}, 1500);
+	});
+

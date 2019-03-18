@@ -27,7 +27,7 @@
 
 
 
-// ------------------------ REPARATION NAVBAR RESPONSIVE ---------------------
+// ------------------------ REPARATION RESPONSIVE  NAVBAR ---------------------
 $(document).ready(function() {
     $('#navbar-btn').click(function () {
         $('.collapse').show(500);
@@ -44,7 +44,6 @@ function cleanEncyclo() {
 		$('td[width="100%"]').hide()
 		$('#Liens_internes').text('Liens internes a Ekopedia')
 
-
 		let links = $('#article-show a')
 		links.each(function() {
 			$(this).attr('href', ('https://www.ekopedia.fr' + $(this).attr('href')));
@@ -60,14 +59,14 @@ function cleanEncyclo() {
 			$(this).attr('href', $(this).attr('href').substring(23));
 		});
 
-		let extLinks = $('a[class*="external"]')
-		extLinks.each(function() {
+		let ref2Links = $('sup[class="reference"] a')
+		ref2Links.each(function() {
 			$(this).attr('href', $(this).attr('href').substring(23));
 		});
 
 		let image = $('a[class="image"] > img')
 		image.each(function() {
-			$(this).attr('src', ('https://www.ekopedia.fr' + $(this).attr('src')));_nav
+			$(this).attr('src', ('https://www.ekopedia.fr' + $(this).attr('src')));
 		});
 	});
 };
@@ -98,3 +97,40 @@ function cleanEncyclo() {
     //     $(`#comments-area-${post.id}`).toggle();  
     //   })
     // }
+    
+function indexPosts (catsize){
+  let posts = $('div').find('[data-type="post"]');
+  let x = 15
+
+  showXFirsts(x)
+
+  function showXFirsts(x) {
+    hideAll()
+    $('#load-more').show()
+    for(let i = 0; i < x; i++) {
+      $(posts[i]).show();
+    };
+  };
+
+  $('#load-more').click(function(){
+    x += 5;
+    showXFirsts(x)
+  });
+  
+  function hideAll() {
+    posts.hide();
+  };
+
+  $('#cat-all').click(function() {
+    x = 15
+    showXFirsts(x)
+  });
+
+  for(let i = 1; i <= catsize; i++) {
+    $(`#cat-${i}`).click(function() {
+      hideAll();
+      $(`.category-${i}`).show();
+      $('#load-more').hide()
+    });
+  };
+}

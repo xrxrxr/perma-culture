@@ -3,8 +3,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
-  # GET /posts
-  # GET /posts.json
   def index
     session[:conversations] ||= []
     @users = User.all.where.not(id: current_user)
@@ -14,32 +12,22 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comment_thread = Comment.new
     @categories = Category.all
-                                 
-    if current_user.categories.empty?
-      @posts = Post.all.reverse
-    else
-      @posts = Post.all.reverse
-    end
+
+    @posts = Post.all.reverse
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
   def edit
     @categories = Category.all
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
     @comment = Comment.new
     @comment_thread = Comment.new
@@ -51,46 +39,42 @@ class PostsController < ApplicationController
     if @post.save
       respond_to do |format|
         format.js
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: 'Publications cree avec succes.' }
       end
     else
-      format.html { render :new }
+      respond_to do |format|
+        format.js { render "fail_create" }
+        format.html { render :new, notice: "Erreur lors de la creation de votre publications" }
+      end
     end
   end
 
-
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to posts_path, notice: 'Publications editee avec succes.' }
       else
-        format.html { render :edit }
+        format.html { render :edit, notice: "Erreur lors de l'edition de votre publications" }
       end
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: 'Publications supprimee avec succes.' }
       format.js
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     params.require(:post).permit(:title, :content, :category)
   end
