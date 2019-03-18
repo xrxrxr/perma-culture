@@ -9,7 +9,7 @@
     </a>
     <div class="media-body">
         <h5 class="media-heading"><%= comment.user.user_name%>
-            <small class="text-muted">&middot; Il y a <%= comment.created_at %></small> <!-- TO CHANGE (AGO) -->
+            <small class="text-muted">&middot; Il y a <%=  %></small> <!-- TO CHANGE (AGO) -->
         </h5>
         <p><%= comment.content%></p>
         <div class="media-footer">
@@ -20,16 +20,18 @@
                 <i class="now-ui-icons ui-2_favourite-28"></i> <%= comment.likes.size %> <!-- TO DO -->
             </a>
         </div>
-    </div>
-
-        
+        <div class="row">
+            <div class="col-12">
+                
            <div id='comments_thread-receiver-<%= comment.id %>'>
                 <% comment.comments.each do  |comment_thread| %>
                 <%= render 'comments/comment_thread', comment_thread: comment_thread %>
                 <% end %>
             </div>
             
-
+            </div>
+        </div>
+    </div>
 
 
 </div>
