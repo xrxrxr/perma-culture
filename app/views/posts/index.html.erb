@@ -33,22 +33,7 @@
 
 <script>
   $(document).ready(function() {
-    <% @conversations.each do |conversation| %>
-    // $.post(`/conversations/<%= conversation.id %>/close`, { id: `<%= conversation.id %>`}, 
-    //     function(returnedData){
-    //          console.log(returnedData);
-    // });
-    $('#conversations-list').find("[data-conversation-id='" + "<%= conversation.id %>" + "']").parent().remove();
-    <% end %>
-
     indexPosts(<%= @categories.size %>)
   })
-
-  $(document).ready(function ()
-{  
-    $('#toggle-post-form').click( function() {
-      $('#target-post-form').show()
-    });
-
-});
 </script>
+
