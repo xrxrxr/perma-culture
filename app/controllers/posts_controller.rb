@@ -4,10 +4,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    session[:conversations] ||= []
-    @users = User.all.where.not(id: current_user)
-    @conversations = Conversation.includes(:recipient, :messages)
-                                 .find(session[:conversations])
     @post = Post.new
     @comment = Comment.new
     @categories = Category.all
