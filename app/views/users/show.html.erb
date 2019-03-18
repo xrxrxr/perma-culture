@@ -46,7 +46,7 @@
               </div>
 
               <h5 class="description text-center" id='user-description-target'>
-                <% if @user.description.empty? %>
+                <% if @user.description.nil? %>
                 Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes. 
                 <% else %>
                 <%= @user.description %>
