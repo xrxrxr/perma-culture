@@ -1,0 +1,6 @@
+<% unless params[:comment_id] %>
+$('#count_like_<%= params[:post_id] %>').text(<%= @post.likes.size %>);
+
+<% else %>
+$('#count_comment_like_<%= params[:comment_id] %>').text(<%= @post.likes.size %>);
+<%end%>

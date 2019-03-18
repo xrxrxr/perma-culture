@@ -12,9 +12,9 @@
                     </h5>
                     <p><%= comment_thread.content%></p>
                     <div class="media-footer">
-                        <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
-                            <i class="now-ui-icons ui-2_favourite-28"></i> <%= comment_thread.likes.size %>
-                        </a>
+                        <%= link_to post_likes_path(comment_thread.id), class: 'vote', method: :post, remote: true do %>
+                        <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_like_<%=comment_thread.id%>'><%= comment_thread.likes.size %></span><% end %>
+                        <%end%>
                     </div>                                   
                 </div>
             </div>
