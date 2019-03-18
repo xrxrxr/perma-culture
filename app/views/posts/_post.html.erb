@@ -1,6 +1,6 @@
 <div class="card category-<%= post.category.id %>" id='post-<%= post.id %>' data-type='post'>
   <!-- --------- CARD HEADER----------- --><!-- A ARRANEGR +++++ -->
-  <h3 class="card-title text-center" id="Card_Post">
+  <h3 class="card-title text-center mt-0" id="Card_Post">
     <%= post.title %>
     <% if post.writter == current_user %>      
     <span class='pull-right mr-1 mt-1'> <small>
@@ -12,6 +12,7 @@
   <!-- ---------- CONTENT ------------------- -->
   <p class="justify-content-center pl-3 pr-3">
     <%= post.content %>
+    <footer class="blockquote-footer"><%= image_tag post.writter.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'22x22' %> <%= post.writter.user_name.capitalize %></footer>
   </p>
   <!-- --------------------- POST_PICTURES /CARROUSEL -------------------------- -->
   <%= render 'post_pictures', post: post  %>  

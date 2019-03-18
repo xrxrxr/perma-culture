@@ -1,45 +1,37 @@
 
 <% content_for :background_banner, "agriculture.jpg" %>
-    <%= render 'shared/banner_sm' %>
+<%= render 'shared/banner_sm' %>
 
 <div class="col text-white d-flex j align-items-center" id='email instructions2'>
-<h2>Re-envoyer les instructions pour débloquer</h2>
+  <h2>Re-envoyer les instructions pour débloquer</h2>
 </div>
 
 <div class="page-header" filter-color="orange">
 
-      <div class="content">
+  <div class="content">
 
-                              <div class="logo-container">
-                                  <img alt="Logo perma-culture" width="200px" src="/assets/logo_permaculture2-42472c04f3a3ca5849db21e7a5eb021122cf63ad8f9caa5df07fffb5f4a316ce.png" />
-                              </div>
-                          </div>
-                          <div class="card-body">
-                            <div class="input-group form-group-no-border input-lg">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
-                              </div>
-                              <input autofocus="autofocus" autocomplete="email" class="form-control" style="height:46px" type="email"  name="user[email]" id="user_email" />
-                            </div>
-
-
-
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-
-
-  <div class="form-group">
-        <%= f.submit "Send me reset password instructions", class: 'btn btn-primary btn-block btn-lg' %>
+    <div class="logo-container">
+      <img alt="Logo perma-culture" width="200px" src="/assets/logo_permaculture2-42472c04f3a3ca5849db21e7a5eb021122cf63ad8f9caa5df07fffb5f4a316ce.png" />
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="input-group form-group-no-border input-lg">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="now-ui-icons ui-1_email-85 mr-2"></i></span>
       </div>
-<% end %>
+      <input autofocus="autofocus" autocomplete="email" class="form-control" style="height:46px" type="email"  name="user[email]" id="user_email" />
+    </div>
 
-<%= render "devise/shared/links" %>
+    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
+    <div class="form-group">
+      <%= f.submit "Send me reset password instructions", class: 'btn btn-primary btn-block btn-lg' %>
+    </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+
