@@ -9,7 +9,7 @@
                 <%= form_for @comment, url: post_comments_path(post.id), remote: true do |f| %>
                   <%= f.text_area :content, autofocus: true, placeholder:'Commentez', rows:'4', class:'form-control' %>
                   <div class="media-footer">
-                  <%= f.submit :submit, class:"btn btn-primary pull-right" do %>
+                  <%= f.submit :submit, class:"col-6 btn btn-primary btn-round btn-block pull-right" do %>
                     <i class="now-ui-icons ui-1_send"></i> Repondre
                   <% end %>
                   </div>
