@@ -34,23 +34,22 @@
           <div class="section">
             <div class="container">
               <div class="button-container">
+                <% if current_user == @users %> 
                 <%= link_to edit_user_path(@user), class:"btn btn-primary btn-round btn-lg" do %>Editer mon profile<% end %>
                 <%= link_to edit_user_registration_path, class:"btn btn-default btn-round btn-lg btn-icon", name:'Editer informations de connexion' do %>
                 <i class="now-ui-icons ui-1_settings-gear-63" title="Editer infos de connexion"></i><% end %>
+                <% end -%>
               </div>
               <div>
+                <% if current_user == @users %> 
                 <h3 class="title">À propos de moi
                   <%= button_tag class:"btn btn-primary btn-round btn-lg btn-icon", id:'toggle-user_description' do %><i class="fa fa-pencil"></i>
                   <% end %>
                 </h3>
+                  <% end %>
               </div>
 
               <h5 class="description text-center" id='user-description-target'>
-                <% if @user.description.empty? %>
-                Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes. 
-                <% else %>
-                <%= @user.description %>
-                <% end %>
               </h5>
 
               <div id="user-description-form" class='description text-center mb-5' style='display:none'>
@@ -92,7 +91,12 @@
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">
                         <% @user.posts.limit(10).each do |post| %>
-                        <span class="badge badge-primary"><%= post.title %></span>
+                        <%= button_tag class:"badge badge-primary", id:"post_title" do %>
+                        <%= post.title %>
+                        <% end -%>
+                        <div class="card-body" id="post_content">  
+                          <%= post.content %>
+                        </div>
                         <% end %>
                       </li>
                     </ul>
@@ -110,4 +114,10 @@
           $('#user-description-target').hide();
           $('#user-description-form').show();
         });
+
+        $('#post_title').click(function () {
+          $('#post_content').toggle()
+        });
+
+
       </script>
