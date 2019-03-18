@@ -87,14 +87,32 @@
             <!-- --------- CARD END ------- -->
           </div>
 
-    <script>
-      $('#post_toggle-<%= post.id %>').click( function() {
-        $('#post_toggle_target-<%= post.id %>').fadeIn(500);
-        $('#pictures_toggle_target-<%= post.id %>').hide();
-      });
+          <div class="field">
+            <%= form.label :content %>
+            <%= form.text_area :content %>
+          </div>
 
+          <div class="actions">
+            <%= form.submit %>
+          </div>
+        <% end %>
+
+      <h2 class="h3 mb-3 font-weight-normal text-center">Photo</h2>
+      <% if post.post_pictures.attached? %>
+        <% post.post_pictures.each do |picture| %>
+          <%= image_tag(picture, class:'img-raised', width:'400px')%>
+        <% end %>
+      <% end %>
+       <br>
+      <%= form_tag post_post_pictures_path(post.id), multipart: true do %>
+        <%= file_field_tag :post_pictures %>
+        <%= submit_tag "Ajouter photo", class: "btn btn-lg btn-primary btn-block bouton" %>
+      <% end %>
+
+    <script>
       $('#pictures_toggle-<%= post.id %>').click( function() {
         $('#pictures_toggle_target-<%= post.id %>').fadeIn(500)
         $('#post_toggle_target-<%= post.id %>').hide();
       });
     </script>
+

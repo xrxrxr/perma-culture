@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @comment = Comment.new
+    @comment_thread = Comment.new
     @categories = Category.all
 
     @posts = Post.all.reverse
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
 
   def create
     @comment = Comment.new
+    @comment_thread = Comment.new
     @post = Post.new(title: params[:post][:title],
                     content: params[:post][:content],
                     category: Category.find(params[:post][:category]),
