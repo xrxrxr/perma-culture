@@ -23,9 +23,9 @@
         </p>
       </div>
   </div>
-  <div class='column ml-4'>
-    <h4><%= post.title.downcase %></h4>
-    <p ><%= post.content %></p>
+  <div class="card-body">
+    <h5 class="card-title"><%= post.title.downcase %></h5>
+    <p class="card-text"><%= post.content %></p>
   </div>
 
   </p>
@@ -35,8 +35,10 @@
 
 
   <!-- ----------------------------------------- END PICTURES / POST FOOTER - BUTTONS --------------- -->
-  <div class="d-flex justify-content-between raw mb-0">
-    <strong class="card text-center w-25 ml-3 mb-3 mt-3" ><%=post.category.name%></strong>
+  <div class="d-flex justify-content-between d-flex flex-wrap  raw mb-0">
+    <div class="text-center w-25 ml-3 mb-3 mt-3" >
+      <p><%=post.category.name%></p>
+    </div>
     <div>
       <%= link_to post_likes_path(post.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{post.likes.map{|like| like.user.user_name}.join(', ')}" do %>
         <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_like_<%=post.id%>'><%= post.likes.size %></span><% end %>
