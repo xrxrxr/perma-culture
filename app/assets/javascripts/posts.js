@@ -1,5 +1,5 @@
 function indexPosts (catsize){
-  $('#toggle-post-form').click( function() {
+  $('#toggle_post_form').click( function() {
     $('#target-post-form').show()
   });
 

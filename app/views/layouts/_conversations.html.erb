@@ -1,4 +1,5 @@
 <div id="conversations-list" class="fixed-bottom d-flex justify-content-end align-items-end">
+	<%= render 'shared/user-list'  %>
         <% @conversations.each do |conversation| %>
         <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
         <% end %>

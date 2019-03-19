@@ -33,10 +33,12 @@ function mapProfile(long, lat) {
     inputs[i].onclick = switchLayer;
   }
 
+  var $loading_wheel = $("#spinning-wheel")
+  $loading_wheel.show();
+
   // Get user datas
   // Users
   $.getJSON( "/users.json", function(data) { 
-  console.log(data)
     let geojsonusers = {
       type: 'FeatureCollection',
       features: []
@@ -82,5 +84,6 @@ function mapProfile(long, lat) {
             .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
           .addTo(map);
     });
+  $loading_wheel.hide();
   });
 };
