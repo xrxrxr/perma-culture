@@ -69,6 +69,8 @@
 <%
 =end %>
 
+
+
 <center>
   <br>
   <%= form_with(model: user, local: true) do |form| %>
@@ -84,17 +86,19 @@
       </div>
     <% end %>
 
-    <div class="card card-body col-8 mt-5">
+    <div class="card card-body col-6 mt-5">
 
         <h3 class="mt-4">profil</h3>
 
-        <div class="col-6 form-group">
-          <h5><%= form.label :user_name %></h5>
+        <div class="col-8 form-group">
+          <p class="mb-0"><%= form.label :user_name %></p>
           <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
         </div>
 
-        <div class="col-6 form-group">
-            <h5><%= form.label :description %></h5>
+</br>
+
+        <div class="col-8 form-group">
+            <p class="mb-0"><%= form.label :description %></p>
             <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
           </div>
 
@@ -109,9 +113,12 @@
       </br>
       </br>
 
+      <div class=" col-12 modal-footer justify-content-center">
+
+
     <center>
       <div class="card-body">
-        <h4 class="card-title">Changer mon avatar</h4>
+        <h3 class="card-title">Changer mon avatar</h3>
         </br>
         <% if user.avatar.attached? %>
         <%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'300px')%>
@@ -123,21 +130,20 @@
         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
           <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
           <div>
-            <span class="btn btn-lg btn-primary btn-block bouton btn-file">
+            <span class="btn btn-primary btn-block bouton btn-file">
               <span class="fileinput-new">Choisir un avatar</span>
               <span class="fileinput-exists">Changer</span>
               <input type="file" name="avatar" /></span>
               <br />
-              <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Enlever</a>
+              <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>Annuler</a>
           </div>
         </div>
         <!-- ------- END JASNY ------ -->
-        <div class="modal-footer justify-content-center">
-          <%= submit_tag 'Envoyer la photo', class:"col-md-2 btn btn-lg btn-primary btn-block bouton btn-file" %>
+          <%= submit_tag 'Envoyer la photo', class:"col-6 btn btn-primary btn-block bouton btn-file" %>
         </div>
         <% end %>
       </div>
 
-    </div>
-
 </center>
+
+</div>
