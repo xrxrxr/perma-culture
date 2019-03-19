@@ -44,4 +44,8 @@ class User < ApplicationRecord
   def set_description
     self.update(description: "Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes.")
   end
+
+  def dont_already_like?(likeable)
+    self.likes.find_by(likeable: likeable).nil?
+  end
 end

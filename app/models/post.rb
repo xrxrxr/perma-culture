@@ -5,8 +5,8 @@ class Post < ApplicationRecord
 
   belongs_to :writter, class_name: 'User'
   belongs_to :category
-  has_many :comments, as: :commenteable
-  has_many :likes, as: :likeable
+  has_many :comments, as: :commenteable, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
 
 	validates :content, 
 	presence: true,	

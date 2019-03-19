@@ -1,58 +1,42 @@
 class CommentsController < ApplicationController
 	def create
-			@comment_thread = Comment.new
-		if params[:comment_id]
-			@comment_thread = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Comment.find(params[:comment_id]))
+		params[:comment_id] ? @comment = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Comment.find(params[:comment_id])) : @comment = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Post.find(params[:post_id]))
 
-			if @comment_thread.save
-				puts 'COMMENT TREAD'
-				respond_to do |format|
-					format.html { redirect_to posts_path(params[:post_id]), notice: "Votre commentaire a bien été créé" }
-					format.js
-				end
-			else
-				redirect_to posts_path(params[:post_id])
+		if @comment.save
+			puts 'COMMENT TREAD'
+			respond_to do |format|
+				format.html { redirect_to posts_path(params[:post_id]), notice: "Votre commentaire a bien été créé" }
+				format.js
 			end
-
 		else
-			@comment = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Post.find(params[:post_id]))
-			if @comment.save
-				puts 'COMMENT POST'
-				respond_to do |format|
-					format.html { redirect_to posts_path(params[:post_id]), notice: "Votre commentaire a bien été créé" }
-					format.js
-				end
-			else
-				redirect_to posts_path(params[:post_id])
-			end
-		end		
+			redirect_to posts_path(params[:post_id])
+		end
 	end
 
 	def edit
-		@lecomment = Comment.find(params[:id])
+		@comment = Comment.find(params[:id])
 	end
 
 	def update
-		@lecomment = Comment.find(params[:id])
+		@comment = Comment.find(params[:id])
 		post_params = params.require(:comment).permit(:content)
 
-		if @lecomment.update(post_params)
-			flash[:notice] = 'votre commentaire a bien été édité'
-			redirect_to posts_path(Comment.find(params[:id]).commenteable_id)
+		if @comment.update(post_params)
+			respond_to do |format|
+				format.html { redirect_to posts_path, notice: 'Votre commentaire a bien été édité' }
+				format.js
+			end
 		else
+			redirect_to posts_path, notice: "Erreur lors de l'edition de votre commentaire"
 		end
 	end
 
 	def destroy
-		post = []
-		post << Comment.find(params[:id]).commenteable_id
-
-		@lecomment = Comment.find(params[:id])
-		if @lecomment.destroy
-			flash[:notice] = 'Commentaire supprime avec succes'
-			redirect_to posts_path(potin)
-		else
-			render :destroy
-		end
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		respond_to do |format|
+			format.html { redirect_to posts_path, notice: 'Commentaire supprime !'}
+			format.js
+		end			
 	end
 end

@@ -52,18 +52,9 @@ $(document).ready(function() {
   });
 })();
 
-      $(document).ready(function() { 
-        $('#toggle-user-list').click(function (e) {
-          e.preventDefault()
-            console.log('ouaiiiis')
-          $('#the-user-list').toggle()
-        });
-      });
-// ------------------------------- POSTS -------------------------------
-
-    // function showComments (postid) {
-    //   $(`#comments-toggle-${post.id}`).click(function(e) {
-    //     $(`#comments-area-${post.id}`).toggle();  
-    //   })
-    // }
-    
+$(document).ready(function() { 
+  $('#toggle-user-list').click(function (e) {
+    e.preventDefault()
+    $('#the-user-list').toggle()
+  });
+});

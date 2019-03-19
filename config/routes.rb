@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :post_pictures, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy, :update]
     resources :users, only: [:index, :show]
   end
   get '/welcome' => "posts#index", as: :user_root
