@@ -1,0 +1,2 @@
+$('#user-receiver').text('')
+$("<%= j render 'user_list', users: @users %>").prependTo($('#user-receiver')).hide().fadeIn(500);

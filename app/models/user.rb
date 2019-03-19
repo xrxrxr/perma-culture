@@ -43,4 +43,12 @@ class User < ApplicationRecord
   def dont_already_like?(likeable)
     self.likes.find_by(likeable: likeable).nil?
   end
+
+  def self.search(search)
+    if search
+      where('user_name ILIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 end

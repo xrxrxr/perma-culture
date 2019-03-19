@@ -13,5 +13,4 @@ class Comment < ApplicationRecord
   def readable_date
   	self.created_at.strftime("%d/%m/%y à %H:%M")
   end
-
 end
