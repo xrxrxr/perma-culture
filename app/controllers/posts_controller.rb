@@ -5,11 +5,14 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
+    @posts = Post.search(params[:search])
     @comment = Comment.new
-    @comment_thread = Comment.new
     @categories = Category.all
-
-    @posts = Post.all.reverse
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -26,11 +29,7 @@ class PostsController < ApplicationController
 
   def create
     @comment = Comment.new
-    @comment_thread = Comment.new
-    @post = Post.new(title: params[:post][:title],
-                    content: params[:post][:content],
-                    category: Category.find(params[:post][:category]),
-                    writter: current_user)
+    @post = Post.new(title: params[:post][:title], content: params[:post][:content], category: Category.find(params[:post][:category]), writter: current_user)
 
     if @post.save
       respond_to do |format|
@@ -72,6 +71,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category)
+    params.require(:post).permit(:title, :content, :category, :search)
   end
 end

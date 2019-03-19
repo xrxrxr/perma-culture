@@ -1,0 +1,3 @@
+$('div').find('[data-type="post"]').hide()
+$("<%= j render @posts %>").prependTo($('#sectionposts')).hide().fadeIn(500);
+$('#load-more').hide();

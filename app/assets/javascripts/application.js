@@ -57,6 +57,10 @@ $(document).ready(function() {
     e.preventDefault();
     $('#the-user-list').fadeToggle(800);
   });
+
+   $('#close-messenger').click(function (e) {
+    $('#the-user-list').fadeOut(500);
+  });
 });
 
 

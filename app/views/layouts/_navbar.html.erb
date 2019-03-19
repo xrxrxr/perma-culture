@@ -33,11 +33,13 @@
             <% end %>
           </div>
         </li>
+        <% if current_user && user_signed_in? %>
         <li class="nav-item" >
           <%= link_to '', class:'nav-link', id:'toggle-user-list' do %>
           <i class="fa fa-users"></i>
           <% end %>
         </li>
+        <% end %>
       </ul>
     </div>
   </div>

@@ -1,0 +1,3 @@
+<% users.each do |user| %>
+	<p class='mt-0 mb-0'><%= link_to user.user_name.capitalize, conversations_path(user_id: user), remote: true, method: :post  %></p>
+<% end %>
