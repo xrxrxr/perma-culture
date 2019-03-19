@@ -1,75 +1,48 @@
-# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-	before(:each) do 
-		@user = User.create(username: "johndoe", email: "test@yopmail.com", password: "testceciestuntest")
-	end
+  before(:each) do 
+    @user = FactoryBot.create(:user)    
+  end
 
-	context "validation" do
+  it "has a valid factory" do
+    expect(build(:user)).to be_valid
+  end
 
-		it "is valid with valid attributes" do
-			expect(@user).to be_a(User)
-			expect(@user).to be_valid
-		end
-
-    describe "#username" do
-    	it "should not be lower that 3 characters" do
-    		invalid_user = User.create(username: "aa")
-    		expect(invalid_user).not_to be_valid
-    		expect(invalid_user.errors.include?(:username)).to eq(true)
-    	end
+  context "validation" do
+    it "is valid with valid attributes" do
+      expect(@user).to be_a(User)
+    end
+    describe "#email" do
+      it {expect(@user).to validate_presence_of(:email)}
+      it {expect(@user).to validate_uniqueness_of(:email)}
+      it {is_expected.to allow_value("cyber_snow@hotmail.com").for(:email)}
+      it {is_expected.to allow_value("a@b.com").for(:email)}
+      it {is_expected.to allow_value("cyber@snow.com").for(:email)}
+      it {is_expected.to allow_value("cyber_snow@gmail.com").for(:email)}
+      it {is_expected.to allow_value("cyb@gil.com").for(:email)}
+      it {is_expected.to_not allow_value("cyber_snowgmail.com").for(:email)}
+      it {is_expected.to_not allow_value("cyber_sno@gmailcom").for(:email)}
+      it {is_expected.to_not allow_value("cyber_snow@").for(:email)}
     end
 
     describe "#username" do
-    	it "should not be lower that 3 characters" do
-    		invalid_user = User.create(username: "aa")
-    		expect(invalid_user).not_to be_valid
-    		expect(invalid_user.errors.include?(:username)).to eq(true)
-    	end
+      it {expect(@user).to validate_presence_of(:user_name)}
+      it {expect(@user).to validate_uniqueness_of(:user_name)}
+      it {is_expected.to allow_value("Taraceboolba").for(:user_name)}
+      it {is_expected.to allow_value("Oui").for(:user_name)}
+      it {is_expected.to_not allow_value("").for(:user_name)}
     end
 
-    describe "#username" do
-    	it "should not be lower that 3 characters" do
-    		invalid_user = User.create(username: "aa")
-    		expect(invalid_user).not_to be_valid
-    		expect(invalid_user.errors.include?(:username)).to eq(true)
-    	end
+
+    context "associations" do
+      it { expect(@user).to have_many(:post) }
+      it { expect(@user).to have_one(:category) }
+      it { expect(@user).to have_many(:user) }
+      it { expect(@user).to have_one(:category) }
+
     end
 
   end
-
-  context "associations" do
-
-  	describe "books" do
-  		it "should have_many books" do
-  			book = Book.create(user: @user)
-  			expect(@user.books.include?(book)).to eq(true)
-  		end
-  	end
-
-  end
-
-
-
-  context "public instance methods" do
-
-  	describe "#full_name" do
-
-  		it "should return a string" do
-  			expect(@user.full_name).to be_a(String)
-  		end
-
-  		it "should return the full name" do
-  			user_1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe")
-  			expect(user_1.full_name).to eq("John Doe")
-  			user_2 = User.create(first_name: "Jean-Michel", last_name: "Durant", username: "kikou_du_75")
-  			expect(user_2.full_name).to eq("Jean-Michel Durant")
-  		end
-  	end
-
-  end
-
 end
-

@@ -2,5 +2,7 @@
 
 FactoryBot.define do
   factory :user_category do
+  	belongs_to { :user }
+  	belongs_to { :category }
   end
 end
