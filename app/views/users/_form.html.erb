@@ -1,44 +1,53 @@
 <center>
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <br>
+
+  <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="col-4 form-group">
+      <h5><%= form.label :user_name %></h5>
+      <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
     </div>
+
+    <div class="col-6 form-group">
+        <h5><%= form.label :description %></h5>
+        <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
+      </div>
+
+      </br>
+
+    <div class="actions">
+      <%= form.submit class:"col-2 btn btn-round btn-primary" %>
+    </div>
+  </div>
   <% end %>
 
-   <div class="col-6 form-group">
-    <h5><%= form.label :user_name %></h5>
-    <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
-  </div>
+  </br>
+  </br>
 
-   <div class="col-6 form-group">
-      <h5><%= form.label :description %></h5>
-      <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
-    </div>
-
-    </br>
-
-  <div class="actions">
-    <%= form.submit class:"col-2 btn btn-round btn-primary" %>
-  </div>
-<% end %>
-
-</br>
-</br>
-
-      <h3 class="mb-3 font-weight-normal text-center">Avatar</h3>
-       <center><%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'400px')%></center><br>
-      <%= form_tag user_avatars_path(current_user), multipart: true do %>
-        <%= file_field_tag :avatar %>
+        <h3 class="mb-3 font-weight-normal text-center">Avatar</h3>
+        <%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'400px')%>
         </br>
         </br>
-        <%= submit_tag "Mettre à jour", class: "col-2 btn btn-lg btn-primary btn-block bouton" %>
-      <% end %>
+        <div>
+        <%= form_tag user_avatars_path(current_user), multipart: true do %>
+          <%= file_field_tag :avatar %>
+        </div>
+          </br>
+          </br>
+          <%= submit_tag "Mettre à jour", class: "col-2 btn btn-lg btn-primary btn-block bouton" %>
+        <% end %>
+        </br>
 
 </center>

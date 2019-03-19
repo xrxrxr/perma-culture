@@ -1,6 +1,10 @@
+<% unless params[:comment_id] %>
 $("<%= j render 'comment', comment: @comment %>").prependTo($('#comments-receiver-<%= params[:post_id] %>')).hide().fadeIn(500);
 $('.number-comments-<%= params[:post_id] %>').text(<%= @comment.commenteable.comments.size %>);
-
+<% else %>
+$("<%= j render 'comment_thread', comment_thread: @comment_thread %>").prependTo($('#comments_thread-receiver-<%= params[:comments_id] %>')).hide().fadeIn(500);
+$('.number-comments-<%= params[:post_id] %>').text(<%= @comment_thread.commenteable.comments.size %>);
+<%end%>
 
 
 
