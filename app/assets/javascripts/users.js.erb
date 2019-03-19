@@ -1,0 +1,86 @@
+$(document).ready(function() {
+	$('#toggle-user_description').click(function () {
+		$('#user-description-target').hide();
+		$('#user-description-form').show();
+	});
+});
+
+function mapProfile(long, lat) {
+	
+  // Create map
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZGVvbGFkZWQiLCJhIjoiY2pzb3N1OWU3MHFicDQ0bjVwaTB6dmZ1dCJ9.rC1eAhUccPEc-8WC165V1A';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    center: [long, lat],
+    zoom: 15,
+    style: 'mapbox://styles/mapbox/streets-v11'
+  });
+
+  // Add zoom and rotation controls to the map.
+  map.addControl(new mapboxgl.NavigationControl());
+
+  // Menu
+  var layerList = document.getElementById('menu');
+  var inputs = layerList.getElementsByTagName('input');
+
+  // Layers
+  function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
+  }
+
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+  }
+
+  // Get user datas
+  // Users
+  $.getJSON( "/users.json", function(data) { 
+  console.log(data)
+    let geojsonusers = {
+      type: 'FeatureCollection',
+      features: []
+    };
+
+    $.each(data, function(key, val) {
+      geojsonusers.features.push(val);
+    });
+
+    geojsonusers.features.forEach(function(marker) {
+      var el = document.createElement('div');
+      el.className = 'markeruser';
+
+      new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+        .addTo(map);
+    });
+  })
+
+    // Events
+  $.getJSON( "/events.json", function(data) { 
+
+    let geojsonevents = {
+        type: 'FeatureCollection'
+        ,
+        features: []
+      };
+    
+    $.each(data, function(key, val) {
+      geojsonevents.features.push(val);
+    });
+
+
+    geojsonevents.features.forEach(function(marker) {
+      var el = document.createElement('div');
+      el.className = 'markerevent';
+
+      new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+          .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+          .addTo(map);
+    });
+  });
+};

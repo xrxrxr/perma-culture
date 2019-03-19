@@ -2,10 +2,12 @@
 
 Rails.application.routes.draw do
 
+  get 'events/index'
   devise_for :users, controllers: { registrations: "registrations" }
 
   resources :posts do
     resources :post_pictures, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
     resources :users, only: [:index, :show]
   end
@@ -15,13 +17,14 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
 
-  resources :articles
+  resources :articles, only: [:index, :show]
+  resources :events, only: [:index]
   resources :conversations, only: [:create] do
     member do
       post :close
     end
     resources :messages, only: [:create]
   end
-  
+
   root 'home#index'
 end
