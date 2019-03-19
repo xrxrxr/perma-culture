@@ -2,12 +2,27 @@
 
 Rails.application.routes.draw do
 
-  get 'events/index'
+  namespace :admin do
+      resources :users
+      resources :articles
+      resources :categories
+      resources :comments
+      resources :conversations
+      resources :events
+      resources :likes
+      resources :messages
+      resources :models
+      resources :posts
+      resources :user_categories
+
+      root to: "users#index"
+    end
   devise_for :users, controllers: { registrations: "registrations" }
 
   resources :posts do
     resources :post_pictures, only: [:create, :destroy]
-    resources :comments, only: [:create]
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :update]
     resources :users, only: [:index, :show]
   end
   get '/welcome' => "posts#index", as: :user_root

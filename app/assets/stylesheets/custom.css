@@ -133,6 +133,19 @@ p, .price, .category, .form-group {
   max-width: 100%;
 }
 
+.hero {
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+
 /*------------------------------LANDING PAGE---------------------------------*/
 
 .containerland2 {
@@ -161,7 +174,7 @@ margin-top: 90px;
 .left4 {
   border-right-height: 200px;
 margin-top: 200px;
-margin-bottom: 125px;
+margin-bottom: 400px;
 }
 
 .left5 {
@@ -266,7 +279,6 @@ ul {
   overflow-x: hidden;
 }
 
-
 .message-sent {
   position: relative;
   float: right;
@@ -275,7 +287,6 @@ ul {
   margin: 5px 20px;
   padding: 10px;
 }
-
 
 .message-received {
   background-color: #F1F0F0;
@@ -293,6 +304,25 @@ ul {
   margin: 10px 1px;
 }
 
+#the-user-list {
+  position: fixed;
+  width:300px;
+  height:100%;
+  top:76;
+  margin-top:76px;
+  bottom:0;
+  right:0;
+  z-index: 1;
+  margin:0;
+  background-color: #eeeeee;
+  overflow:auto;
+}
+
+#close-messenger {
+  position:absolute;
+  right:10px;
+  top:10px;
+}
 /*------------------------------------ PoSTS ---------------------------*/
 .user-pres {
   border-top: 0.5px solid $secondary-julien;
@@ -313,6 +343,15 @@ z-index: 1;
 background: #fff;
 padding: 10px;
 font-family: 'Open Sans', sans-serif;
+}
+
+#spinning-wheel {
+  position: relative;
+  font-size: 50px;
+  color: #074a5d;
+  top:50%;
+  left:50%;
+  z-index:1;
 }
 
 .mapboxgl-popup {

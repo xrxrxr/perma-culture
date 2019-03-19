@@ -1,0 +1,9 @@
+<h3 class='text-center'><%= image_tag 'icone-logo.png', width: '45px' %>  Encyclopedia</h3>
+<hr>
+<div class="text-center">
+	<ul class="nav nav-pills nav-pills-info flex-column">
+		<% @articles.each do |article| %>
+			<li class="nav-item"><%= link_to article.title.capitalize, article_path(article.id), id:"article-#{article.id}-trigger", class:"nav-link active bg-primary article-link", remote:true %></p></li>
+		<% end %>
+	</ul>
+</div>

@@ -1,37 +1,149 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%
+=begin %>
+<center>
+  <br>
+  <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="col-4 form-group">
+      <h5><%= form.label :user_name %></h5>
+      <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
     </div>
+
+    <div class="col-6 form-group">
+        <h5><%= form.label :description %></h5>
+        <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
+      </div>
+
+      </br>
+
+    <div class="actions">
+      <%= form.submit class:"col-2 btn btn-round btn-primary" %>
+    </div>
+  </div>
   <% end %>
 
-   <div class="form-group">
-    <%= form.label :user_name %>
-    <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
-  </div>
+  </br>
+  </br>
 
-   <div class="form-group">
-      <%= form.label :description %>
-      <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
+<center>
+  <div class="card-body">
+    <h4 class="card-title">Changer mon avatar</h4>
+    </br>
+    <% if user.avatar.attached? %>
+    <%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'300px')%>
+    <% end %>
+    <br><br>
+    <!-- ----- FORM ------ -->
+    <%= form_tag user_avatars_path(current_user), multipart: true do %>
+    <!-- ------- JASNY FILEUPLOAD ----- -->
+    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+      <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+      <div>
+        <span class="btn btn-lg btn-primary btn-block bouton btn-file">
+          <span class="fileinput-new">Choisir un avatar</span>
+          <span class="fileinput-exists">Changer</span>
+          <input type="file" name="avatar" /></span>
+          <br />
+          <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Enlever</a>
+      </div>
     </div>
-
-  <div class="actions">
-    <%= form.submit class:"btn btn-round btn-primary" %>
+    <!-- ------- END JASNY ------ -->
+    <div class="modal-footer justify-content-center">
+      <%= submit_tag 'Envoyer la photo', class:"col-md-2 btn btn-lg btn-primary btn-block bouton btn-file" %>
+    </div>
+    <% end %>
   </div>
-<% end %>
+</center>
+
+<%
+=end %>
 
 
 
+<center>
+  <br>
+  <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <h2 class="h3 mb-3 font-weight-normal text-center">Avatar</h2>
-       <center><%= image_tag(@user.avatar, class:'img-raised', width:'400px')%></center><br>
-      <%= form_tag user_avatars_path(current_user), multipart: true do %>
-        <%= file_field_tag :avatar %>
-        <%= submit_tag "Mettre à jour", class: "btn btn-lg btn-primary btn-block bouton" %>
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="card card-body col-6 mt-5">
+
+        <h3 class="mt-4">profil</h3>
+
+        <div class="col-8 form-group">
+          <p class="mb-0"><%= form.label :user_name %></p>
+          <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
+        </div>
+
+</br>
+
+        <div class="col-8 form-group">
+            <p class="mb-0"><%= form.label :description %></p>
+            <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
+          </div>
+
+          </br>
+
+        <div class="actions">
+          <%= form.submit class:"col-2 btn btn-round btn-primary" %>
+        </div>
+    
       <% end %>
+
+      </br>
+      </br>
+
+      <div class=" col-12 modal-footer justify-content-center">
+
+
+    <center>
+      <div class="card-body">
+        <h3 class="card-title">Changer mon avatar</h3>
+        </br>
+        <% if user.avatar.attached? %>
+        <%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'300px')%>
+        <% end %>
+        <br><br>
+        <!-- ----- FORM ------ -->
+        <%= form_tag user_avatars_path(current_user), multipart: true do %>
+        <!-- ------- JASNY FILEUPLOAD ----- -->
+        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+          <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+          <div>
+            <span class="btn btn-primary btn-block bouton btn-file">
+              <span class="fileinput-new">Choisir un avatar</span>
+              <span class="fileinput-exists">Changer</span>
+              <input type="file" name="avatar" /></span>
+              <br />
+              <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>Annuler</a>
+          </div>
+        </div>
+        <!-- ------- END JASNY ------ -->
+          <%= submit_tag 'Envoyer la photo', class:"col-6 btn btn-primary btn-block bouton btn-file" %>
+        </div>
+        <% end %>
+      </div>
+
+</center>
+
+</div>

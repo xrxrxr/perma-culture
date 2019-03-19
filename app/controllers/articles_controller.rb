@@ -6,6 +6,10 @@ class ArticlesController < ApplicationController
   def show
     @article = set_article
     @articles = Article.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

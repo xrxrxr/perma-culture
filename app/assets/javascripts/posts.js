@@ -1,6 +1,20 @@
 function indexPosts (catsize){
-  $('#toggle-post-form').click( function() {
+  $('#toggle_post_form').click( function() {
     $('#target-post-form').show()
+  });
+
+  $('#search').click( function() {
+    $('#search-btn-target').show()
+  })
+
+  $('.col-ext').click( function() {
+    $('#target-post-form').hide()
+    $('#search-btn-target').hide()
+  });
+
+  $('.page-header.page-header-mini').click( function() {
+    $('#target-post-form').hide()
+    $('#search-btn-target').hide()
   });
 
   let posts = $('div').find('[data-type="post"]');
@@ -38,3 +52,8 @@ function indexPosts (catsize){
     });
   };
 }
+
+$(document).on('submit', '.new_post', function() {
+  $(this).trigger('reset');
+});
+
