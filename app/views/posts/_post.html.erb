@@ -1,6 +1,6 @@
 <div class="card category-<%= post.category.id %>" id='post-<%= post.id %>' data-type='post'>
   <!-- --------- CARD HEADER----------- --><!-- A ARRANEGR +++++ -->
-  <h3 class="card-title text-center" id="Card_Post">
+  <h3 class="card-title text-center mt-0" id="Card_Post">
     <%= post.title %>
     <% if post.writter == current_user %>      
     <span class='pull-right mr-1 mt-1'> <small>
@@ -12,6 +12,10 @@
   <!-- ---------- CONTENT ------------------- -->
   <p class="justify-content-center pl-3 pr-3">
     <%= post.content %>
+    <footer class="blockquote-footer">
+      <% if post.writter && post.writter.avatar.attached? %>
+        <%= image_tag post.writter.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'22x22' %> <%= post.writter.user_name.capitalize %></footer>
+      <% end %>
   </p>
   <!-- --------------------- POST_PICTURES /CARROUSEL -------------------------- -->
   <%= render 'post_pictures', post: post  %>  
@@ -19,7 +23,9 @@
   <div class="d-flex justify-content-between mb-0">
     <strong class="card text-center w-25 ml-3 mb-3 mt-3" ><%=post.category.name%></strong>
     <div>
-      <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <%= post.likes.size %><% end %>
+      <%= link_to post_likes_path(post.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{post.likes.map{|like| like.user.user_name}.join(', ')}" do %>
+        <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_like_<%=post.id%>'><%= post.likes.size %></span><% end %>
+      <%end%>
       <%= button_tag class:"btn btn-danger btn-neutral pull-right", id:"comments-toggle-#{post.id}" do %><span class='number-comments-<%= post.id %>'><%= post.comments.size %></span> <%= 'commentaire'.pluralize(post.comments.size) %><% end %> <!-- TRIGGER COMMENTS -->
     </div>
   </div>
@@ -29,11 +35,11 @@
   <hr class='m-0'>
   <div class="container" id='comments-area-<%= post.id %>' style='display:none'>
     <div class="row">
-      <div class="col-md-8 ml-auto mr-auto">
+      <div class="col-md-12 ml-3 mr-3">
         <%= render 'comments_form', post: post %> 
         <h3 class="title text-center"><span class='number-comments-<%= post.id %>'><%= post.comments.size %></span> <%= 'commentaire'.pluralize(post.comments.size) %></h3>
         <div class="media-area" id='comments-receiver-<%= post.id %>'>
-          <%= render post.comments.reverse  %>
+          <%= render post.comments.reverse, post: post  %>
         </div>
       </div>
     </div>

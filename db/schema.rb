@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_16_164304) do
+ActiveRecord::Schema.define(version: 2019_03_18_100823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,18 @@ ActiveRecord::Schema.define(version: 2019_03_16_164304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.float "longitude"
+    t.float "latitude"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -130,9 +142,11 @@ ActiveRecord::Schema.define(version: 2019_03_16_164304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_name"
-    t.boolean "is_online"
     t.text "description"
     t.boolean "is_admin", default: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

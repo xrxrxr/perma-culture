@@ -1,11 +1,5 @@
-
-
-
-<div class="media">
-
-    <div>
+<div class="media mr-3" id='comment-<%= comment.id %>'>
     <%= link_to user_path(comment.user.id), class:"pull-left" do %>
-
         <div class="avatar">
             <%= image_tag comment.user.avatar, class:"media-object img-raised", alt:'Photo commentateur' %>
         </div>
@@ -14,52 +8,81 @@
     </div>
     <div class="media-body">
         <h5 class="media-heading"><%= comment.user.user_name%>
-            <small class="text-muted">&middot; Il y a <%= %></small> <!-- TO CHANGE (AGO) -->
+            <small class="text-muted">&middot; Le <%= comment.readable_date %></small>
+            <% if comment.user = current_user %>
+                <small>
+                    <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
+                    <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-2_settings-90"></i><% end %>
+                </small>
+            <% end %>
+
         </h5>
-        <p><%= comment.content%></p>
+        <p id='comment-content-target-<%=comment.id%>'><%= comment.content%></p>
+        <div class="media-body" id='comment-form-target-<%=comment.id%>' style="display:none">
+            <%= form_for @comment, url: post_comment_path(comment.commenteable.id, comment.id), method: :patch, remote: true do |f| %>
+            <%= f.text_area :content, autofocus: true, autocomplete: "content", placeholder:'Commentez', rows:'4', class:'form-control' %>
+            <div class="media-footer">
+                <%= f.submit :Commenter, class:"btn btn-primary pull-right" %>
+            </div>
+            <% end %>
+        </div>
         <div class="media-footer">
             <a class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="Repondre au commentaire" id='trigger-form-<%= comment.id %>'>
                 <i class="now-ui-icons ui-1_send"></i> Repondre  <!-- OUVRE LE FORM COMMENT EN DESSOUS et AJOUTE LE COMMENT -->
             </a>
-            <a class="btn btn-danger btn-neutral pull-right">
-                <i class="now-ui-icons ui-2_favourite-28"></i> <%= comment.likes.size %> <!-- TO DO -->
-            </a>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                
-           <div id='comments_thread-receiver-<%= comment.id %>'>
-                <% comment.comments.each do  |comment_thread| %>
-                <%= render 'comments/comment_thread', comment_thread: comment_thread %>
-                <% end %>
+
+            <%= link_to post_likes_path(post_id: 10, comment_id: comment.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{comment.likes.map{|like| like.user.user_name}.join(', ')}" do %>
+            <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %>
+            <i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_comment_like_<%=comment.id%>'>
+                <%= comment.likes.size %></span><% end %>
+                <%end%>
+
             </div>
-            
+            <div class="row">
+                <div class="col-12">
+                   <div id='comments_thread-receiver-<%= comment.id %>'>
+                    <% comment.comments.each do  |comment_thread| %>
+                        <%= render 'comments/comment_thread', comment: comment_thread %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
-
-
+</div>
+<!-- --------------------------------- FORM ------------------ -->
+<div class="row mr-1" id='comment-form-<%= comment.id %>' style='display:none;'>
+    <div class="col-2"></div>
+    <div class="media media-post col-10 mb-5">
+        <%= link_to user_path(current_user.id), class:'pull-left author' do %>
+            <div class="avatar">
+                <%= image_tag current_user.avatar, class:'media-object img-raised', alt:"Votre photo de profil" %>
+            </div>
+        <% end %>
+        <div class="media-body">
+            <%= form_for @comment, url: post_comments_path(post_id: comment.commenteable.id, comment_id: comment.id), remote: true do |f| %>
+                <%= f.text_area :content, autofocus: true, placeholder:'Commentez', rows:'4', class:'form-control' %>
+                <div class="media-footer">
+                    <%= f.submit :Commenter, class:"btn btn-primary pull-right" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
 </div>
 
-<!-- --------------------------------- FORM ------------------ -->
-<div class="media-body" id='comment-form-<%= comment.id %>' style='display:none'>
-    <%= form_for @comment_thread, url: post_comments_path(post_id: comment.commenteable.id, comment_id: comment.id), remote: true do |f| %>
-    <%= f.text_area :content, autofocus: true, placeholder:'Commentez', rows:'4', class:'form-control' %>
-    <div class="media-footer">
-        <%= f.submit :submit, class:"btn btn-primary pull-right" do %>
-        <i class="now-ui-icons ui-1_send" id="answer"></i> Repondre
-        <% end %>
-    </div>
-    <% end %>
-</div><br><br>
-<!-- ---------------------------- SOUS COMMENTAIRE------------------------------------------------------------------>
 
 
 
 <div style='display: none'>
     <script>
-        $('#trigger-form-<%= comment.id %>').click(function(event) { 
+        $('#trigger-form-<%= comment.id %>').click(function() { 
             $('#comment-form-<%= comment.id %>').toggle();
+        });
+
+        $('#edit-comment-<%= comment.id %>').click(function(e) { 
+            e.preventDefault();
+            console.log('click')
+            $('#comment-content-target-<%=comment.id%>').hide();
+            $('#comment-form-target-<%=comment.id%>').show();
         });
     </script>
 </div>
