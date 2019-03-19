@@ -82,3 +82,5 @@ gem 'table_print'
 gem 'nokogiri'
 gem 'geocoder'
 gem 'mapbox-gl-rails'
+gem 'twitter'
+gem "koala"
