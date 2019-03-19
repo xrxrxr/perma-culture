@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_100823) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_name"
+    t.boolean "is_online"
     t.text "description"
     t.boolean "is_admin", default: false
     t.string "address"
