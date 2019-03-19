@@ -3,6 +3,10 @@ function indexPosts (catsize){
     $('#target-post-form').show()
   });
 
+  $('.col-ext').click( function() {
+    $('#target-post-form').hide()
+  });
+
   let posts = $('div').find('[data-type="post"]');
   let x = 15
 
@@ -38,3 +42,7 @@ function indexPosts (catsize){
     });
   };
 }
+
+$(document).on('submit', '.new_post', function() {
+  $(this).trigger('reset');
+});

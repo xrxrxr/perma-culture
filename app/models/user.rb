@@ -14,12 +14,12 @@ class User < ApplicationRecord
   after_create :welcome_send
 
   has_one_attached :avatar
-  has_many :user_categories
+  has_many :user_categories, dependent: :destroy
   has_many :categories, through: :user_categories
   has_many :posts, foreign_key: 'writter_id'
-  has_many :comments
-  has_many :likes
-  has_many :messages
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :conversations, foreign_key: :sender_id
   
   validates :user_name, 
@@ -41,7 +41,7 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
 
-  def set_description
-    self.update(description: "Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes.")
+  def dont_already_like?(likeable)
+    self.likes.find_by(likeable: likeable).nil?
   end
 end

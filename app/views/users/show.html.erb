@@ -4,7 +4,6 @@
 
 <div class="profile-page">
   <div class="wrapper">
-
     <div class="page-header page-header-small" filter-color="green">
       <div class="page-header-image" data-parallax="true" style="background-image: url(<%= image_path 'pe.jpg' %>) ;">
       </div>
@@ -13,7 +12,10 @@
           <%= image_tag @user.avatar, class:'rounded-circle img-raised', alt:"Photo de profile"%>
         </div>
         <h3 class="title mt-1"><%= @user.user_name %></h3>
+        <% if current_user.id == params[:id] %>
         <p><%= @user.email %></p>
+        <% else %>
+        <% end -%>
         <div class="content">
           <div class="social-description">
             <h2><%= @user.posts.size %></h2>
@@ -29,73 +31,76 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="container">
-        <div class="button-container">
-          <%= link_to edit_user_path(@user), class:"btn btn-primary btn-round btn-lg" do %>Editer mon profile<% end %>
-          <%= link_to edit_user_registration_path, class:"btn btn-default btn-round btn-lg btn-icon", name:'Editer informations de connexion' do %>
-          <i class="now-ui-icons ui-1_settings-gear-63" title="Editer infos de connexion"></i><% end %>
-        </div>
-        <div>
-          <h3 class="title">À propos de moi
-            <%= button_tag class:"btn btn-primary btn-round btn-lg btn-icon", id:'toggle-user_description' do %><i class="fa fa-pencil"></i>
-            <% end %>
-          </h3>
-        </div>
-
-              <h5 class="description text-center" id='user-description-target'>
-                <% if @user.description.nil? %>
-                "Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes."
-                <% else %>
-                <%= @user.description %>
-                <% end %>
-              </h5>
-
-        <div id="user-description-form" class='description text-center mb-5' style='display:none'>
-          <%= form_with(model: @user) do |form| %>
-          <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
-
-            <ul>
-              <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+      <div class="section">
+        <div class="container">
+          <div class="button-container">
+            <% if current_user.id == @user.id %>
+            <%= link_to edit_user_path(current_user.id), class:"btn btn-primary btn-round btn-lg" do %>Editer mon profile<% end %>
+            <%= link_to edit_user_registration_path, class:"btn btn-default btn-round btn-lg btn-icon", name:'Editer mes informations de connexion' do %>
+            <i class="now-ui-icons ui-1_settings-gear-63" title="Editer infos de connexion"></i><% end %>
+            <% elsif current_user.id != params[:id] %>
+            <% end -%>
+          </div>
+          <div>
+            <% if current_user.id == @user.id %> 
+            <h3 class="title">À propos de moi
+              <%= button_tag class:"btn btn-primary btn-round btn-lg btn-icon", id:'toggle-user_description' do %><i class="fa fa-pencil"></i>
               <% end %>
-            </ul>
+            </h3>
+            <% end %>
           </div>
-          <% end %>
-
-          <div class="form-group">
-            <%= form.label :description %>
-            <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
-          </div>
-
-          <div class="actions">
-            <%= form.submit class:"btn btn-round btn-primary", id:'update-description-btn' %>
-          </div>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-4"></div>
-          <div class="col-4">
-            <div class="card">
-              <div class="card-header-center">
-                <center>
-                  <h4 class="card-title-center">Mes publications</h4>
-                </center>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <% @user.posts.limit(10).each do |post| %>
-                  <span class="badge badge-primary"><%= post.title %></span>
-                  <% end %>
-                </li>
+          <h5 class="description text-center" id='user-description-target'>
+            <% if @user.description.nil? %>
+            "Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes."
+            <% else %>
+            <%= @user.description %>
+            <% end %>
+          </h5>
+          <div id="user-description-form" class='description text-center mb-5' style='display:none'>
+            <%= form_with(model: @user) do |form| %>
+            <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
               </ul>
+            </div>
+            <% end %>
+            <div class="form-group">
+              <%= form.label :description %>
+              <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
+            </div>
+            <div class="actions">
+              <%= form.submit class:"btn btn-round btn-primary", id:'update-description-btn' %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+              <div class="card">
+                <div class="card-header-center">
+                  <center>
+                    <h4 class="card-title-center">Mes publications</h4>
+                  </center>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <% @user.posts.limit(10).each do |post| %>
+                    <%= button_tag class:"badge badge-primary", id:"post_title" do %>
+                    <%= post.title %>
+                    <% end -%>
+                    <div class="card-body" id="post_content">  
+                      <%= post.content %>
+                    </div>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -103,6 +108,7 @@
     </div>
   </div>
 </div>
+
 
 <div id='map'>
   <div id='menu'>
@@ -117,9 +123,10 @@
 
 <script>
   <% unless @user.longitude.nil? || @user.latitude.nil? %>
-    mapProfile (<%= @user.longitude%>, <%= @user.latitude %>);
+  mapProfile (<%= @user.longitude%>, <%= @user.latitude %>);
   <% else %>
-    <% results = Geocoder.search(@user_ip) %>
-    mapProfile (<%= results.first.coordinates[1] %>, <%= results.first.coordinates[0] %>);    
+  <% results = Geocoder.search(@user_ip) %>
+  mapProfile (<%= results.first.coordinates[1] %>, <%= results.first.coordinates[0] %>);    
   <% end %>
 </script>
+

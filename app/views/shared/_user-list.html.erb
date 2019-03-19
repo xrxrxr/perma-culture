@@ -1,0 +1,9 @@
+<div class="card" id='the-user-list' style='display:none;'>
+	<div class="card-body bg-white ml-3 fixed-bottom" style='width:200px;'>
+		<strong>Les permaculteurs</strong>
+		<hr class='mb-0'>
+		<% @users.each do |user| %>
+			<p class='mt-0 mb-0'><%= link_to user.user_name.capitalize, conversations_path(user_id: user), remote: true, method: :post  %></p>
+		<% end %>
+	</div>
+</div>

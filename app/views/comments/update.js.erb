@@ -1,0 +1,3 @@
+$('#comment-form-target-<%= params[:id]%>').hide();
+$('#comment-content-target-<%= params[:id]%>').text('<%= @comment.content %>');
+$('#comment-content-target-<%= params[:id]%>').show();
