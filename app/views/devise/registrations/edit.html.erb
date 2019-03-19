@@ -1,20 +1,21 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 <%= render "devise/shared/error_messages", resource: resource %>
-<div class="page-header gradient mt-0">
-  <div class="content">
+<div class="page-header gradient">
+  <div class="content" style="margin-top: 160px;">
     <div class="container">
       <div class="col-md-5 ml-auto mr-auto">
         <div class="card card-login card-plain">
           <form class="form" method="" action="">
+          <center>
             <div class="card-header text-center">
               <div class="logo-container">
-                <%= image_tag('icone-logo.png', alt:"Logo perma-culture") %>
+                <%= image_tag('icon-all-white.png', alt:"Logo perma-culture") %>
               </div>
             </div> <br>
             <div class="card-body">
               <div class="input-group form-group-no-border input-lg">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="now-ui-icons ui-1_email-85 mr-2"></i></span>
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
                 </div>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", style:'height:46px' %>
               </div>
@@ -25,31 +26,31 @@
 
               <div class="input-group form-group-no-border input-lg">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open mr-2"></i></span>
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
                 </div>
                 <%= f.password_field :password, placeholder: 'Nouveau mot de passe (6 caracteres min.)', autocomplete: "new-password", class:"form-control", style:'height:46px' %>
               </div>
 
               <div class="input-group form-group-no-border input-lg">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open mr-2"></i></span>
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
                 </div>
-                <%= f.password_field :password_confirmation, placeholder: 'Encore', autocomplete: "new-password", class:"form-control", style:'height:46px' %>
+                <%= f.password_field :password_confirmation, placeholder: 'Confirmer nouveau mot de passe', autocomplete: "new-password", class:"form-control", style:'height:46px' %>
               </div>
 
               <div class="input-group form-group-no-border input-lg">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open mr-2"></i></span>
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
                 </div>
                 <%= f.password_field :current_password, placeholder: 'Mot de passe actuel', autocomplete: "current-password", class:"form-control", style:'height:46px' %>
               </div>
 
             </div>
-            <div class="card-footer text-center">
-              <%= f.submit "Mettre a jour", class:"btn btn-primary btn-round btn-lg btn-block" %>
+            <div class="card-footer">
+              <%= f.submit "Mettre a jour", class:"col-6 btn btn-primary btn-round btn-lg btn-block" %>
             </div>
+            </center>
           </form>
-          <br>
           <br>
           <br>
           <div class="card-header text-center">
