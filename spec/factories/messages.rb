@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :message do
-    belongs_to{ :user}
-    belongs_to{ :conversation }
+    user{FactoryBot.create(:user)}
+    conversation{FactoryBot.create(:conversation)}
     body { "MyText" }
-    user { nil }
-    conversation { nil }
+
   end
 end

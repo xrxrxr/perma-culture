@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :conversation do
-   belongs_to {:sender}
-   belongs_to {:recipient}
+   sender{FactoryBot.create(:user)}
+   recipient{FactoryBot.create(:user)}
     recipient_id { 1 }
     sender_id { 1 }
   end

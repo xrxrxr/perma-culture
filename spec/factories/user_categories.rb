@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user_category do
-  	belongs_to { :user }
-  	belongs_to { :category }
+  	user{FactoryBot.create(:user)}
+  	category{FactoryBot.create(:category)}
   end
 end
