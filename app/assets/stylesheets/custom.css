@@ -133,6 +133,19 @@ p, .price, .category, .form-group {
   max-width: 100%;
 }
 
+.hero {
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+
 /*------------------------------LANDING PAGE---------------------------------*/
 
 .containerland2 {
@@ -161,7 +174,7 @@ margin-top: 90px;
 .left4 {
   border-right-height: 200px;
 margin-top: 200px;
-margin-bottom: 125px;
+margin-bottom: 400px;
 }
 
 .left5 {

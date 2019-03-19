@@ -31,12 +31,8 @@
               <%= f.label :remember_me %>
             </div>
             <div class="card-footer text-center">
-              <%= f.submit "Se connecter", class:"btn btn-neutral btn-round btn-block" %>
-            </div>
-            <div class="pull-left">
-              <h6>
-                <%= link_to 'Mot de passe oublie?', new_user_password_path, class:"link footer-link"  %>
-              </h6>
+              <%= f.submit "Se connecter", class:"btn btn-neutral btn-round btn-block text-primary mt-0" %>
+                <h6><%= link_to 'Mot de passe oublie?', new_user_password_path, class:"link footer-link" %></h6>
             </div>
           <% end %>
         </div>
