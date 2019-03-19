@@ -1,23 +1,40 @@
 <div class="card category-<%= post.category.id %>" id='post-<%= post.id %>' data-type='post'>
   <!-- --------- CARD HEADER----------- --><!-- A ARRANEGR +++++ -->
   <h3 class="card-title text-center mt-0" id="Card_Post">
-    <%= post.title %>
     <% if post.writter == current_user %>      
     <span class='pull-right mr-1 mt-1'> <small>
-      <%= link_to '#', data: { toggle:"modal", target:"#editModal-#{post.id}" } do %><i class="now-ui-icons ui-2_settings-90"></i><% end %> 
-      <%= link_to post_path(post.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'} do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
+      <%= link_to '#', data: { toggle:"modal", target:"#editModal-#{post.id}" } do %><i class="now-ui-icons ui-1_settings-gear-63 text-primary"></i><% end %> 
+      <%= link_to post_path(post.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'} do %><i class="now-ui-icons ui-1_simple-remove text-primary"></i><% end %>
     </span></small>
     <% end %>
   </h3>
   <!-- ---------- CONTENT ------------------- -->
   <p class="justify-content-center pl-3 pr-3">
-    <%= post.content %>
-    <footer class="blockquote-footer"><%= image_tag post.writter.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'22x22' %> <%= post.writter.user_name.capitalize %></footer>
+ 
+    <div class='row ml-4'>
+      <div>
+        <%= image_tag post.writter.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'64x64' %>
+      </div>
+      <div class='ml-4'>
+        <h5><%= post.writter.user_name.capitalize %></h5>
+        <p style='margin-top: -10px;'<footer class="blockquote-footer"><%=post.created_at.strftime('%a %d %b')%></footer>
+        </p>
+      </div>
+  </div>
+  <div class='column ml-4'>
+    <h4><%= post.title.downcase %></h4>
+    <p ><%= post.content %></p>
+  </div>
+
+
   </p>
   <!-- --------------------- POST_PICTURES /CARROUSEL -------------------------- -->
   <%= render 'post_pictures', post: post  %>  
+
+
+
   <!-- ----------------------------------------- END PICTURES / POST FOOTER - BUTTONS --------------- -->
-  <div class="d-flex justify-content-between mb-0">
+  <div class="d-flex justify-content-between raw mb-0">
     <strong class="card text-center w-25 ml-3 mb-3 mt-3" ><%=post.category.name%></strong>
     <div>
       <%= link_to post_likes_path(post.id), class: 'vote', method: :post, remote: true do %>
@@ -32,6 +49,7 @@
   </div>
   <!-- ------------------------- EDIT MODAL ---------------------------- -->
   <%= render 'modal_edit_post', post: post %> 
+
   <!-- -------------------------- COMMENTS ------------------------------ -->
   <hr class='m-0'>
   <div class="container" id='comments-area-<%= post.id %>' style='display:none'>
