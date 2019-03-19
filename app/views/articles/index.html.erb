@@ -1,14 +1,13 @@
-<% content_for :background_banner, "agriculture.jpg" %>
+<% content_for :background_banner, "bg-#{rand(1..12)}.jpg" %>
 <%= render 'shared/banner_sm' %>
 
-
-<section style="margin:30px; padding:30px; border-radius: 15px; box-shadow: 0 0 10px grey;">
-	<h1 class='text-center'>Encyclopedia</h1>
-	<div class="text-center">
-		<% @articles.each do |article| %>
-			<%= link_to article_path(article.id) do %>
-				<p><%= article.title %></p>
-			<% end %>
-		<% end %>
+<div class="row">
+	<div class='col-lg-8 col-sm-12' id="article-show">
+		<p>Présentation d'article</p>
 	</div>
-</section>
+
+	<div class='col-lg-3' id='articles-nav'>
+		<%= render 'sidebar' %>
+
+	</div>
+</div>

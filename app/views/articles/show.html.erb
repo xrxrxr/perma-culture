@@ -1,27 +1,12 @@
-<% content_for :background_banner, "agriculture.jpg" %>
+<% content_for :background_banner, "bg-#{rand(1..12)}.jpg" %>
 <%= render 'shared/banner_sm' %>
 
 <div class="row">
 	<div class='col-lg-8 col-sm-12' id="article-show">
-		<h2 class='text-center'><%= @article.title %></h2>
-		<hr><br><br><br>
-		<%= @article.content.html_safe %>
-		<small>Contenus provenant de <%= link_to 'Ékopédia', '/' %>, sous licence <%= link_to 'CC-BY-SA 3.0', '/wiki/Ekopedia:Copyright' %>  <%= image_tag 'creative-commons.jpg', size:'15x15' %></small>
+		<%= render 'article_content' %>
 	</div>
 
 	<div class='col-lg-3' id='articles-nav'>
-		<h3 class='text-center'><%= image_tag 'icone-logo.png', width: '45px' %>  Encyclopedia</h3>
-		<hr>
-		<div class="text-center">
-				 <ul class="nav nav-pills nav-pills-info flex-column">
-			<% @articles.each do |article| %>
-		          <li class="nav-item"><%= link_to article.title, article_path(article.id), class:"nav-link active bg-primary" %></li>
-			<% end %>
-		        </ul>				
-		</div>
+		<%= render 'sidebar' %>
 	</div>
 </div>
-
-<script>
-cleanEncyclo()
-</script>

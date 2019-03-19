@@ -36,18 +36,32 @@
   </br>
   </br>
 
-        <h3 class="mb-3 font-weight-normal text-center">Avatar</h3>
-        <%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'400px')%>
-        </br>
-        </br>
-        <div>
-        <%= form_tag user_avatars_path(current_user), multipart: true do %>
-          <%= file_field_tag :avatar %>
-        </div>
-          </br>
-          </br>
-          <%= submit_tag "Mettre à jour", class: "col-2 btn btn-lg btn-primary btn-block bouton" %>
-        <% end %>
-        </br>
-
+<center>
+  <div class="card-body">
+    <h4 class="card-title">Changer mon avatar</h4>
+    </br>
+    <% if user.avatar.attached? %>
+    <%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'300px')%>
+    <% end %>
+    <br><br>
+    <!-- ----- FORM ------ -->
+    <%= form_tag user_avatars_path(current_user), multipart: true do %>
+    <!-- ------- JASNY FILEUPLOAD ----- -->
+    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+      <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+      <div>
+        <span class="btn btn-lg btn-primary btn-block bouton btn-file">
+          <span class="fileinput-new">Choisir un avatar</span>
+          <span class="fileinput-exists">Changer</span>
+          <input type="file" name="avatar" /></span>
+          <br />
+          <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Enlever</a>
+      </div>
+    </div>
+    <!-- ------- END JASNY ------ -->
+    <div class="modal-footer justify-content-center">
+      <%= submit_tag 'Envoyer la photo', class:"col-md-2 btn btn-lg btn-primary btn-block bouton btn-file" %>
+    </div>
+    <% end %>
+  </div>
 </center>

@@ -1,0 +1,4 @@
+<h2 class='text-center'><%= @article.title %></h2>
+<hr><br><br><br>
+<%= @article.content.html_safe %>
+<small>Contenus provenant de <%= link_to 'Ékopédia', '/' %>, sous licence <%= link_to 'CC-BY-SA 3.0', '/wiki/Ekopedia:Copyright' %>  <%= image_tag 'creative-commons.jpg', size:'15x15' %></small>
