@@ -15,15 +15,21 @@
   <% end %>
 <div class="container">
 <center>
-   <div class="form-group">
+  <h4>Editer mon profile</h4>
+  <div class="form-group">
     <%= form.label :pseudo %>
     <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
   </div>
 
-   <div class="form-group">
-      <%= form.label :description %>
-      <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
-    </div>
+  <div class="form-group">
+    <%= form.label :adresse %>
+    <%= form.text_field :address, autofocus:true, autocomplete: "address", class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
+  </div>
 
   <div class="actions">
     <%= form.submit class:"btn btn-round btn-primary" %>
@@ -34,11 +40,32 @@
 
 <br>
 
+
 <center>
-      <h2 class="h3 mb-3 font-weight-normal text-center">Avatar</h2>
-       <center><%= image_tag(@user.avatar, class:'img-raised', width:'400px')%></center><br>
-      <%= form_tag user_avatars_path(current_user), multipart: true do %>
-        <%= file_field_tag :avatar %>
-        <%= submit_tag "Mettre à jour", class: "btn btn-lg btn-primary btn-round" %>
-      <% end %>
+  <div class="card-body">
+    <h4 class="card-title">Changer mon avatar</h4>
+    <% if user.avatar.attached? %>
+    <%= image_tag(@user.avatar, class:'img-raised', width:'400px')%>
+    <% end %>
+    <br><br>
+    <!-- ----- FORM ------ -->
+    <%= form_tag user_avatars_path(current_user), multipart: true do %>
+    <!-- ------- JASNY FILEUPLOAD ----- -->
+    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+      <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+      <div>
+        <span class="btn btn-raised btn-round btn-default btn-file">
+          <span class="fileinput-new">Choisir un avatar</span>
+          <span class="fileinput-exists">Changer</span>
+          <input type="file" name="avatar" /></span>
+          <br />
+          <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Enlever</a>
+      </div>
+    </div>
+    <!-- ------- END JASNY ------ -->
+    <div class="modal-footer justify-content-center">
+      <%= submit_tag 'Envoyer la photo', class:"btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
 </center>

@@ -1,56 +1,26 @@
 class LikesController < ApplicationController
+
 	def create
-		if params[:comment_id]
-			@post = Comment.find(params[:post_id])
-			if current_user.likes.find_by(likeable_type: 'Comment', likeable_id: params[:post_id]).nil?
-				flash[:notice] = 'You like it !'
-				@like = Like.new(user: current_user, likeable: @post)
-				if @like.save
-					respond_to do |format|
-						format.html { redirect_to posts_path, notice: "Thanks for your like!" }
-						format.js
-					end
-				else
-					respond_to do |format|
-						format.html { redirect_to @post, alert: "Awwwhh snap! No likes for the likes of you." }
-					end
+		params[:comment_id] ? @likeable = Comment.find(params[:comment_id]) : @likeable = Post.find(params[:post_id])
+
+		if current_user.dont_already_like?(@likeable)
+			@like = Like.new(user: current_user, likeable: @likeable)
+			if @like.save
+				respond_to do |format|
+					format.html { redirect_to posts_path, notice: "Merci pour votre like!" }
+					format.js
 				end
 			else
-				flash[:notice] = "Vous n'aimez plus !"
-				Like.find_by(likeable_type: 'Comment', likeable_id: params[:post_id]).destroy
 				respond_to do |format|
-					format.html { redirect_to posts_path, notice: "Thanks for your like!" }
-					format.js
+					format.html { redirect_to posts_path, alert: "Erreur lors du likes, desole" }
 				end
 			end
-
-
-		else	
-			@post = Post.find(params[:post_id])
-			if current_user.likes.find_by(likeable_type: 'Post', likeable_id: params[:post_id]).nil?
-				flash[:notice] = 'You like it !'
-				@like = Like.new(user: current_user, likeable: @post)
-				if @like.save
-					respond_to do |format|
-						format.html { redirect_to posts_path, notice: "Thanks for your like!" }
-						format.js
-					end
-				else
-					respond_to do |format|
-						format.html { redirect_to @post, alert: "Awwwhh snap! No likes for the likes of you." }
-					end
-				end
-			else
-				flash[:notice] = "Vous n'aimez plus !"
-				Like.find_by(likeable_type: 'Post', likeable_id: params[:post_id]).destroy
-				respond_to do |format|
-					format.html { redirect_to posts_path, notice: "Thanks for your like!" }
-					format.js
-				end
+		else
+			Like.find_by(likeable: @likeable).destroy
+			respond_to do |format|
+				format.html { redirect_to posts_path, notice: "Vous n'aimez plus !" }
+				format.js
 			end
 		end
-	end
-
-	def destroy
 	end
 end

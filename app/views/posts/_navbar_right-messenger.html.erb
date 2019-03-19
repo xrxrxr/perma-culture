@@ -4,7 +4,7 @@
 	</div>
 	<div class="card-body ml-3">
 		<% @users.each do |user| %>
-			<p><%= image_tag user.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'32x32' %> <%= link_to user.user_name.capitalize, conversations_path(user_id: user), remote: true, method: :post  %></p>		
+			<p><%= image_tag user.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'32x32' %> <%= link_to user.user_name.capitalize, conversations_path(user_id: user), remote: true, method: :post  %></p>
 		<% end %>
 	</div>
 </div>
