@@ -8,8 +8,6 @@ class UserDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    avatar_attachment: Field::HasOne,
-    avatar_blob: Field::HasOne,
     user_categories: Field::HasMany,
     categories: Field::HasMany,
     posts: Field::HasMany,
@@ -39,17 +37,15 @@ class UserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :avatar_attachment,
-    :avatar_blob,
     :user_categories,
     :categories,
+    :posts,
+    :comments,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :avatar_attachment,
-    :avatar_blob,
     :user_categories,
     :categories,
     :posts,
@@ -77,8 +73,6 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :avatar_attachment,
-    :avatar_blob,
     :user_categories,
     :categories,
     :posts,

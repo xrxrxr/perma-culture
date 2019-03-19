@@ -8,8 +8,6 @@ class PostDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    post_pictures_attachments: Field::HasMany.with_options(class_name: "ActiveStorage::Attachment"),
-    post_pictures_blobs: Field::HasMany.with_options(class_name: "ActiveStorage::Blob"),
     writter: Field::BelongsTo.with_options(class_name: "User"),
     category: Field::BelongsTo,
     comments: Field::HasMany,
@@ -29,17 +27,15 @@ class PostDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :post_pictures_attachments,
-    :post_pictures_blobs,
     :writter,
     :category,
+    :comments,
+    :likes,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :post_pictures_attachments,
-    :post_pictures_blobs,
     :writter,
     :category,
     :comments,
@@ -57,8 +53,6 @@ class PostDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :post_pictures_attachments,
-    :post_pictures_blobs,
     :writter,
     :category,
     :comments,
