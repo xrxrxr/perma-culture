@@ -45,9 +45,13 @@
           </h3>
         </div>
 
-        <h5 class="description text-center" id='user-description-target'>
-          <%= @user.description %>
-        </h5>
+              <h5 class="description text-center" id='user-description-target'>
+                <% if @user.description.nil? %>
+                "Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes."
+                <% else %>
+                <%= @user.description %>
+                <% end %>
+              </h5>
 
         <div id="user-description-form" class='description text-center mb-5' style='display:none'>
           <%= form_with(model: @user) do |form| %>
@@ -110,7 +114,6 @@
     <label for='satellite'>satellite</label>
   </div>
 </div>
-
 
 <script>
   <% unless @user.longitude.nil? || @user.latitude.nil? %>
