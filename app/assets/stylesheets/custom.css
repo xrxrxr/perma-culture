@@ -304,6 +304,25 @@ ul {
   margin: 10px 1px;
 }
 
+#the-user-list {
+  position: fixed;
+  width:300px;
+  height:100%;
+  top:76;
+  margin-top:76px;
+  bottom:0;
+  right:0;
+  z-index: 1;
+  margin:0;
+  background-color: #eeeeee;
+  overflow:auto;
+}
+
+#close-messenger {
+  position:absolute;
+  right:10px;
+  top:10px;
+}
 /*------------------------------------ PoSTS ---------------------------*/
 .user-pres {
   border-top: 0.5px solid $secondary-julien;
@@ -324,6 +343,15 @@ z-index: 1;
 background: #fff;
 padding: 10px;
 font-family: 'Open Sans', sans-serif;
+}
+
+#spinning-wheel {
+  position: relative;
+  font-size: 50px;
+  color: #074a5d;
+  top:50%;
+  left:50%;
+  z-index:1;
 }
 
 .mapboxgl-popup {
