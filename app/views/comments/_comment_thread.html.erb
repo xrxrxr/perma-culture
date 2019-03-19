@@ -1,10 +1,10 @@
 <div class="media mr-1" id='comment-<%= comment.id %>'>
     <div class="media pull-right">
-        <a class="" href="#pablo">
-            <div class="avatar">
-                <%= image_tag comment.user.avatar, class:"media-object img-raised", alt:'Photo comment_re' %>
-            </div>
-        </a>
+        <%= link_to user_path(comment.user.id), class:"pull-left" do %>
+        <div class="avatar">
+            <%= image_tag comment.user.avatar, class:"media-object img-raised", alt:'Photo commentateur' %>
+        </div>
+    <% end -%>
     </div>
     <div class="media-body d-block">
         <h5 class="media-heading "><%= comment.user.user_name%>
@@ -45,3 +45,4 @@
         });
     </script>
 </div>
+

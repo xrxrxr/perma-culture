@@ -1,0 +1,50 @@
+<%= form_for(:user, url: registration_path(:user)) do |f| %>
+<div class='content sign_up'>
+    <div class="container">
+        <div class="col-12 ml-auto mr-auto">
+            <div class="card card-login card-plain">
+                <form class="form" method="" action="">
+                    <div class="card-header text-center">
+                        <div class="logo-container">
+                            <%= image_tag 'icone-log.png', alt:'Icône' %>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="input-group form-group-no-border input-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-white"><i class="now-ui-icons users_circle-08"></i></span>
+                            </div>
+                            <%= f.text_field :user_name, autofocus: true, autocomplete: "Votre nom", placeholder:"Pseudo", class:'form-control', style:'height: 46px;' %>
+                        </div>
+
+                        <div class="input-group form-group-no-border input-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-white"><i class="now-ui-icons ui-1_email-85"></i></span>
+                            </div>
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
+
+                        </div>
+                        <div class="input-group form-group-no-border input-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-white"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                            </div>
+                            <%= f.password_field :password, autocomplete: "current-password", placeholder:"Mot de passe", class:'form-control', style:'height: 46px;' %>
+                        </div>
+
+                        <div class="input-group form-group-no-border input-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-white"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                            </div>
+                            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmation", class:'form-control', style:'height: 46px;' %>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <%= f.submit "Creer un compte", class:"btn btn-primary btn-round btn-block" %>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
