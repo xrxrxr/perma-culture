@@ -83,4 +83,5 @@ gem 'nokogiri'
 gem 'geocoder'
 gem 'mapbox-gl-rails'
 gem 'twitter'
-gem "koala"
+gem 'koala'
+gem 'administrate'

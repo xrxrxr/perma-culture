@@ -10,7 +10,6 @@ class User < ApplicationRecord
   after_validation :geocode
   
   before_create :grab_image
-  after_create :set_description
   after_create :welcome_send
 
   has_one_attached :avatar
