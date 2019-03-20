@@ -1,76 +1,3 @@
-<%
-=begin %>
-<center>
-  <br>
-  <%= form_with(model: user, local: true) do |form| %>
-    <% if user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-        <ul>
-          <% user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="col-4 form-group">
-      <h5><%= form.label :user_name %></h5>
-      <%= form.text_field :user_name, autofocus:true, autocomplete: "description", class:"form-control" %>
-    </div>
-
-    <div class="col-6 form-group">
-        <h5><%= form.label :description %></h5>
-        <%= form.text_area :description, autofocus:true, autocomplete: "description", class:"form-control" %>
-      </div>
-
-      </br>
-
-    <div class="actions">
-      <%= form.submit class:"col-2 btn btn-round btn-primary" %>
-    </div>
-  </div>
-  <% end %>
-
-  </br>
-  </br>
-
-<center>
-  <div class="card-body">
-    <h4 class="card-title">Changer mon avatar</h4>
-    </br>
-    <% if user.avatar.attached? %>
-    <%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'300px')%>
-    <% end %>
-    <br><br>
-    <!-- ----- FORM ------ -->
-    <%= form_tag user_avatars_path(current_user), multipart: true do %>
-    <!-- ------- JASNY FILEUPLOAD ----- -->
-    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-      <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
-      <div>
-        <span class="btn btn-lg btn-primary btn-block bouton btn-file">
-          <span class="fileinput-new">Choisir un avatar</span>
-          <span class="fileinput-exists">Changer</span>
-          <input type="file" name="avatar" /></span>
-          <br />
-          <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Enlever</a>
-      </div>
-    </div>
-    <!-- ------- END JASNY ------ -->
-    <div class="modal-footer justify-content-center">
-      <%= submit_tag 'Envoyer la photo', class:"col-md-2 btn btn-lg btn-primary btn-block bouton btn-file" %>
-    </div>
-    <% end %>
-  </div>
-</center>
-
-<%
-=end %>
-
-
-
 <center>
   <br>
   <%= form_with(model: user, local: true) do |form| %>
@@ -105,7 +32,7 @@
           </br>
 
         <div class="actions">
-          <%= form.submit class:"col-2 btn btn-round btn-primary" %>
+          <%= form.submit 'Mettre à jour', class:"col-2 btn btn-round btn-primary" %>
         </div>
     
       <% end %>
@@ -121,7 +48,7 @@
         <h3 class="card-title">Changer mon avatar</h3>
         </br>
         <% if user.avatar.attached? %>
-        <%= image_tag(@user.avatar, class:'rounded-circle img-raised', width:'300px')%>
+        <%= image_tag(@user.avatar_big, class:'rounded-circle img-raised', width:'300px')%>
         <% end %>
         <br><br>
         <!-- ----- FORM ------ -->

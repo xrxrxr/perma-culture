@@ -6,12 +6,12 @@
 <div class="row">
   <div class="col-md-2 col-ext"></div>
   <!-- ----------------- NAV LEFT  ---------------- -->
-  <div class="col-md-2">
+  <div class="col-md-2 ml-0">
     <%= render 'navbar_left-user' %>
   </div>
   <!-- ------------------- MAIN SECTION ------------ -->
-  <div class="container col-md-4 justify-content-center mt-3" id='main-section'>
-    <%= render 'search_post-form' %>
+  <div class="container col-md-4 justify-content-center mt-3 ml-0 mr-0 p-0" id='main-section'>
+
     <%= render 'index_post-form' %>
     <span id="sectionposts">
     <%= render @posts %>
@@ -21,7 +21,7 @@
     </div>
   </div>
   <!-- -------------------- NAV RIGHT ------------------ -->
-  <div class="col-md-2 mt-3">
+  <div class="col-md-2 mt-3 ml-0">
     <%= render 'navbar_right-messenger' %>        
   </div>
   <!-- ---------------------------------------------------------->

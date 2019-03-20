@@ -1,4 +1,4 @@
-<div class="card category-<%= post.category.id %>" id='post-<%= post.id %>' data-type='post'>
+<div class="card category-<%= post.category.id %> mt-0 mb-3" id='post-<%= post.id %>' data-type='post'>
   <!-- --------- CARD HEADER----------- --><!-- A ARRANEGR +++++ -->
   <h3 class="card-title text-center mt-0" id="Card_Post">
     <% if post.writter == current_user %>      
@@ -30,15 +30,15 @@
   <!-- --------------------- POST_PICTURES /CARROUSEL -------------------------- -->
   <%= render 'post_pictures', post: post  %>  
   <!-- ----------------------------------------- END PICTURES / POST FOOTER - BUTTONS --------------- -->
-  <div class="d-flex justify-content-between d-flex flex-wrap  raw mb-0">
+  <div class="d-flex justify-content-between d-flex flex-wrap raw mb-0">
     <div class="text-center w-25 ml-3 mb-3 mt-3" >
-      <p><%=post.category.name%></p>
+      <p>#<%=post.category.name.downcase%></p>
     </div>
-    <div>
+    <div class='pt-1 pr-2'>
       <%= link_to post_likes_path(post.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{post.likes.map{|like| like.user.user_name}.join(', ')}" do %>
         <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_like_<%=post.id%>'><%= post.likes.size %></span><% end %>
       <%end%>
-      <%= button_tag class:"btn btn-danger btn-neutral pull-right", id:"comments-toggle-#{post.id}" do %><span class='number-comments-<%= post.id %>'><%= post.comments.size %></span> <%= 'commentaire'.pluralize(post.comments.size) %><% end %> <!-- TRIGGER COMMENTS -->
+      <%= button_tag class:"btn btn-danger btn-neutral pull-right mr-2", id:"comments-toggle-#{post.id}" do %><span class='number-comments-<%= post.id %>'><%= post.comments.size %></span> <%= 'commentaire'.pluralize(post.comments.size) %><% end %> <!-- TRIGGER COMMENTS -->
     </div>
   </div>
   <!-- ------------------------- EDIT MODAL ---------------------------- -->

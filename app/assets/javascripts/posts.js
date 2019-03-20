@@ -1,6 +1,6 @@
 function indexPosts (catsize){
   $('#toggle_post_form').click( function() {
-    $('#target-post-form').show()
+    $('.target-post-form').show()
   });
 
   $('#search').click( function() {
@@ -8,12 +8,12 @@ function indexPosts (catsize){
   })
 
   $('.col-ext').click( function() {
-    $('#target-post-form').hide()
+    $('.target-post-form').hide()
     $('#search-btn-target').hide()
   });
 
   $('.page-header.page-header-mini').click( function() {
-    $('#target-post-form').hide()
+    $('.target-post-form').hide()
     $('#search-btn-target').hide()
   });
 

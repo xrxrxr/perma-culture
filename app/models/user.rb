@@ -58,4 +58,20 @@ class User < ApplicationRecord
                                 [:crop, "64x64+0+0"]
                                 ])
   end
+
+  def avatar_medium
+      return self.avatar.variant(combine_options: [
+                                [:resize, "210x210^"],
+                                [:gravity, "center"],
+                                [:crop, "210x210+0+0"]
+                                ])
+  end
+
+  def avatar_big
+      return self.avatar.variant(combine_options: [
+                                [:resize, "300x300^"],
+                                [:gravity, "center"],
+                                [:crop, "300x300+0+0"]
+                                ])
+  end
 end
