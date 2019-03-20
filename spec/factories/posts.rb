@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :post do
-    title { Faker::Space.agency}
+    title { Faker::Name.name}
     content { Faker::Lorem.paragraphs}
-    writter{FactoryBot.create(:user)}
-    category{FactoryBot.created(:category)}
+    category{FactoryBot.build(:category)}
+    writter{FactoryBot.build(:user)}
   end
 end
