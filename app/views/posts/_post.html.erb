@@ -18,7 +18,7 @@
         <% end %>
       </div>
       <div class='ml-4'>
-        <h5><%= post.writter.user_name.capitalize %></h5>
+        <%= link_to user_path(post.writter.id) do %> <h5><%= post.writter.user_name.capitalize %></h5><%end%>
         <p style='margin-top: -10px;'<footer class="blockquote-footer"><%=post.created_at.strftime('%a %d %b')%></footer>
         </p>
       </div>
