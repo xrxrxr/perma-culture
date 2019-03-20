@@ -1,97 +1,21 @@
-<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url(<%= image_path('agriculture-botanical.jpg')%>)">>
-<div class="row">
+<section class="hero d-flex row align-items-center">
+  <div class="center flex-column text-white col-md-4 offset-md-2">
 
-    <div class="col-6 left3 flex-column text-white d-flex justify-content-center align-items-left">
+    <br>
+    <br>
+    <h1 class="display-4">Le reseau social de l'agriculture ecologique</h1>
 
-      <div class=" left5 flex-column text-white">
+    <blockquote>Bienvenue sur Perma-culture ! Ce site a pour but de mettre en relation des férus de permaculture, ainsi que des non initiés. En utilisant ce site, vous pourrez découvrir d'autres utilisateurs et leurs techniques, des articles dont la source est vérifiée, et bien d'autres choses !</blockquote>
 
-          <h3 class="ml-3">Le reseau social de l'agriculture ecologique</h3>
-
-          <p class="h4 col-8">Bienvenue sur Perma-culture ! Ce site a pour but de mettre en relation des férus de permaculture, ainsi que des non initiés. En utilisant ce site, vous pourrez découvrir d'autres utilisateurs et leurs techniques, des articles dont la source est vérifiée, et bien d'autres choses !</p>
-
-          </div>
-
-      </div>
+  </div>
 
 
-      <div class="col-6 right left3 text-white d-flex justify-content-center align-items-center" id='right'>
+  <div class="text-white d-flex col-md-4 offset-md-1">
 
-        <%= form_for(:user, url: registration_path(:user)) do |f| %>
-        <div class='content sign_up left3 mr-5'>
-          <div class="container">
-            <div class="col-12 ml-auto mr-auto">
-              <div class="card card-login card-plain">
-                <form class="form" method="" action="">
-                  <div class="card-header text-center">
-                    <div class="logo-container">
-                      <img alt="Icônes" src=<%= image_path 'icone-logo.png' %>>
-                    </div>
-                  </div>
-                  <div class="card-body">
+    <%= render 'sign_up_form' %>
+    <%= render 'login_modal' %>
 
-                    <div class=" mr-5 input-group form-group-no-border input-lg">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text text-white">
-                          <i class="now-ui-icons users_circle-08 mr-2"></i></i>
-                        </span>
-                      </div>
-                      <%= f.text_field :user_name, autofocus: true, autocomplete: "Votre nom", placeholder:"Pseudo", class:'form-control', style:'height: 46px;' %>
+  </div>
 
-                    </div>
+</section> 
 
-                    <div class="input-group form-group-no-border input-lg">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text text-white">
-                          <i class="now-ui-icons ui-1_email-85 mr-2"></i>
-                        </span>
-                      </div>
-                      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
-
-                    </div>
-                    <div class="input-group form-group-no-border input-lg">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text text-white">
-                          <i class="now-ui-icons ui-1_lock-circle-open mr-2"></i>
-                        </span>
-                      </div>
-                      <%= f.password_field :password, autocomplete: "current-password", placeholder:"Mot de passe", class:'form-control', style:'height: 46px;' %>
-                    </div>
-
-                    <div class="input-group form-group-no-border input-lg">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text text-white">
-                          <i class="now-ui-icons ui-1_lock-circle-open mr-2"></i>
-                        </span>
-                      </div>
-                      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmation", class:'form-control', style:'height: 46px;' %>
-                    </div>
-
-                    <div class="input-group form-group-no-border input-lg">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text text-white"><i class="now-ui-icons users_circle-08"></i></span>
-                      </div>
-                      <%= f.text_field :address, autofocus: true, autocomplete: "Votre nom", placeholder:"Adresse, ville ou code postal", class:'form-control', style:'height: 46px;' %>
-                    </div>
-                  </div>
-                  <center>
-
-                    <div class="col-8 card-footer text-center">
-                      <%= f.submit "Creer un compte", class:"mb-3 btn-primary btn-round btn-block" %>
-                    </div>
-                    <div>
-                    
-                    <h6><%= link_to 'Déjà inscrit ?', '', class:"link footer-link text-white", data: {toggle:"modal", target:"#loginModal"} %></h6>                    <%= render 'login_modal' %>
-                  
-                    </div>
-                  </center>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-    </div>
-</section>
-
-                                     
