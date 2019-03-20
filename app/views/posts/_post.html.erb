@@ -10,7 +10,6 @@
   </h3>
   <!-- ---------- CONTENT ------------------- -->
   <p class="justify-content-center pl-3 pr-3">
- 
     <div class='row ml-4'>
       <div>
         <% if post.writter && post.writter.avatar.attached? %>
@@ -27,13 +26,9 @@
     <h5 class="card-title"><%= post.title.downcase %></h5>
     <p class="card-text"><%= post.content %></p>
   </div>
-
   </p>
   <!-- --------------------- POST_PICTURES /CARROUSEL -------------------------- -->
   <%= render 'post_pictures', post: post  %>  
-
-
-
   <!-- ----------------------------------------- END PICTURES / POST FOOTER - BUTTONS --------------- -->
   <div class="d-flex justify-content-between d-flex flex-wrap  raw mb-0">
     <div class="text-center w-25 ml-3 mb-3 mt-3" >
@@ -48,7 +43,6 @@
   </div>
   <!-- ------------------------- EDIT MODAL ---------------------------- -->
   <%= render 'modal_edit_post', post: post %> 
-
   <!-- -------------------------- COMMENTS ------------------------------ -->
   <hr class='m-0'>
   <div class="container" id='comments-area-<%= post.id %>' style='display:none'>

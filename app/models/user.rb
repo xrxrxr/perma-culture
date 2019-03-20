@@ -32,8 +32,7 @@ class User < ApplicationRecord
   format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Veuillez entrer un email valide"}
 
   def grab_image
-    downloaded_image = (open('https://epicattorneymarketing.com/wp-content/uploads/2016/07/Headshot-Placeholder-1.png'))
-    self.avatar.attach(io: downloaded_image, filename: 'image.png')
+    self.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default-avatar.png')), filename: 'image.png')
   end
   
   def welcome_send
@@ -49,6 +48,12 @@ class User < ApplicationRecord
       where('user_name ILIKE ?', "%#{search}%")
     else
       all
+    end
+  end
+
+  def mini
+    if self.avatar
+      return self.avatar.variant(resize_and_pad: '64x64')
     end
   end
 end

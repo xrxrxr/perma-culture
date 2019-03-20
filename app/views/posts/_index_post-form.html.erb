@@ -3,7 +3,7 @@
 		Publier
 	</h3>
 	<div class="card-body">
-		<%= form_for @post, remote:true do | f |  %>
+		<%= form_for @post, remote:true, multipart: true, direct_upload: true do | f |  %>
 		<% if @post.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(@post.errors.count, "erreur") %> ont empeche de creer cette publication:</h2>
@@ -27,8 +27,8 @@
 		</div>
 		<div class="d-flex justify-content-between">
 			<div class="form-group"> 
-				<%= f.label :category, 'Categorie' %><br>
-				<%= f.select(:category, options_for_select(@categories.collect { | c | [c.name, c.id] }), class:" form-control selectpicker", data: {style:"select-with-transition btn-primary btn-round"}) %> 
+				<%= f.label :category_id, 'Categorie' %><br>
+				<%= f.select(:category_id, options_for_select(@categories.collect { | c | [c.name, c.id] }), class:" form-control selectpicker", data: {style:"select-with-transition btn-primary btn-round"}) %> 
 			</div>
 			<div class="form-group mb-0 mt-3"> 
 				<%= f.submit :Publier, class:"col-12 btn btn-primary btn-round btn-block pull-right btn-messag mb-0" %>

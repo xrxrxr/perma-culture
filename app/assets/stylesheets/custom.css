@@ -304,6 +304,10 @@ ul {
   margin: 10px 1px;
 }
 
+.conversation-list-to-right {
+  right:300px;
+}
+
 #the-user-list {
   position: fixed;
   width:300px;
@@ -318,10 +322,11 @@ ul {
   overflow:auto;
 }
 
+
 #close-messenger {
   position:absolute;
   right:10px;
-  top:10px;
+  top:86px;
 }
 /*------------------------------------ PoSTS ---------------------------*/
 .user-pres {

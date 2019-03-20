@@ -56,10 +56,12 @@ $(document).ready(function() {
   $('#toggle-user-list').click(function (e) {
     e.preventDefault();
     $('#the-user-list').fadeToggle(800);
+    $('#conversations-list').toggleClass('conversation-list-to-right');
   });
 
    $('#close-messenger').click(function (e) {
     $('#the-user-list').fadeOut(500);
+    $('#conversations-list').removeClass('conversation-list-to-right');
   });
 });
 
