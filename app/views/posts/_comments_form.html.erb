@@ -2,7 +2,7 @@
             <div class="media media-post">
               <%= link_to user_path(current_user.id), class:'pull-left author' do %>
                 <div class="avatar">
-                  <%= image_tag current_user.avatar, class:'media-object img-raised', alt:"Votre photo de profil" %>
+                  <%= image_tag current_user.avatar_mini, class:'media-object img-raised', alt:"Votre photo de profil" %>
                 </div>
               <% end %>
               <div class="media-body">

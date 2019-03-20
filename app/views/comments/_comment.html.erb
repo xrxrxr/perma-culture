@@ -1,17 +1,17 @@
+<!-- -- CONTENT  -->
 <div class="media mr-3" id='comment-<%= comment.id %>'>
     <%= link_to user_path(comment.user.id), class:"pull-left" do %>
         <div class="avatar">
-            <%= image_tag comment.user.avatar, class:"media-object img-raised", alt:'Photo commentateur' %>
+            <%= image_tag comment.user.avatar_mini, class:"media-object img-raised", alt:'Photo commentateur' %>
         </div>
     <% end %>
-
     <div class="media-body">
         <h5 class="media-heading"><%= comment.user.user_name%>
             <small class="text-muted">&middot; Le <%= comment.readable_date %></small>
             <% if comment.user = current_user %>
                 <small>
                     <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
-                    <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-2_settings-90"></i><% end %>
+                    <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-1_settings-gear-63"></i><% end %>
                 </small>
             <% end %>
         </h5>
@@ -52,11 +52,11 @@
     <div class="media media-post col-10 mb-5">
         <%= link_to user_path(current_user.id), class:'pull-left author' do %>
             <div class="avatar">
-                <%= image_tag current_user.avatar, class:'media-object img-raised', alt:"Votre photo de profil" %>
+                <%= image_tag current_user.avatar_mini, class:'media-object img-raised', alt:"Votre photo de profil" %>
             </div>
         <% end %>
         <div class="media-body">
-            <%= form_for @comment, url: post_comments_path(post_id: comment.commenteable.id, comment_id: comment.id), remote: true do |f| %>
+            <%= form_for @comment, url: post_comments_path(post_id: comment.commenteable.id, comment_id: comment.id), method: :post, remote: true do |f| %>
                 <%= f.text_area :content, autofocus: true, placeholder:'Commentez', rows:'4', class:'form-control' %>
                 <div class="media-footer">
                     <%= f.submit :Commenter, class:"btn btn-primary pull-right" %>

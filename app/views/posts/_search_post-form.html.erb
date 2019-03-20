@@ -1,9 +1,9 @@
-<div class="card" id='post-form'>
+<div class="card mb-2 bg-light-gray" id='post-form'>
 	<div class="card-body p-2">
 		<%= form_tag posts_path, method: :get, remote: true do %>
-		<p class='mb-0 text-center'>
-			<%= text_field_tag :search, params[:search], placeholder:'Recherche..', class:"form-control bg-realwhite" %>
-			<%= submit_tag "Recherche", name: nil, autofocus: true, class:"btn btn-primary", id:'search-btn-target', style:'display:none' %>
+		<p class='mt-1 mb-0 text-center d-flex'>
+			<%= text_field_tag :search, params[:search], placeholder:'Rechercher parmis les publications', class:"form-control bg-realwhite" %>
+			<%= submit_tag "Recherche", name: nil, autofocus: true, class:"btn btn-sm btn-round btn-primary mt-1 ml-2", data: {toggle:"tooltip", placement:"top"}, title:"Rechercher parmis les publications" %>
 		</p>
 		<% end %>
 	</div>

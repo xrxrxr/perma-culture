@@ -2,7 +2,7 @@
     <div class="media pull-right">
         <%= link_to user_path(comment.user.id), class:"pull-left" do %>
         <div class="avatar">
-            <%= image_tag comment.user.avatar, class:"media-object img-raised", alt:'Photo commentateur' %>
+            <%= image_tag comment.user.avatar_mini, class:"media-object img-raised", alt:'Photo commentateur' %>
         </div>
     <% end -%>
     </div>
@@ -12,7 +12,7 @@
             <% if comment.user = current_user %>
                 <small>
                     <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
-                    <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-2_settings-90"></i><% end %>
+                    <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-1_settings-gear-63"></i><% end %>
                 </small>
             <% end %>
         </h5>
