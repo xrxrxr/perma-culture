@@ -113,8 +113,6 @@
     <input id='satellite' type='radio' name='rtoggle' value='satellite'>
     <label for='satellite'>satellite</label>
   </div>
-  <i class="now-ui-icons loader_refresh" id="spinning-wheel" style='display: none'></i>
-  
 </div>
 
 <script>
@@ -124,4 +122,4 @@
     <% results = Geocoder.search(@user_ip) %>
     mapProfile (<%= results.first.coordinates[1] %>, <%= results.first.coordinates[0] %>);    
   <% end %>
-</script>
+</script>s
