@@ -5,7 +5,7 @@
 
       <div class=" left5 flex-column text-white">
 
-          <h3 class="ml-3">Le réseau social de l'agriculture écologique</h3>
+          <h3 class="ml-3">Le reseau social de l'agriculture ecologique</h3>
 
           <p class="h4 col-8">Bienvenue sur Perma-culture ! Ce site a pour but de mettre en relation des férus de permaculture, ainsi que des non initiés. En utilisant ce site, vous pourrez découvrir d'autres utilisateurs et leurs techniques, des articles dont la source est vérifiée, et bien d'autres choses !</p>
 
@@ -80,7 +80,7 @@
                     </div>
                     <div>
                     
-                      <h6><%= link_to 'Mot de passe oublie?', new_user_password_path, class:"link footer-link text-white" %></h6>
+                    <h6><%= link_to 'Déjà inscrit ?', '', class:"link footer-link text-white", data: {toggle:"modal", target:"#loginModal"} %></h6>                    <%= render 'login_modal' %>
                   
                     </div>
                   </center>
