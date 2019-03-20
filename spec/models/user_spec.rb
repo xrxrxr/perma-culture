@@ -39,8 +39,6 @@ RSpec.describe User, type: :model do
     context "associations" do
       it { expect(@user).to have_many(:post) }
       it { expect(@user).to have_one(:category) }
-      it { expect(@user).to have_many(:user) }
-      it { expect(@user).to have_one(:category) }
 
     end
 

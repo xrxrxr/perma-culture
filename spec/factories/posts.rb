@@ -4,7 +4,5 @@ FactoryBot.define do
     content { Faker::Lorem.paragraphs}
     writter{FactoryBot.create(:user)}
     category{FactoryBot.created(:category)}
-    commenteable { true }
-    likeable { true }
   end
 end

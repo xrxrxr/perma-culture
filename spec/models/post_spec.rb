@@ -31,8 +31,10 @@ RSpec.describe Post, type: :model do
 		end
 
 		context "associations" do
-			it { expect(@post).to have_many(:orders) }
-			it { expect(@post).to have_one(:cart) }
+			it { expect(@post).to have_many(:comments)}
+			it { expect(@post).to have_many(:likes)}
+			it { expect(@post).to belong_to(:writter).class_name('User')}
+			it { expect(@post).to belong_to(:category)}
 		end
 	end
 end
