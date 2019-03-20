@@ -25,20 +25,19 @@
             <% end %>
         </div>
         <div class="media-footer">
-            <a class="btn btn-primary btn-neutral pull-right text-primary" rel="tooltip" title="Repondre au commentaire" id='trigger-form-<%= comment.id %>'>
-                <i class="now-ui-icons ui-1_send"></i> Repondre
-            </a>
-
             <%= link_to post_likes_path(post_id: 10, comment_id: comment.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{comment.likes.map{|like| like.user.user_name}.join(', ')}" do %>
-            <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %>
+                <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %>
                 <i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_comment_like_<%=comment.id%>'>
                 <%= comment.likes.size %></span><% end %>
             <%end%>
+            <a class="btn btn-primary btn-neutral pull-right text-primary" rel="tooltip" title="Repondre au commentaire" id='trigger-form-<%= comment.id %>'>
+                <i class="now-ui-icons ui-1_send"></i> Repondre
+            </a>
             </div>
             <div class="row">
                 <div class="col-12">
                    <div id='comments_thread-receiver-<%= comment.id %>'>
-                    <% comment.comments.each do  |comment_thread| %>
+                    <% comment.comments.reverse.each do  |comment_thread| %>
                         <%= render 'comments/comment_thread', comment: comment_thread %>
                     <% end %>
                 </div>

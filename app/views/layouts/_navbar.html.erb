@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-black fixed-top navbar-transparent">
   <div class="container">
     <div class="navbar-translate">
-      <%= link_to root_path, class:"navbar-brand" do%>
+      <%= link_to posts_path, class:"navbar-brand" do%>
         <%= image_tag "logo_white.png", height: "40" %> 
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" id='navbar-btn'>
@@ -13,30 +13,32 @@
     <div class="collapse navbar-collapse" data-color="black">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to posts_path, class:"nav-link" do %><i class="now-ui-icons ui-2_favourite-28"></i><p>PUBLICATIONS</p><% end %>
+          <%= link_to posts_path, class:"nav-link" do %><i class="now-ui-icons ui-2_favourite-28"></i><p>Publications</p><% end %>
         </li>
         <li class="nav-item">
-          <%= link_to article_path(1), class:"nav-link" do %><i class="now-ui-icons education_paper"></i><p>ARTICLES</p><% end %>
+          <%= link_to article_path(1), class:"nav-link" do %><i class="now-ui-icons education_paper"></i><p>Articles</p><% end %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
-            <i class="now-ui-icons users_single-02" aria-hidden="true"></i><p>PROFILE</p>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <% if current_user && user_signed_in? %>
-            <%= link_to user_path(current_user.id), class:"dropdown-item" do %><i class="now-ui-icons users_circle-08"></i>Mon profile<% end %>                         
-            <div class="dropdown-divider"></div>
-            <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %><i class="now-ui-icons media-1_button-power"></i>Se deconnecter<% end %>
-            <% else %>
-            <%= link_to new_user_registration_path, class:"dropdown-item" do %><i class="now-ui-icons users_single-02"></i>Inscription<% end %>
-            <%= link_to new_user_session_path, class:"dropdown-item" do %><i class="now-ui-icons media-1_button-power"></i>Connection<% end %>
-            <% end %>
-          </div>
+        <li class="nav-item">
+          <%= link_to users_path, class:"nav-link" do %><i class="now-ui-icons location_pin"></i><p>Autour de moi</p><% end %>
         </li>
         <li class="nav-item" >
-          <%= link_to '', class:'nav-link', id:'toggle-user-list' do %>
-          <i class="now-ui-icons ui-1_email-85"></i>
+          <%= link_to '', class:'nav-link mt-0', id:'toggle-user-list' do %><i class="now-ui-icons ui-1_email-85"></i><p>Messagerie</p><% end %>
+        </li>
+        <li class="nav-item dropdown">
+
+          <%= link_to '', class:"nav-link dropdown-toggle", id:"navbarDropdownMenuLink", data: {toggle:"dropdown"} do %>
+            <i class="now-ui-icons users_single-02" aria-hidden="true"></i><p>Profile</p>
           <% end %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <% if current_user && user_signed_in? %>
+            <%= link_to user_path(current_user.id), class:"dropdown-item" do %><i class="now-ui-icons users_circle-08"></i><p class='text-dark'>Mon profile</p><% end %>                         
+            <div class="dropdown-divider"></div>
+            <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %><i class="now-ui-icons media-1_button-power"></i><p class='text-dark'>Se déconnecter</p><% end %>
+            <% else %>
+            <%= link_to new_user_registration_path, class:"dropdown-item" do %><i class="now-ui-icons users_single-02"></i><p class='text-dark'>Inscription</p><% end %>
+            <%= link_to new_user_session_path, class:"dropdown-item" do %><i class="now-ui-icons media-1_button-power"></i><p class='text-dark'>Connection</p><% end %>
+            <% end %>
+          </div>
         </li>
       </ul>
     </div>
