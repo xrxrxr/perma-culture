@@ -15,47 +15,11 @@
 }
 
 @font-face {
-  font-family: 'Aleo-Regular';
-  src: url('Aleo-Regular.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Aleo-Light';
-  src: url('Aleo-Light.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Aleo-Bold';
-  src: url('Aleo-Bold.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'Ostrich';
   src: url('OstrichSans-Heavy.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-
-@font-face {
-  font-family: 'Delio';
-  src: url('Delio-trial.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('Mont-HeavyDEMO.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 
 /*---------------------------------------- JAVASCRIPT ALERTS ----------------------*/
 
@@ -168,7 +132,7 @@ p, .price, .category, .form-group {
 
 .left3 {
   border-right-height: 200px;
-margin-top: 90px;
+margin-top: 70px;
 }
 
 .left4 {
