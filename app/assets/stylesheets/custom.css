@@ -287,6 +287,10 @@ ul {
   margin: 10px 1px;
 }
 
+.conversation-list-to-right {
+  right:300px;
+}
+
 #the-user-list {
   position: fixed;
   width:300px;
@@ -301,10 +305,11 @@ ul {
   overflow:auto;
 }
 
+
 #close-messenger {
   position:absolute;
-  right:10px;
-  top:10px;
+  right:2px;
+  top:95px;
 }
 /*------------------------------------ PoSTS ---------------------------*/
 .user-pres {
@@ -362,4 +367,53 @@ font-family: 'Open Sans', sans-serif;
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+/*--- COVER --*/
+
+.cover {
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.cover img {
+    height: 180px;
+  }
+
+.profile-pic {
+  margin-bottom: 0;
+}
+
+.profile-pic img {
+  border-radius: 50%;
+  border: 4px solid white;
+  height: 180px;
+  overflow: hidden;
+  transform: translateY(-50%) 
+}
+
+
+.username {
+  margin-top: -90px;
+  text-align: center;
+}
+
+.username h3 {
+  font-family: 'Montserrat';
+}
+
+.username p {
+  font-family: 'Montserrat';
+  font-size:0.9em;
+}
+
+.social-description p {
+  font-size: 1,2em;
+}
+
+.bg-transparent {
+  background: rgb(255, 255, 255) transparent;
+  background: rgba(255, 255, 255, 0.8);
 }
