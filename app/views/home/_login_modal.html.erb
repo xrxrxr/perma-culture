@@ -1,3 +1,4 @@
+<center>
 <div class="modal fade modal-primary mt-5" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-login">
     <div class="modal-content">
@@ -30,13 +31,16 @@
               <%= f.check_box :remember_me %>
               <%= f.label :remember_me %>
             </div>
-            <div class="card-footer text-center">
-              <%= f.submit "Se connecter", class:"btn btn-neutral btn-round btn-block text-primary mt-0" %>
+            <center>
+            <div class="card-footer text-center justify-center-center">
+              <%= f.submit "Se connecter", class:"col-8 btn-neutral btn-round text-primary mb-4" %>
                 <h6><%= link_to 'Mot de passe oublie?', new_user_password_path, class:"link footer-link" %></h6>
             </div>
+            </center>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+</center>

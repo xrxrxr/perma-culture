@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 FactoryBot.define do
   factory :category do
-    name { 'MyString' }
+    name{ Faker::Lorem.words(2) }
   end
 end
