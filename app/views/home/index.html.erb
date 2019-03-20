@@ -1,18 +1,21 @@
-<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url(<%= image_path('agriculture-botanical.jpg')%>)">>
-  <div class="d-flex row center">
-    <!-- -------------- TOP SECTION LEFT - TEXT -------- -->
-    <div class="col-6 offset-md-2 left3 mt-5 flex-column text-white d-flex justify-content-center align-items-left">
-      
-        <h1 class="display-1">Bienvenue permaculteur !</h1>
-        <h1 class="display-5">Rejoins le reseau des permaculteurs </h1>
-        
-    </div>
-    <!-- -------------- TOP SECTION RIGHT - FORM ------------ -->
-    <div class="col-4 right left3 text-white d-flex mt-0 justify-content-center align-items-center" id='right'>
-      <%= render 'sign_up_form' %>
-      <%= render 'login_modal' %>
-    </div>
-  </div>
-</section>
+<section class="hero d-flex row align-items-center">
+  <div class="center flex-column text-white col-md-4 offset-md-2">
 
-  
+    <br>
+    <br>
+    <h1 class="display-4">Le reseau social de l'agriculture ecologique</h1>
+
+    <blockquote>Bienvenue sur Perma-culture ! Ce site a pour but de mettre en relation des férus de permaculture, ainsi que des non initiés. En utilisant ce site, vous pourrez découvrir d'autres utilisateurs et leurs techniques, des articles dont la source est vérifiée, et bien d'autres choses !</blockquote>
+
+  </div>
+
+
+  <div class="text-white d-flex col-md-4 offset-md-1">
+
+    <%= render 'sign_up_form' %>
+    <%= render 'login_modal' %>
+
+  </div>
+
+</section> 
+
