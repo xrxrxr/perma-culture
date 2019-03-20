@@ -6,15 +6,10 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options =  {:host => 'perma-culture.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => "perma-culture.herokuapp.com" }
 
-<<<<<<< HEAD
-  config.web_socket_server_url = "wss://permatest.herokuapp.com/cable" 
-config.action_cable.allowed_request_origins = ['https://permatest.herokuapp.com', 'http://permatest.herokuapp.com']
-=======
-  config.web_socket_server_url = "wss://perma-culture.herokuapp.com/cable" 
-  config.action_cable.allowed_request_origins = ['https://perma-culture.herokuapp.com', 'http://perma-culture.herokuapp.com']
->>>>>>> af8558c3a551cc5d8746afeee6f6bb230412b34a
+  config.web_socket_server_url = "wss://perma-culture.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ["https://perma-culture.herokuapp.com", "http://perma-culture.herokuapp.com"]
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -31,10 +26,10 @@ config.action_cable.allowed_request_origins = ['https://permatest.herokuapp.com'
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(:harmony => true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -55,7 +50,7 @@ config.action_cable.allowed_request_origins = ['https://permatest.herokuapp.com'
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
-# config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict - Transport - Security, and use secure cookies.
   # config.force_ssl = true
@@ -94,7 +89,7 @@ config.action_cable.allowed_request_origins = ['https://permatest.herokuapp.com'
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV['RAILS_LOG_TO_STDOUT'].present?
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)

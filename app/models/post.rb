@@ -2,8 +2,6 @@
 
 class Post < ApplicationRecord
   has_many_attached :post_pictures
-  # after_create :tweet
-  # after_create :fb_post
 
   belongs_to :writter, class_name: 'User'
   belongs_to :category

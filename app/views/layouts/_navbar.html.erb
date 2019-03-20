@@ -16,7 +16,7 @@
           <%= link_to posts_path, class:"nav-link" do %><i class="now-ui-icons ui-2_favourite-28"></i><p>PUBLICATIONS</p><% end %>
         </li>
         <li class="nav-item">
-          <%= link_to article_path(25), class:"nav-link" do %><i class="now-ui-icons education_paper"></i><p>ARTICLES</p><% end %>
+          <%= link_to article_path(1), class:"nav-link" do %><i class="now-ui-icons education_paper"></i><p>ARTICLES</p><% end %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
@@ -26,20 +26,18 @@
             <% if current_user && user_signed_in? %>
             <%= link_to user_path(current_user.id), class:"dropdown-item" do %><i class="now-ui-icons users_circle-08"></i>Mon profile<% end %>                         
             <div class="dropdown-divider"></div>
-            <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %><i class="now-ui-icons media-1_button-power"></i>Se déconnecter<% end %>
+            <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %><i class="now-ui-icons media-1_button-power"></i>Se deconnecter<% end %>
             <% else %>
             <%= link_to new_user_registration_path, class:"dropdown-item" do %><i class="now-ui-icons users_single-02"></i>Inscription<% end %>
             <%= link_to new_user_session_path, class:"dropdown-item" do %><i class="now-ui-icons media-1_button-power"></i>Connection<% end %>
             <% end %>
           </div>
         </li>
-        <% if current_user && user_signed_in? %>
         <li class="nav-item" >
           <%= link_to '', class:'nav-link', id:'toggle-user-list' do %>
           <i class="fa fa-users"></i>
           <% end %>
         </li>
-        <% end %>
       </ul>
     </div>
   </div>
