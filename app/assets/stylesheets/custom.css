@@ -99,18 +99,37 @@ p, .price, .category, .form-group {
 
 .hero {
     /* Sizing */
-    width: 100vw;
+    position: absolute;
     height: 100vh;
 
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url(image_path("agriculture-botanical.jpg"));
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    overflow: scroll;
 }
+
+.hero 
+
 
 
 
 /*------------------------------LANDING PAGE---------------------------------*/
+
+.left_panel {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+}
+
+.right_panel {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+}
 
 .containerland2 {
   background-size: 100%;
