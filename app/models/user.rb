@@ -51,9 +51,11 @@ class User < ApplicationRecord
     end
   end
 
-  def mini
-    if self.avatar
-      return self.avatar.variant(resize_and_pad: '64x64')
-    end
+  def avatar_mini
+      return self.avatar.variant(combine_options: [
+                                [:resize, "64x64^"],
+                                [:gravity, "center"],
+                                [:crop, "64x64+0+0"]
+                                ])
   end
 end

@@ -3,7 +3,7 @@
 		Publier
 	</h3>
 	<div class="card-body">
-		<%= form_for @post, remote:true, multipart: true, direct_upload: true do | f |  %>
+		<%= form_for @post, remote:true do | f |  %>
 		<% if @post.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(@post.errors.count, "erreur") %> ont empeche de creer cette publication:</h2>

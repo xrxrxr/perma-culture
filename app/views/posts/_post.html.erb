@@ -2,7 +2,7 @@
   <!-- --------- CARD HEADER----------- --><!-- A ARRANEGR +++++ -->
   <h3 class="card-title text-center mt-0" id="Card_Post">
     <% if post.writter == current_user %>      
-    <span class='pull-right mr-1 mt-1'> <small>
+    <span class='pull-right mr-3 mt-1'> <small>
       <%= link_to '#', data: { toggle:"modal", target:"#editModal-#{post.id}" } do %><i class="now-ui-icons ui-1_settings-gear-63 text-primary"></i><% end %> 
       <%= link_to post_path(post.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'} do %><i class="now-ui-icons ui-1_simple-remove text-primary"></i><% end %>
     </span></small>
@@ -13,7 +13,7 @@
     <div class='row ml-4'>
       <div>
         <% if post.writter && post.writter.avatar.attached? %>
-        <%= image_tag post.writter.avatar, class:'rounded-circle img-raised', alt:"Photo de profil", size:'64x64' %>
+        <%= image_tag post.writter.avatar_mini, class:'rounded-circle img-raised', alt:"Photo de profil", size:'64x64' %>
         <% end %>
       </div>
       <div class='ml-4'>
