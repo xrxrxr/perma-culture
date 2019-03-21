@@ -56,15 +56,15 @@
           <br>
           <br>
           <div class="card-header text-center">
-            <h3>Cancel my account</h3>
-          </div> 
+            <h3>Supprimer mon compte</h3>
+          </div>
           <center>
             <div class="input-group form-group-no-border input-lg justify-content-center">
-              <p>Unhappy?</p> 
+              <p>pas content ?</p>
             </div>
           </center>
             <div class="input-group form-group-no-border input-lg justify-content-center">
-              <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-primary btn-round btn-lg btn-block" %>
+              <%= button_to "Supprimer", registration_path(resource_name), data: { confirm: "est-tu sûr?" }, method: :delete, class:"btn btn-primary btn-round btn-lg btn-block" %>
             </div>
         </div>
       </div>
