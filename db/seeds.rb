@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-Category.create!(name: 'General')
-puts 'Category created'
 Category.create!(name: 'Permaculture')
 puts 'Category created'
 Category.create!(name: 'Pisciculture')
@@ -12,3 +8,7 @@ Category.create!(name: 'Agroforesterie')
 puts 'Category created'
 Category.create!(name: 'Maréchage')
 puts 'Category created'
+Scrapper.new.perform
+puts 'Scrapping done'
+Events.new.perform
+puts 'Events Created'
