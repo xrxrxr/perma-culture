@@ -1,4 +1,4 @@
-<% content_for :title, "les posts " %>
+<% content_for :title, "Publications" %>
 
 <p id="notice"><%= notice %></p>
 <% content_for :background_banner, "bg-#{rand(1..12)}.jpg" %>
@@ -6,27 +6,27 @@
 
 
 <div class="row">
-  <div class="col-md-2 col-ext"></div>
+  <div class="col-lg-2 col-md-0 col-ext"></div>
   <!-- ----------------- NAV LEFT  ---------------- -->
-  <div class="col-md-2 ml-0">
+  <div class="col-lg-2 col-md-3 ml-0">
     <%= render 'navbar_left-user' %>
   </div>
   <!-- ------------------- MAIN SECTION ------------ -->
-  <div class="container col-md-4 justify-content-center mt-3 ml-0 mr-0 p-0" id='main-section'>
+  <div class="container col-lg-4  col-md-6 col-sm-12 justify-content-center mt-3 ml-0 mr-0 p-0" id='main-section'>
     <%= render 'index_post-form' %>
     <span id="sectionposts">
     <%= render @posts %>
     </span>
-    <div class="col-md-3 ml-auto mr-auto">
+    <div class="col-md-3 col-sm-3 col-4 ml-auto mr-auto">
       <button rel="tooltip" class="btn btn-primary btn-round" id='load-more'>Voir plus...</button>
     </div>
   </div>
   <!-- -------------------- NAV RIGHT ------------------ -->
-  <div class="col-md-2 mt-3 ml-0">
-    <%= render 'navbar_right-messenger' %>
+  <div class="col-lg-2 col-md-3 mt-3 ml-0">
+    <%= render 'navbar_right-messenger' %>        
   </div>
   <!-- ---------------------------------------------------------->
-  <div class="col-md-2 col-ext"></div>
+  <div class="col-lg-2 col-md-0 col-ext"></div>
 </div>
 
 

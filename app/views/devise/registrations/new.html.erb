@@ -1,3 +1,4 @@
+<% content_for :title, "M'inscrire" %>
 <br>
 <br>
 <br>
@@ -72,11 +73,4 @@
 <br>
 <br>
 <br>
-<script src="https://cdn.jsdelivr.net/npm/places.js@1.16.1"></script>
-<script>//PUBLIC KEYS 
-  var placesAutocomplete = places({
-    appId: "plFDMUATEQLD", //PUBLIC KEYS 
-    apiKey: "85d12aa1ef6eb5ab0c86b00d983e07d8", //PUBLIC KEYS 
-    container: document.querySelector('#user_address')
-  });
-</script>
+<%= render "shared/algolia_places" %>

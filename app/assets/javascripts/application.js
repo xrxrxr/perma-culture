@@ -35,6 +35,7 @@ $(document).ready(function() {
     $('select').selectpicker();
 });
 
+
 // ---------------------------------- CHAT -------------------------------------
 (function() {
   $(document).on('click', '.toggle-window', function(e) {
