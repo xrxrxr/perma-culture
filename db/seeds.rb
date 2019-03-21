@@ -12,3 +12,11 @@ Category.create!(name: 'Agroforesterie')
 puts 'Category created'
 Category.create!(name: 'Maréchage')
 puts 'Category created'
+
+# Encyclopedia scrapper
+Scrapper.new.perform
+
+# Event scrapper
+EventsCreator.new.perform
+
+
