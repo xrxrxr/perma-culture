@@ -6,7 +6,9 @@ class Comment < ApplicationRecord
   belongs_to :commenteable, polymorphic: true
   has_many :comments, as: :commenteable, dependent: :destroy
 
-  validates :content, presence: true
+  validates :content, 
+  	presence: true,
+  	length:{minimum: 2, maximum: 1000}
 
   scope :by_recent_comment, -> { order(created_at: :asc)}
 
