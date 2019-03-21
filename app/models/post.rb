@@ -25,6 +25,10 @@ class Post < ApplicationRecord
      .first
   end
 
+  def readable_date
+    self.created_at.strftime("%d/%m/%y à %H:%M")
+  end
+
   def self.search(search)
     if search
       where('title ILIKE ?', "%#{search}%")

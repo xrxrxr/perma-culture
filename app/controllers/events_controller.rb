@@ -1,25 +1,9 @@
 class EventsController < ApplicationController
-  def index
-  	# HELPER
-  	@events = Event.all
-  	@geojson = Array.new
+  include EventsHelper
 
-  	@events.each do |event|
-  		unless event.latitude.nil?
-  			@geojson << {
-  				type: "Feature",
-  				geometry: {
-  					type: "point",
-  					coordinates: [event.longitude, event.latitude]
-  				},
-  				properties: {
-  					title: event.description,
-            description: ""
-  				}
-  			}
-  		end
-  	end
-		# HELPER 
+  def index
+  	@events = Event.all
+    build_geojson(@events)
 
 		respond_to do |format|
 			format.html

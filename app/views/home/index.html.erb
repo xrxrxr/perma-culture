@@ -1,21 +1,18 @@
 <section class="hero d-flex row align-items-center">
   <div class="center flex-column text-white col-md-4 offset-md-2">
-
     <br>
     <br>
     <h1 class="display-4">Le reseau social de l'agriculture ecologique</h1>
-
     <blockquote>Bienvenue sur Perma-culture ! Ce site a pour but de mettre en relation des férus de permaculture, ainsi que des non initiés. En utilisant ce site, vous pourrez découvrir d'autres utilisateurs et leurs techniques, des articles dont la source est vérifiée, et bien d'autres choses !</blockquote>
-
   </div>
-
-
   <div class="text-white d-flex col-md-4 offset-md-1">
-
     <%= render 'sign_up_form' %>
     <%= render 'login_modal' %>
-
   </div>
-
 </section> 
 
+<script>
+$(document).ready( function() {
+    $('footer').hide()
+})
+</script>
