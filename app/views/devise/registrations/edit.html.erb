@@ -1,9 +1,11 @@
+<% content_for :title, "Changer mes informations de connection" %>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 <%= render "devise/shared/error_messages", resource: resource %>
 <div class="page-header gradient">
   <div class="content" style="margin-top: 160px;">
     <div class="container">
-      <div class="col-md-5 ml-auto mr-auto">
+      <div class="col-lg-5 col-md-5 col-sm-12 ml-auto mr-auto">
         <div class="card card-login card-plain">
           <form class="form" method="" action="">
           <center>

@@ -2,6 +2,7 @@
 
 class Post < ApplicationRecord
   has_many_attached :post_pictures
+
   after_create :tweet
   after_create :fb_post
 
@@ -27,6 +28,10 @@ class Post < ApplicationRecord
      .first
   end
 
+  def readable_date
+    self.created_at.strftime("%d/%m/%y à %H:%M")
+  end
+
   def self.search(search)
     if search
       where('title ILIKE ?', "%#{search}%")
@@ -42,11 +47,6 @@ class Post < ApplicationRecord
   end
 
   def fb_post
-    @graph = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
-
-    pages = @graph.get_connections('me', 'accounts')
-    page_token = pages.first['access_token']
-    @page_graph = Koala::Facebook::API.new(page_token)
-    @page_graph.put_wall_post("#{self.writter.user_name} a poste un article : #{self.title} sur perma-culture.herokuapp.com \n #{self.content}")
+    FacebookPost.new(self.title, self.content, self.writter).perform
   end
 end

@@ -1,9 +1,22 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<% @users.each do |user| %>
-<%= user.user_name %>
-<% end %>
+<% content_for :title, "Autour de moi" %>
+
+  <div id='map' style='height:900px'>
+    <div id='menu'>
+      <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+      <label for='basic'>basic</label>
+      <input id='streets' type='radio' name='rtoggle' value='streets'>
+      <label for='streets'>streets</label>
+      <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+      <label for='satellite'>satellite</label>
+    </div>
+    <i class="now-ui-icons loader_refresh" id="spinning-wheel" style='display: none'></i>
+  </div>
+
+  <script>
+    <% unless @user.longitude.nil? || @user.latitude.nil? %>
+      mapProfile (<%= @user.longitude%>, <%= @user.latitude %>);
+    <% else %>
+      <% results = Geocoder.search(@user_ip) %>
+      mapProfile (<%= results.first.coordinates[1] %>, <%= results.first.coordinates[0] %>);
+    <% end %>
+  </script>

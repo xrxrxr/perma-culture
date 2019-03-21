@@ -1,6 +1,4 @@
-<p id="notice">
-  <%= notice %>
-</p>
+<% content_for :title, "Mon profil" %>
 
 <div class="profile-page">
   <div class="wrapper">
@@ -10,7 +8,7 @@
       </div>
       <div class="content-center">
         <div class="photo-container">
-          <%= image_tag @user.avatar, class:'rounded-circle img-raised', alt:"Photo de profile"%>
+          <%= image_tag @user.avatar_big, class:'rounded-circle img-raised', alt:"Photo de profile"%>
         </div>
         <h3 class="title mt-1"><%= @user.user_name %></h3>
         <p><%= @user.email if params[:id].to_i == current_user.id %></p>
@@ -48,13 +46,13 @@
           </h3>
         </div>
 
-              <h5 class="description text-center" id='user-description-target'>
-                <% if @user.description.nil? %>
-                Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes. 
-                <% else %>
-                <%= @user.description %>
-                <% end %>
-              </h5>
+        <h5 class="description text-center" id='user-description-target'>
+          <% if @user.description.nil? %>
+            Il nous faudra répondre à notre véritable vocation, qui n'est pas de produire et de consommer jusqu'à la fin de nos vies, mais d'aimer, d'admirer et de prendre soin de la vie sous toutes ses formes. 
+          <% else %>
+            <%= @user.description %>
+          <% end %>
+        </h5>
         
         <% if params[:id].to_i == current_user.id %>
           <div id="user-description-form" class='description text-center mb-5' style='display:none'>

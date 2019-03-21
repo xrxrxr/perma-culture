@@ -51,6 +51,14 @@ class User < ApplicationRecord
     end
   end
 
+  def online
+    self.update(is_online: true)
+  end
+
+  def offline
+    self.update(is_online: false)
+  end
+
   def avatar_mini
       return self.avatar.variant(combine_options: [
                                 [:resize, "64x64^"],
