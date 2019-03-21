@@ -1,3 +1,5 @@
+<% content_for :title, "les posts " %>
+
 <p id="notice"><%= notice %></p>
 <% content_for :background_banner, "bg-#{rand(1..12)}.jpg" %>
 <%= render 'shared/banner_sm' %>
@@ -21,7 +23,7 @@
   </div>
   <!-- -------------------- NAV RIGHT ------------------ -->
   <div class="col-md-2 mt-3 ml-0">
-    <%= render 'navbar_right-messenger' %>        
+    <%= render 'navbar_right-messenger' %>
   </div>
   <!-- ---------------------------------------------------------->
   <div class="col-md-2 col-ext"></div>
@@ -36,4 +38,3 @@
     indexPosts(<%= @categories.size %>)
   })
 </script>
-
