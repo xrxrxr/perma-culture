@@ -1,10 +1,6 @@
-
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 <%= f.hidden_field :reset_password_token %>
 <%= render "devise/shared/error_messages", resource: resource %>
-
 
 <div class="page-header" filter-color="orange">
 
@@ -19,40 +15,31 @@
               </div>
             </div>
             <div class="card-body">
+              <div class="input-group form-group-no-border justify-content-center input-lg">
+                <div class="text-white" id='Change your password'>
+                  <h4>Changer mon mot de passe</h4>
+                </div>
+              </div>
+
               <div class="input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open mr-2"></i></span>
+                </div>
+                <%= f.password_field :password, autofocus: true, placeholder: "Nouveau mot de passe", class:'form-control', style:'height:46px' %>
+              </div>
 
-                <div class="col text-white d-flex j align-items-center" id='Change your password'>
-                  <h2>Tu veux changer ton mot de passe ?</h2>
+              <div class="input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open mr-2"></i></span>
                 </div>
-                <div class="input-group form-group-no-border input-lg">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="now-ui-icons ui-1_email-85 mr-2"></i></span>
-                  </div>
-                  <%= f.label :password, "New password" %><br />
-                  <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-                  <% end %>
+                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmation mot de passe", class:'form-control', style:'height:46px'  %>
+              </div>
+              <br>
+              <div class="card-footer text-center">
+                <%= f.submit "Changer mon mot de passe", class:"btn btn-primary btn-round btn-block align-middle" %>
+                <div class="link footer-link">
+                  <h6><%= render "devise/shared/links" %></h6>
                 </div>
-
-                <div class="input-group form-group-no-border input-lg">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="now-ui-icons ui-1_email-85 mr-2"></i></span>
-                  </div>
-                  <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-                </div>
-
-                <div class="input-group form-group-no-border input-lg">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="now-ui-icons ui-1_email-85 mr-2"></i></span>
-                  </div>
-                  <%= f.label :password_confirmation, "Confirm new password" %><br />
-                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-                </div>
-
-                <div class="card-footer text-center">
-                  <%= f.submit "Changer mon mot de passe" %>
-                </div>
-                <%= render "devise/shared/links" %>
               </div>
             </div>
           </form>
@@ -61,5 +48,4 @@
     </div>
   </div>`
 </div>
-
-            <% end %>
+<% end %>
