@@ -1,3 +1,5 @@
+<% content_for :title, @article.title  %>
+
 <% content_for :background_banner, "bg-#{rand(1..12)}.jpg" %>
 <%= render 'shared/banner_sm' %>
 
