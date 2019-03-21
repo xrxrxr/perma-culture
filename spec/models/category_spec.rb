@@ -1,11 +1,10 @@
-	require 'rails_helper'
+require 'rails_helper'
 
 RSpec.describe Category, type: :model do
 
-	before(:each) do 
-		@category = FactoryBot.build(:category)    
+	before(:each) do
+		@category = FactoryBot.build(:category)
 	end
-
 
 	it "has a valid factory" do
 		expect(build(:category)).to be_valid
@@ -20,6 +19,13 @@ RSpec.describe Category, type: :model do
 			it {is_expected.to allow_value("Permaculture").for(:name)}
 			it {is_expected.to allow_value("Agroforesterie").for(:name)}
 			it {is_expected.to_not allow_value("").for(:name)}
+			it {is_expected.to_not allow_value("LApermaculturecestfantsasite").for(:name)}
 		end
+	end
+
+	context "associations" do
+		it { expect(@category).to have_many(:user_categories) }
+		it { expect(@category).to have_many(:users) }
+		it { expect(@category).to have_many(:posts) }
 	end
 end

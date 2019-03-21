@@ -1,24 +1,30 @@
-# README
+![forthebadge](app/assets/images/logo_permaculture.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Voici notre magnifique reseau social des permaculteurs : 
 
-Things you may want to cover:
+[app en production] https://perma-culture.herokuapp.com/
 
-* Ruby version
+- Ruby 2.5.1
+- Rails 5.2.2
 
-* System dependencies
+### Toutes nos features :
 
-* Configuration
+Nous proposons un reseau social complet :
+- Chaque utilisateur a un profil personnalisable
+- L'acceuil est un fil d'actualite 
+- Systeme de messagerie instantannee entre les utilisateurs
+- Une carte qui affiche les evenements aux alentours
+- Une encyclopedie pour bien debuter en terme de connaissances 
 
-* Database creation
 
-* Database initialization
+## Créé avec
 
-* How to run the test suite
+- Template https://demos.creative-tim.com/now-ui-kit-pro/presentation.html?_ga=2.61410217.488569551.1551956089-1043164237.1550221706
 
-* Services (job queues, cache servers, search engines, etc.)
+## Auteurs
 
-* Deployment instructions
-
-* ...
+- Leo Robert : https://github.com/deoladed/
+- Rachel  : https://github.com/palurach
+- Xavier l'éxilé : https://github.com/xrxrxr
+- Julien Pelisson : https://github.com/JulienTHP/
+- Thomas Claudel : https://github.com/zekidok
