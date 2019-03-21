@@ -38,7 +38,7 @@ RSpec.describe Post, type: :model do
 			it { expect(Post).to respond_to(:search) }
 
 			it "should return an post if search" do
-				post = FactoryBot.create(:post, content:"Hey guys how are you")
+				post = FactoryBot.create(:post, content:"Hey guys how are you") 
 				expect(Post.search('guys')).to include(post)
 			end
 
@@ -51,10 +51,17 @@ RSpec.describe Post, type: :model do
 			it { expect(@post).to respond_to(:readable_date) }
 
 			it "should a readable date" do
-				post = FactoryBot.create(:post)
+				post = FactoryBot.create(:post) 
 				expect(post.readable_date).to eq(post.created_at.strftime("%d/%m/%y à %H:%M"))
 			end
 		end
+	end
+
+	context "associations" do
+		it { expect(@post).to have_many(:comments)}
+		it { expect(@post).to have_many(:likes)}
+		it { expect(@post).to belong_to(:writter).class_name('User')}
+		it { expect(@post).to belong_to(:category)}
 	end
 
 	context "associations" do

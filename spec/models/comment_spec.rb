@@ -31,6 +31,7 @@ RSpec.describe Comment, type: :model do
 
 			it "should a readable date" do
 				comment = FactoryBot.create(:comment)
+
 				expect(comment.readable_date).to eq(comment.created_at.strftime("%d/%m/%y à %H:%M"))
 			end
 		end

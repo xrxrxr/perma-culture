@@ -72,7 +72,7 @@ RSpec.describe User, type: :model do
       it { expect(@user).to respond_to(:offline) }
 
       it "should return offline_status" do
-        user = FactoryBot.build(:user)
+        user = FactoryBot.build(:user) 
         user.offline
         expect(user.is_online).to eq(false)
       end
@@ -82,7 +82,7 @@ RSpec.describe User, type: :model do
       it { expect(@user).to respond_to(:grab_image) }
 
       it "should grab a picture" do
-        user = FactoryBot.build(:user)
+        user = FactoryBot.build(:user) 
         user.grab_image
         expect(user.avatar.attached?).to eq(true)
       end
@@ -92,7 +92,7 @@ RSpec.describe User, type: :model do
       it { expect(User).to respond_to(:search) }
 
       it "should return an user if search" do
-        user = FactoryBot.create(:user, user_name:"felix-#{rand(3..10000)}")
+        user = FactoryBot.create(:user, user_name:"felix-#{rand(3..100000)}") 
 
         expect(User.search('felix')).to include(user)
       end
@@ -106,16 +106,16 @@ RSpec.describe User, type: :model do
       it { expect(@user).to respond_to(:dont_already_like?) }
 
       it "should return true if user already like a likeable" do
-        user = FactoryBot.create(:user)
-        post = FactoryBot.create(:post)
+        user = FactoryBot.create(:user) 
+        post = FactoryBot.create(:post) 
         like = FactoryBot.create(:like, user: user, likeable: post)
 
         expect(user.dont_already_like?(post)).to eq(false)
       end
 
       it "should return false if user dont already like a likeable" do
-        user = FactoryBot.create(:user)
-        post2 = FactoryBot.create(:post)
+        user = FactoryBot.create(:user) 
+        post2 = FactoryBot.create(:post) 
 
         expect(user.dont_already_like?(post2)).to eq(true)
       end

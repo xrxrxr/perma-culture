@@ -22,19 +22,14 @@ class Post < ApplicationRecord
   scope :by_latest_comment, -> {Post.joins(:comments).merge(Comment.order(created_at: :desc))}
   scope :by_date, -> { order(created_at: :asc)}
 
-  def latest_comment
-    comments
-     .order(Comment.arel_table['created_at'].asc)
-     .first
-  end
-
   def readable_date
     self.created_at.strftime("%d/%m/%y à %H:%M")
   end
 
   def self.search(search)
     if search
-      where('title ILIKE ?', "%#{search}%")
+      where('content ILIKE ?', "%#{search}%").or(
+      where('title ILIKE ?', "%#{search}%"))
     else
       all.reverse
     end

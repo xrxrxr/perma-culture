@@ -23,3 +23,4 @@ RSpec.describe Like, type: :model do
 		it { expect(@like).to belong_to(:likeable) }
 	end
 end
+

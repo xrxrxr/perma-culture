@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :category do
-    name{ Faker::Lorem.words(2) }
+    name{ Faker::Name.name }
   end
 end

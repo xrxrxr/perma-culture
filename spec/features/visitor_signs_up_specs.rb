@@ -14,7 +14,7 @@ feature 'Visitor signs up' do
   end
 
   scenario 'with blank password' do
-    sign_up_with 'PSeudoouaidqdqs', 'valid@example.com', ''
+    sign_up_with 'PSeudoouaidqdqs', 'valid2@example.com', ''
 
     expect(page).to have_content('Inscription')
   end

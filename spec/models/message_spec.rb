@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-	before(:each) do
-		@message = FactoryBot.build(:message)
+	before(:each) do 
+		@message = FactoryBot.build(:message)    
 	end
 
 	it "has a valid factory" do
