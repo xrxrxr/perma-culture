@@ -2,32 +2,24 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
 
-	before(:each) do 
-		@user = FactoryBot.build(:event)    
+	before(:each) do
+		@event = FactoryBot.build(:event)
 	end
 
 	it "has a valid factory" do
 		expect(build(:event)).to be_valid
 	end
-	
-	# describe "#title" do
-	# 	it {expect(@event).to validate_presence_of(:title)}
-	# 	it {is_expected.to allow_value("This is a title").for(:title)}
-	# 	it {is_expected.to allow_value("this title").for(:title)}
-	# 	it {is_expected.to allow_value("This is also a title, but longer").for(:title)}
-	# end
 
-	# describe "#start_date" do
-	# 	it {expect(@event).to validate_presence_of(:start_date)}
-	# 	it {is_expected.to allow_value("2019-03-18 11:08:23").for(:start_date)}
-	# 	it {is_expected.to allow_value("2020-10-19 20:00:00").for(:start_date)}
-	# 	it {is_expected}.to_not allow_value("2019-01-17 00:00:00").for(:start_date)
-	# 	it {is_expected}.to_not allow_value("2018-01-17 00:00:00").for(:start_date)
-	# end
+	context "validation" do
+		it "is valid with valid attributes" do
+			expect(@event).to be_a(Event)
+		end
 
-	# describe "#end_date" do
-	# 	it {expect(@event).to validate_presence_of(:end_date)}
-	# 	it {is_expected.to allow_value(:end_date > :start_date).for(:end_date)}
-	# 	it {is_expected.to_not allow_value(:end_date < :start_date).for(:end_date)}
-	# end
+		it 'is geocoded by address' do
+			@event = FactoryBot.create(:event, address: '41 Rue des Tables Claudiennes, 69001 Lyon, France')
+
+        	expect(@event.longitude).to eq(4.8331662)
+        	expect(@event.latitude).to eq(45.7709743)
+      	end
+	end
 end
