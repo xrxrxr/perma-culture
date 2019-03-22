@@ -11,7 +11,7 @@ Voici notre magnifique reseau social des permaculteurs :
 
 Nous proposons un reseau social complet :
 - Chaque utilisateur a un profil personnalisable
-- L'acceuil est un fil d'actualite 
+- L'accueil est un fil d'actualite 
 - Systeme de messagerie instantannee entre les utilisateurs
 - Une carte qui affiche les evenements aux alentours
 - Une encyclopedie pour bien debuter en terme de connaissances 
