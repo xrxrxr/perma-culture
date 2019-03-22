@@ -16,6 +16,14 @@ Nous proposons un reseau social complet :
 - Une carte qui affiche les evenements aux alentours
 - Une encyclopedie pour bien debuter en terme de connaissances 
 
+### Prochaines features : 
+
+- notifications (messages, commentaires sur nos post et commentaires) en temps reel
+- action cable sur les posts et commentaires
+- Ameliorer la messagerie avec un systeme de messages non lus
+- Trix pour la creaation des posts
+- Encyclopedie interractive
+
 
 ## Créé avec
 
