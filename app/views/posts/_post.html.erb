@@ -1,7 +1,7 @@
 <div class="card category-<%= post.category.id %> mt-0 mb-3" id='post-<%= post.id %>' data-type='post'>
   <!-- --------- CARD HEADER----------- --><!-- A ARRANEGR +++++ -->
   <h3 class="card-title text-center mt-0" id="Card_Post">
-    <% if post.writter == current_user %>      
+    <% if post.was_writted_by(current_user) %>      
     <span class='pull-right mr-3 mt-1'> <small>
       <%= link_to '#', data: { toggle:"modal", target:"#editModal-#{post.id}" } do %><i class="now-ui-icons ui-1_settings-gear-63 text-primary"></i><% end %> 
       <%= link_to post_path(post.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'} do %><i class="now-ui-icons ui-1_simple-remove text-primary"></i><% end %>
@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <div class='ml-4 mt-1'>
-        <%= link_to user_path(post.writter.id) do %> <h5 class='mb-1'><%= post.writter.user_name.capitalize %></h5><%end%>
+        <%= link_to user_path(post.writter.id) do %> <h5 class='mb-1'><%= post.writter_name %></h5><%end%>
         <footer class="blockquote-footer">Le <%= post.readable_date %></footer>
         </p>
       </div>
@@ -32,11 +32,11 @@
   <!-- ----------------------------------------- END PICTURES / POST FOOTER - BUTTONS --------------- -->
   <div class="d-flex justify-content-between d-flex flex-wrap raw mb-0">
     <div class="text-center w-25 ml-0 mb-3 mt-3" >
-      <p>#<%=post.category.name.downcase%></p>
+      <p>#<%=post.category_name%></p>
     </div>
     <div class='pt-1 pr-4'>
       <%= link_to post_likes_path(post.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{post.poeple_who_like}" do %>
-        <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_like_<%=post.id%>'><%= post.likes.size %></span><% end %>
+        <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_like_<%=post.id%>'><%= post.likes_size %></span><% end %>
       <%end%>
       <%= button_tag class:"btn btn-danger btn-neutral pull-right mr-2", id:"comments-toggle-#{post.id}" do %><span class='number-comments-<%= post.id %>'><%= post.comments_size %></span> <%= 'commentaire'.pluralize(post.comments_size) %><% end %> <!-- TRIGGER COMMENTS -->
     </div>

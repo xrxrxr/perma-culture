@@ -13,11 +13,10 @@ Rails.application.routes.draw do
       resources :events
       resources :likes
       resources :messages
-      resources :models
       resources :posts
       resources :user_categories
 
-      root to: "users#index"
+      root to: "posts#index"
     end
 
   resources :posts, path: 'publications' do

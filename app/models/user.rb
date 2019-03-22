@@ -65,6 +65,14 @@ class User < ApplicationRecord
     self.update(is_online: false)
   end
 
+  def is(user)
+    self.id == user.id
+  end
+
+  def doesnt_have_an_address
+    self.longitude.nil? || self.latitude.nil?
+  end
+
   def avatar_mini
       return self.avatar.variant(combine_options: [
                                 [:resize, "64x64^"],

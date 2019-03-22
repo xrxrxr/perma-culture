@@ -1,5 +1,5 @@
 <% if params[:comment_id] %>
-	$('#count_comment_like_<%= params[:comment_id] %>').text(<%= @likeable.likes.size %>);
+	$('#count_comment_like_<%= params[:comment_id] %>').text(<%= @likeable.likes_size %>);
 <% else %>
-	$('#count_like_<%= params[:post_id] %>').text(<%= @likeable.likes.size %>);
+	$('#count_like_<%= params[:post_id] %>').text(<%= @likeable.likes_size %>);
 <%end%>

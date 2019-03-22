@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
 		params[:comment_id] ? @comment = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Comment.find(params[:comment_id])) : @comment = Comment.new(user: current_user, content:params[:comment][:content], commenteable: Post.find(params[:post_id]))
 
 		if @comment.save
-			puts 'COMMENT TREAD'
 			respond_to do |format|
 				format.html { redirect_to posts_path(params[:post_id]), notice: "Votre commentaire a bien été créé" }
 				format.js

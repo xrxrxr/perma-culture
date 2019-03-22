@@ -1,16 +1,19 @@
 <!-- -- HEADER  -->
 <div class="media mr-3" id='comment-<%= comment.id %>'>
+    <!-- -- AVATAR  -->
     <%= link_to user_path(comment.user.id), class:"pull-left" do %>
         <div class="avatar">
             <%= image_tag comment.user.avatar_mini, class:"media-object img-raised", alt:'Photo commentateur' %>
         </div>
     <% end %>
     <div class="media-body">
-        <h5 class="media-heading"><%= comment.user.user_name%>
+        <!-- -- USER  -->
+        <h5 class="media-heading"><%= comment.commentator %>
             <small class="text-muted">&middot; Le <%= comment.readable_date %></small>
-            <% if comment.user == current_user %>
+            <!-- -- EDIT/DELETE  -->
+            <% if comment.was_writted_by(current_user) %>
                 <small>
-                    <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary ml-1' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
+                    <%= link_to post_comment_path(comment.commenteable_id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary ml-1' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
                     <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-1_settings-gear-63"></i><% end %>
                 </small>
             <% end %>
@@ -19,30 +22,29 @@
         <p id='comment-content-target-<%=comment.id%>'><%= comment.content%></p>
         <!-- -- HIDDEN FORM  -->
         <div class="media-body" id='comment-form-target-<%=comment.id%>' style="display:none">
-            <%= form_for @comment, url: post_comment_path(comment.commenteable.id, comment.id), method: :patch, remote: true do |f| %>
-            <%= f.text_area :content, autofocus: true, autocomplete: "content", placeholder:'Commentez', rows:'4', class:'form-control' %>
-            <div class="media-footer">
-                <%= f.submit :Commenter, class:"btn btn-primary pull-right" %>
-            </div>
+            <%= form_for @comment, url: post_comment_path(comment.commenteable_id, comment.id), method: :patch, remote: true do |f| %>
+                <%= f.text_area :content, autofocus: true, autocomplete: "content", placeholder:'Commentez', rows:'4', class:'form-control' %>
+                <div class="media-footer">
+                    <%= f.submit :Commenter, class:"btn btn-primary pull-right" %>
+                </div>
             <% end %>
         </div>
         <!-- -- FOOTER  -->
         <div class="media-footer">
-            <%= link_to post_likes_path(post_id: 10, comment_id: comment.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{comment.likes.map{|like| like.user.user_name}.join(', ')}" do %>
-                <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %>
+            <%= link_to post_likes_path(post_id: 10, comment_id: comment.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{comment.poeple_who_likes}", class:"btn btn-danger btn-neutral pull-right" do %>
                 <i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_comment_like_<%=comment.id%>'>
-                <%= comment.likes.size %></span><% end %>
+                <%= comment.likes_size %></span>
             <%end%>
-            <a class="btn btn-primary btn-neutral pull-right text-primary" rel="tooltip" title="Repondre au commentaire" id='trigger-form-<%= comment.id %>'>
+            <%= button_tag class:"btn btn-primary btn-neutral pull-right text-primary", rel:"tooltip", title:"Repondre au commentaire", id:"trigger-form-#{comment.id}" do %>
                 <i class="now-ui-icons ui-1_send"></i> Repondre
-            </a>
-            </div>
-            <!-- -- SUBCOMMENTS  -->
-            <div class="row">
-                <div class="col-12">
-                   <div id='comments_thread-receiver-<%= comment.id %>'>
+            <% end %>
+        </div>
+        <!-- -- SUBCOMMENTS  -->
+        <div class="row">
+            <div class="col-12">
+               <div id='comments_thread-receiver-<%= comment.id %>'>
                     <% comment.comments.reverse.each do  |comment_thread| %>
-                        <%= render 'comments/comment_thread', comment: comment_thread %>
+                    <%= render 'comments/comment_thread', comment: comment_thread %>
                     <% end %>
                 </div>
             </div>
@@ -59,7 +61,7 @@
             </div>
         <% end %>
         <div class="media-body">
-            <%= form_for @comment, url: post_comments_path(post_id: comment.commenteable.id, comment_id: comment.id), method: :post, remote: true do |f| %>
+            <%= form_for @comment, url: post_comments_path(post_id: comment.commenteable_id, comment_id: comment.id), method: :post, remote: true do |f| %>
                 <%= f.text_area :content, autofocus: true, placeholder:'Commentez', rows:'4', class:'form-control' %>
                 <div class="media-footer">
                     <%= f.submit :Commenter, class:"btn btn-primary pull-right" %>
