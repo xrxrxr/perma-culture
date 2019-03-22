@@ -24,7 +24,9 @@ Nous proposons un reseau social complet :
 ## Auteurs
 
 - Leo Robert : https://github.com/deoladed/
-- Rachel  : https://github.com/palurach
-- Xavier l'éxilé : https://github.com/xrxrxr
+- Rachel Palumbo : https://github.com/palurach
+- Xavier Refour : https://github.com/xrxrxr
 - Julien Pelisson : https://github.com/JulienTHP/
 - Thomas Claudel : https://github.com/zekidok
+
+- Mentor : Alexandre gaudencio
