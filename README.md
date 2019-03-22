@@ -11,10 +11,18 @@ Voici notre magnifique reseau social des permaculteurs :
 
 Nous proposons un reseau social complet :
 - Chaque utilisateur a un profil personnalisable
-- L'acceuil est un fil d'actualite 
+- L'accueil est un fil d'actualite 
 - Systeme de messagerie instantannee entre les utilisateurs
 - Une carte qui affiche les evenements aux alentours
 - Une encyclopedie pour bien debuter en terme de connaissances 
+
+### Prochaines features : 
+
+- notifications (messages, commentaires sur nos post et commentaires) en temps reel
+- action cable sur les posts et commentaires
+- Ameliorer la messagerie avec un systeme de messages non lus
+- Trix pour la creaation des posts
+- Encyclopedie interractive
 
 
 ## Créé avec
@@ -24,7 +32,9 @@ Nous proposons un reseau social complet :
 ## Auteurs
 
 - Leo Robert : https://github.com/deoladed/
-- Rachel  : https://github.com/palurach
-- Xavier l'éxilé : https://github.com/xrxrxr
+- Rachel Palumbo : https://github.com/palurach
+- Xavier Refour : https://github.com/xrxrxr
 - Julien Pelisson : https://github.com/JulienTHP/
 - Thomas Claudel : https://github.com/zekidok
+
+- Mentor : Alexandre gaudencio
