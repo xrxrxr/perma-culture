@@ -1,15 +1,29 @@
 <center><br>
   <%= form_with(model: user, local: true, multipart: true) do |form| %>
     <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+      <div id="error_explanation">
+        <div class="alert alert-danger alert-container alert-floating" role="alert" style='z-index: 1'>
+          <div class="container">
+            <div class="alert-icon">
+              <i class="now-ui-icons ui-1_settings-gear-63"></i>
+            </div>
+            <strong>Oups !</strong> <%= pluralize(user.errors.count, "erreur") %> lors de la sauvegarde du profil:
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">
+                <i class="now-ui-icons ui-1_simple-remove"></i>
+              </span>
+            </button>
+            <ul>
+              <% user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     <% end %>
+
+
 
     <div class="card card-body col-lg-6 col-sm-12 mt-5">
 

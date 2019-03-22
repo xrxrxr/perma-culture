@@ -2,10 +2,15 @@ class PostPicturesController < ApplicationController
  	
  	def create
 		@post = Post.find(params[:post_id])
-		@post.post_pictures.attach(params[:post_pictures])
-		respond_to do |format|
-			format.html { redirect_to posts_path, notice: "Photo ajoutee !" }
-			format.js
+		
+		unless params[:post_pictures].nil?
+			@post.post_pictures.attach(params[:post_pictures])
+			respond_to do |format|
+				format.html { redirect_to posts_path, notice: "Photo ajoutee !" }
+				format.js
+			end
+		else
+			@post.post_pictures.purge
 		end
 	end
 

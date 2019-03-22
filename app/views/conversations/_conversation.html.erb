@@ -1,7 +1,7 @@
-<div class="col-md-2" style="padding: 0;">
+<div class="col-lg-2 col-md-4 col-6" style="padding: 0;">
   <div class="card bg-light mb-0" data-conversation-id="<%= conversation.id %>">
     <div class="card-header d-flex justify-content-between" >
-      <%= link_to conversation.opposed_user(user).user_name.capitalize, '', class: 'toggle-window card-title ml-3' %>
+      <%= link_to '', class: 'toggle-window card-title ml-3' do %><span class='mr-2 <%= conversation.opposed_user(user).is_online ? "online-dot" : "offline-dot2" %>' id='presence-user-conv-<%= user.id %>'></span><%= conversation.opposed_user(user).user_name.capitalize %><% end %>
       <%= link_to close_conversation_path(conversation), class: "btn btn-primary btn-icon btn-sm mr-3", remote: true, method: :post do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
     </div>
 

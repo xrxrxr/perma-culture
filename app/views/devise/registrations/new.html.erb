@@ -6,6 +6,7 @@
 <br>
 
 <%= form_for(:user, url: registration_path(:user)) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
 <div class='content sign_up'>
             <div class="container">
                 <div class="col-lg-4 col-md-4 col-sm-12 ml-auto mr-auto">
@@ -19,6 +20,7 @@
 
                             </div>
                             <div class="card-body">
+                                    <p class="mb-0"><%= f.label :user_name, 'Pseudo' %></p>
                                 <div class="input-group form-group-no-border input-lg">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text text-dark"><i class="now-ui-icons users_circle-08 mr-2"></i></span>

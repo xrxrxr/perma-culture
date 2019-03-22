@@ -12,7 +12,7 @@ function mapProfile(long, lat) {
   var map = new mapboxgl.Map({
     container: 'map',
     center: [long, lat],
-    zoom: 15,
+    zoom: 14,
     style: 'mapbox://styles/mapbox/streets-v11'
   });
 
@@ -38,7 +38,7 @@ function mapProfile(long, lat) {
 
   // Get user datas
   // Users
-  $.getJSON( "/users.json", function(data) { 
+  $.getJSON( "/profil.json", function(data) { 
     let geojsonusers = {
       type: 'FeatureCollection',
       features: []

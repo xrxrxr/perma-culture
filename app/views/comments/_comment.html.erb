@@ -1,4 +1,4 @@
-<!-- -- CONTENT  -->
+<!-- -- HEADER  -->
 <div class="media mr-3" id='comment-<%= comment.id %>'>
     <%= link_to user_path(comment.user.id), class:"pull-left" do %>
         <div class="avatar">
@@ -8,14 +8,16 @@
     <div class="media-body">
         <h5 class="media-heading"><%= comment.user.user_name%>
             <small class="text-muted">&middot; Le <%= comment.readable_date %></small>
-            <% if comment.user = current_user %>
+            <% if comment.user == current_user %>
                 <small>
-                    <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
+                    <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary ml-1' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
                     <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-1_settings-gear-63"></i><% end %>
                 </small>
             <% end %>
         </h5>
+        <!-- -- CONTENT  -->
         <p id='comment-content-target-<%=comment.id%>'><%= comment.content%></p>
+        <!-- -- HIDDEN FORM  -->
         <div class="media-body" id='comment-form-target-<%=comment.id%>' style="display:none">
             <%= form_for @comment, url: post_comment_path(comment.commenteable.id, comment.id), method: :patch, remote: true do |f| %>
             <%= f.text_area :content, autofocus: true, autocomplete: "content", placeholder:'Commentez', rows:'4', class:'form-control' %>
@@ -24,6 +26,7 @@
             </div>
             <% end %>
         </div>
+        <!-- -- FOOTER  -->
         <div class="media-footer">
             <%= link_to post_likes_path(post_id: 10, comment_id: comment.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{comment.likes.map{|like| like.user.user_name}.join(', ')}" do %>
                 <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %>
@@ -34,6 +37,7 @@
                 <i class="now-ui-icons ui-1_send"></i> Repondre
             </a>
             </div>
+            <!-- -- SUBCOMMENTS  -->
             <div class="row">
                 <div class="col-12">
                    <div id='comments_thread-receiver-<%= comment.id %>'>
@@ -45,7 +49,7 @@
         </div>
     </div>
 </div>
-<!-- --------------------------------- FORM ------------------ -->
+<!-- -- HIDDEN FORM  -->
 <div class="row mr-1" id='comment-form-<%= comment.id %>' style='display:none;'>
     <div class="col-2"></div>
     <div class="media media-post col-10 mb-5">

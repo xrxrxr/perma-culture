@@ -11,5 +11,5 @@ class PresencesChannel < ApplicationCable::Channel
 
   def presence(data)
   	ActionCable.server.broadcast('presence', current_user.id)
-  end
+  end 
 end

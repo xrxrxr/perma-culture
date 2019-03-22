@@ -35,6 +35,14 @@ class Post < ApplicationRecord
     end
   end
 
+  def comments_size
+    self.comments.size + self.comments.map{|comment| comment.comments.size}.sum
+  end
+
+  def poeple_who_like
+    self.likes.map{|like| like.user.user_name}.join(', ')
+  end
+
   private
 
   def tweet
