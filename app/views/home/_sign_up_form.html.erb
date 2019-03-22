@@ -1,66 +1,62 @@
 
 <%= form_for(:user, url: registration_path(:user)) do |f| %>
-<div class='content sign_up left3 mr-5'>
-  <div class="container">
-    <div class="col-12 ml-auto mr-auto">
-      <div class="card card-login card-plain">
-        <form class="form" method="" action="">
-          <div class="card-header text-center">
-            <div class="logo-container">
-              <%= image_tag 'icone-logo.png' %>
-            </div>
-          </div>
-          <div class="card-body">
-
-            <div class=" mr-5 input-group form-group-no-border input-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text text-white">
-                  <i class="now-ui-icons users_circle-08 mr-2"></i></i>
-                </span>
+  <div class='content sign_up left3 mr-5'>
+    <div class="container">
+      <div class="col-12 ml-auto mr-auto">
+        <div class="card card-login card-plain">
+          <form class="form" method="" action="">
+            <div class="card-header text-center">
+              <div class="logo-container">
+                <%= image_tag 'icone-logo.png' %>
               </div>
-              <%= f.text_field :user_name, autofocus: true, autocomplete: "Votre nom", placeholder:"Pseudo", class:'form-control', style:'height: 46px;' %>
             </div>
-
-            <div class="input-group form-group-no-border input-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text text-white">
-                  <i class="now-ui-icons ui-1_email-85 mr-2"></i>
-                </span>
+            <div class="card-body">
+              <div class=" mr-5 input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white">
+                    <i class="now-ui-icons users_circle-08 mr-2"></i>
+                  </span>
+                </div>
+                <%= f.text_field :user_name, autofocus: true, autocomplete: "Votre nom", placeholder:"Pseudo", class:'form-control', style:'height: 46px;' %>
               </div>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
-            </div>
-            <div class="input-group form-group-no-border input-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text text-white">
-                  <i class="now-ui-icons ui-1_lock-circle-open mr-2"></i>
-                </span>
+              <div class="input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white">
+                    <i class="now-ui-icons ui-1_email-85 mr-2"></i>
+                  </span>
+                </div>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email", class:'form-control', style:'height: 46px;' %>
               </div>
-              <%= f.password_field :password, autocomplete: "current-password", placeholder:"Mot de passe", class:'form-control', style:'height: 46px;' %>
-            </div>
-
-            <div class="input-group form-group-no-border input-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text text-white">
-                  <i class="now-ui-icons ui-1_lock-circle-open mr-2"></i>
-                </span>
+              <div class="input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white">
+                    <i class="now-ui-icons ui-1_lock-circle-open mr-2"></i>
+                  </span>
+                </div>
+                <%= f.password_field :password, autocomplete: "current-password", placeholder:"Mot de passe", class:'form-control', style:'height: 46px;' %>
               </div>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmation", class:'form-control', style:'height: 46px;' %>
+              <div class="input-group form-group-no-border input-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white">
+                    <i class="now-ui-icons ui-1_lock-circle-open mr-2"></i>
+                  </span>
+                </div>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmation", class:'form-control', style:'height: 46px;' %>
+              </div>
+              <div class="input-group form-group-no-border input-lg text-dark">
+                <%= f.text_field :address, autofocus: true, autocomplete: "Votre nom", placeholder:"Adresse, ville ou code postal", class:'form-control', style:'height: 46px;' %>
+              </div>
             </div>
-
-            <div class="input-group form-group-no-border input-lg text-dark">
-              <%= f.text_field :address, autofocus: true, autocomplete: "Votre nom", placeholder:"Adresse, ville ou code postal", class:'form-control', style:'height: 46px;' %>
-            </div>
-          </div>
-          <center>
-            <div class="col-8 card-footer text-center">
-              <%= f.submit "Créer un compte", class:"mb-3 btn-primary btn-round btn-block" %>
-              <p><%= link_to 'Déjà inscrit ?', '', class:"link footer-link text-white", data: {toggle:"modal", target:"#loginModal"} %></p>
-            </div>
-         </center>
-       </form>
-     </div>
-   </div>
- </div>
-</div>
+            <center>
+              <div class="col-8 card-footer text-center">
+                <%= f.submit "Créer un compte", class:"mb-3 btn-primary btn-round btn-block" %>
+                <p><%= link_to 'Déjà inscrit ?', '', class:"link footer-link text-white", data: {toggle:"modal", target:"#loginModal"} %></p>
+              </div>
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 <%= render "shared/algolia_places" %>
