@@ -35,7 +35,7 @@
       <p>#<%=post.category.name.downcase%></p>
     </div>
     <div class='pt-1 pr-4'>
-      <%= link_to post_likes_path(post.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{post.likes.map{|like| like.user.user_name}.join(', ')}" do %>
+      <%= link_to post_likes_path(post.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{post.poeple_who_like}" do %>
         <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_like_<%=post.id%>'><%= post.likes.size %></span><% end %>
       <%end%>
       <%= button_tag class:"btn btn-danger btn-neutral pull-right mr-2", id:"comments-toggle-#{post.id}" do %><span class='number-comments-<%= post.id %>'><%= post.comments_size %></span> <%= 'commentaire'.pluralize(post.comments_size) %><% end %> <!-- TRIGGER COMMENTS -->
