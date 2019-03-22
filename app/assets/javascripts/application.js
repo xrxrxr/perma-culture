@@ -58,6 +58,7 @@ $(document).ready(function() {
     e.preventDefault();
     $('#the-user-list').fadeToggle(800);
     $('#conversations-list').toggleClass('conversation-list-to-right');
+    $('.collapse').fadeOut(300);
   });
 
    $('#close-messenger').click(function (e) {
