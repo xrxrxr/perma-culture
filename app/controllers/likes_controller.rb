@@ -12,11 +12,11 @@ class LikesController < ApplicationController
 				end
 			else
 				respond_to do |format|
-					format.html { redirect_to posts_path, alert: "Erreur lors du likes, desole" }
+					format.html { redirect_to posts_path, alert: "Erreur lors du like, desole" }
 				end
 			end
 		else
-			Like.find_by(likeable: @likeable).destroy
+			Like.find_by(likeable: @likeable, user: current_user).destroy
 			respond_to do |format|
 				format.html { redirect_to posts_path, notice: "Vous n'aimez plus !" }
 				format.js
