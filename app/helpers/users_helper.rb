@@ -6,7 +6,7 @@ module UsersHelper
   def build_geojson(users)
   	@geojson = Array.new
   	users.each do |user|
-  		unless user.latitude.nil? || user.longitude.nil? || user.address.empty?
+  		unless user.doesnt_have_an_address
   			@geojson << {
   				type: "Feature",
   				geometry: {

@@ -59,6 +59,10 @@ class Post < ApplicationRecord
     self.likes.size
   end
 
+  def content_safe
+    self.content.gsub(URI.regexp, '<a target:"_blank" href="\0">\0</a>').html_safe
+  end
+
   private
 
   def tweet
