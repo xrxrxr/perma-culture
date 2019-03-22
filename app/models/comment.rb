@@ -15,4 +15,8 @@ class Comment < ApplicationRecord
   def readable_date
   	self.created_at.strftime("%d/%m/%y à %H:%M")
   end
+
+  def poeple_who_likes
+    self.likes.map{|like| like.user.user_name}.join(', ')
+  end
 end

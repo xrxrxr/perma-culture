@@ -1,3 +1,4 @@
+<!-- -- HEADER  -->
 <div class="media mr-1" id='comment-<%= comment.id %>'>
     <div class="media pull-right">
         <%= link_to user_path(comment.user.id), class:"pull-left" do %>
@@ -16,7 +17,9 @@
                 </small>
             <% end %>
         </h5>
+        <!-- -- CONTENT  -->
         <p id='comment-content-target-<%=comment.id%>'><%= comment.content%></p>
+        <!-- -- HIDDEN FORM  -->
         <div class="media-body" id='comment-form-target-<%=comment.id%>' style="display:none">
             <%= form_for @comment, url: post_comment_path(comment.commenteable.id, comment.id), method: :patch, remote: true do |f| %>
             <%= f.text_area :content, autofocus: true, autocomplete: "content", placeholder:'Commentez', rows:'4', class:'form-control' %>
@@ -25,8 +28,9 @@
             </div>
             <% end %>
         </div>
+        <!-- -- FOOTER  -->
         <div class="media-footer">
-            <%= link_to post_likes_path(post_id: comment.commenteable.id, comment_id: comment.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"bottom"}, title:"#{comment.likes.map{|like| like.user.user_name}.join(', ')}" do %>
+            <%= link_to post_likes_path(post_id: comment.commenteable.id, comment_id: comment.id), method: :post, remote: true, data: {toggle:"tooltip", placement:"right"}, title:"#{comment.likes.map{|like| like.user.user_name}.join(', ')}" do %>
             <%= button_tag class:"btn btn-danger btn-neutral pull-right" do %><i class="now-ui-icons ui-2_favourite-28"></i> <span id='count_comment_like_<%= comment.id %>'><%= comment.likes.size %></span><% end %>
             <%end%>
         </div>                                   
