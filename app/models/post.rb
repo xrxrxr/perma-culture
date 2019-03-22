@@ -43,6 +43,22 @@ class Post < ApplicationRecord
     self.likes.map{|like| like.user.user_name}.join(', ')
   end
 
+  def writter_name
+    self.writter.user_name.capitalize
+  end
+
+  def category_name
+    self.category.name.downcase
+  end
+
+  def was_writted_by(user)
+    self.writter == user
+  end
+
+  def likes_size
+    self.likes.size
+  end
+
   private
 
   def tweet

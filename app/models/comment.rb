@@ -19,4 +19,20 @@ class Comment < ApplicationRecord
   def poeple_who_likes
     self.likes.map{|like| like.user.user_name}.join(', ')
   end
+
+  def commentator
+    self.user.user_name
+  end
+
+  def commenteable_id
+    self.commenteable.id
+  end
+
+  def was_writted_by(thisuser)
+    self.user == thisuser
+  end
+
+  def likes_size
+    self.likes.size
+  end
 end

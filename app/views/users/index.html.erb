@@ -1,6 +1,6 @@
 <% content_for :title, "Autour de moi" %>
 
-  <div id='map' style='height:900px; top:76px'>
+  <div id='map' style='height:900px; top:76px;'>
     <div id='menu'>
       <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
       <label for='basic'>basic</label>
@@ -13,7 +13,7 @@
   </div>
 
   <script>
-    <% unless @user.longitude.nil? || @user.latitude.nil? %>
+    <% unless @user.doesnt_have_an_address %>
       mapProfile (<%= @user.longitude%>, <%= @user.latitude %>);
     <% else %>
       mapProfile (5.2815464, 45.1427126);    
