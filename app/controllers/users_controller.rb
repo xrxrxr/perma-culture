@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 	def show
 		@users = User.all
 		@user = set_user
-		@user_ip = remote_ip
 	end
 
 	def destroy; end

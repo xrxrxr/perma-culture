@@ -1,5 +1,5 @@
 <% flash.each do |name, msg| %>
-    <% if name == 'success' || name == 'notice' %>
+    <% if name == 'success' || name == 'notice' || name == 'info' %>
       <div class="alert alert-success alert-container alert-floating" role="alert" style='z-index: 1'>
         <div class="container">
           <div class="alert-icon">
@@ -14,7 +14,7 @@
         </div>
       </div>
     <% else %>
-      <div class="alert alert-<%= name %> alert-container alert-floating" role="alert" style='z-index: 1'>
+      <div class="alert alert-danger alert-container alert-floating" role="alert" style='z-index: 1'>
         <div class="container">
           <div class="alert-icon">
             <i class="now-ui-icons ui-1_settings-gear-63"></i>

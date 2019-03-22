@@ -11,6 +11,8 @@ class User < ApplicationRecord
   
   before_create :grab_image
   after_create :welcome_send
+  after_create :welcome_chat
+
 
   has_one_attached :avatar
   has_many :user_categories, dependent: :destroy
@@ -37,6 +39,10 @@ class User < ApplicationRecord
   
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
+  end
+
+  def welcome_chat
+    WelcomeChatJob.set(wait: 5.seconds).perform_later(self)
   end
 
   def dont_already_like?(likeable)

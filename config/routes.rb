@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { registrations: "registrations" }
+  
   namespace :admin do
       resources :users
       resources :articles
@@ -17,22 +19,17 @@ Rails.application.routes.draw do
 
       root to: "users#index"
     end
-  devise_for :users, controllers: { registrations: "registrations" }
 
-  resources :posts do
+  resources :posts, path: 'publications' do
     resources :post_pictures, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy, :update]
-    resources :users, only: [:index, :show]
-  end
-  get '/welcome' => "posts#index", as: :user_root
-
-  resources :users, only: [:show, :update, :edit, :destroy, :index] do
-    resources :avatars, only: [:create]
   end
 
+  resources :users, path: 'profil', only: [:show, :update, :edit, :destroy, :index]
   resources :articles, only: [:index, :show]
   resources :events, only: [:index]
+
   resources :conversations, only: [:create] do
     member do
       post :close

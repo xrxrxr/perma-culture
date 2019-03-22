@@ -10,7 +10,7 @@
             <small class="text-muted">&middot; Le <%= comment.readable_date %></small>
             <% if comment.user == current_user %>
                 <small>
-                    <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
+                    <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary ml-1' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
                     <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-1_settings-gear-63"></i><% end %>
                 </small>
             <% end %>
