@@ -1,2 +1,6 @@
 $('#comment-<%= params[:id] %>').fadeOut(500);
-$('.number-comments-<%= params[:post_id] %>').text(<%= @comment.commenteable.comments.size %>);
+<% unless params[:comment_id] %>
+	$('.number-comments-<%= params[:post_id] %>').text(<%= @comment.commenteable.comments_size %>);
+<% else %>
+	$('.number-comments-<%= params[:post_id] %>').text(<%= @comment.commenteable.commenteable.comments_size %>);
+<% end %>
