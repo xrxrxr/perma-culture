@@ -1,11 +1,12 @@
 <% unless params[:comment_id] %>
 	$("<%= j render 'comment', comment: @comment %>").prependTo($('#comments-receiver-<%= params[:post_id] %>')).hide().fadeIn(500);
 	$('#comment-form-<%=@comment.id%>').hide()
+	$('.number-comments-<%= params[:post_id] %>').text(<%= @comment.commenteable.comments_size %>);
 <% else %>
 	$("<%= j render 'comment_thread', comment: @comment %>").appendTo($('#comments_thread-receiver-<%= params[:comment_id] %>')).hide().fadeIn(500);
 	$('#comment-form-<%= params[:comment_id] %>').hide()
+	$('.number-comments-<%= params[:post_id] %>').text(<%= @comment.commenteable.commenteable.comments_size %>);
 <%end%>
-$('.number-comments-<%= params[:post_id] %>').text(<%= @comment.commenteable.comments.size %>);
 $('.new_comment').trigger('reset');
 
 $('#flashpostcreated').slideDown(function() {
