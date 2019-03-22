@@ -254,6 +254,10 @@ ul {
   list-style: none;
 }
 
+#conversations-list {
+  height:1px;
+}
+
 .messages-list ul {
   padding-left: 0px;
   list-style: none;
@@ -332,10 +336,10 @@ ul {
   display: inline-block;
 }
 
-span[data-presence='true'] {
+.offline-dot2 {
   height: 10px;
   width: 10px;
-  background-color: green;
+  background-color: transparent;
   border:none;
   border-radius: 50%;
   display: inline-block;
@@ -382,7 +386,7 @@ font-family: 'Open Sans', sans-serif;
 
 
 .markeruser {
-  background-image: url(image_path('icone-logo.png'));
+  background-image: url(image_path('icon_neutral.png'));
   background-size: cover;
   width: 50px;
   height: 50px;
