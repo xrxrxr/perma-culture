@@ -9,10 +9,10 @@
     <div class="media-body d-block">
         <h5 class="media-heading "><%= comment.user.user_name%>
             <small class="text-muted"> Le <%= comment.readable_date %></small>
-            <% if comment.user = current_user %>
+            <% if comment.user == current_user %>
                 <small>
                     <%= link_to post_comment_path(comment.commenteable.id, comment.id), remote: true, method: :delete, data: { confirm: 'Etes-vous sur?'}, class:'pull-right text-primary' do %><i class="now-ui-icons ui-1_simple-remove"></i><% end %>
-                    <%= link_to '', class:'pull-right text-primary', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-1_settings-gear-63"></i><% end %>
+                    <%= link_to '', class:'pull-right text-primary mr-1', id:"edit-comment-#{comment.id}" do %><i class="now-ui-icons ui-1_settings-gear-63"></i><% end %>
                 </small>
             <% end %>
         </h5>

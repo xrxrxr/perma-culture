@@ -13,3 +13,12 @@ Scrapper.new.perform
 puts 'Scrapping done'
 Events.new.perform
 puts 'Events Created'
+
+EventsCreator.new.perform
+puts 'Events Created'
+
+puts 'Building Encyclopedia..'
+puts 'This could be long..'
+Scrapper.new.perform
+puts 'Scrapping done'
+

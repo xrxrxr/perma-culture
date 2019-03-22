@@ -17,10 +17,6 @@ RSpec.describe Article, type: :model do
 
     describe "#title" do
       it {expect(@article).to validate_presence_of(:title)}
-      it {expect(@article).to validate_uniqueness_of(:title)}
-      it {is_expected.to allow_value("Super article sur l'agroforesterie").for(:title)}
-      it {is_expected.to_not allow_value("Sup").for(:title)}
-      it {is_expected.to_not allow_value("a" *61).for(:title)}
     end
 
     describe "#content" do
